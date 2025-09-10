@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Pronomen (direkt oder indirekt)</title>
+		<style>
+			body {
+				background-color: linen;
+        font-size: 24px;
+			}
+      p {
+        font-size: 30px;
+				padding-left: 30px;
+      }
+      button {
+        font-size: 20px;
+				margin-left: 30px;
+      }
+			form {
+				margin-left: 20px;
+			}
+			h3 {
+        font-size: 36px;
+				color: maroon;
+				margin-left: 40px;
+			}
+      h4 {
+        font-size: 24px;
+				color: rgb(234, 63, 63);
+				margin-left: 20px;
+        margin-bottom: 6px;
+        margin-top: 0px;
+			}
+			hr {
+				color: maroon;
+			}
+			ul {
+				line-height: 32px;
+				padding-top: 2px;
+				padding-bottom: 2px;
+			}
+      table, th, td {
+        border:1.5px solid black;
+        border-collapse: collapse;
+      }
+			#erklaerung {
+        border: 6px solid hsl(39, 96%, 71%);
+				display: none;
+        font-size: 28px;
+			}
+      #erklaerung_ta {
+				display: none;
+			}
+      #hilfeblock {
+        background-color: #ffa44f65;
+				border: 6px solid #f48c2a7c;
+      }
+      #sp_gruen {
+        color: #228b22;
+        border-left: 2.5px solid;
+        border-color: black;
+        background-color: #fffff0;
+        text-align: center;
+        height: 48px;
+        font-size: 28px;
+      }
+      #sp_blau {
+        color: #0000ff;
+        border-left: 2.5px solid;
+        border-right: 2.5px solid;
+        border-color: black;
+        background-color: #d3d3d3;
+        text-align: center;
+        font-size: 28px;
+      }
+      #thick_sp_gruen {
+        color: #228b22;
+        border: 2.5px solid;
+        border-color: black;
+        background-color: #fffff0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 28px;
+      }
+      #thick_sp_blau {
+        color: #0000ff;
+        border: 2.5px solid;
+        border-color: black;
+        background-color: #d3d3d3;
+        text-align: center;
+        font-weight: bold;
+        font-size: 28px;
+      }
+      input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+		</style>
+		<script type="text/Javascript">
+			"use strict"
+			function ersetzen1() {
+			  let text = document.getElementById("loes1").innerHTML;
+			  document.getElementById("loes1").innerHTML = text.replace("_________________", "Je la mange.");
+
+			  c1.style.backgroundColor = '	rgb(204,255,204)';
+				c1.style.borderRadius = "10px"; 
+				c1.style.padding = "0px 8px"
+	
+			}
+			function ersetzen2() {
+			  let text = document.getElementById("loes2").innerHTML;
+			  document.getElementById("loes2").innerHTML = text.replace("_________________", "Je lui téléphone.");
+
+				c2.style.backgroundColor = '		rgb(204,204,255)';
+				c2.style.borderRadius = "10px"; 
+				c2.style.padding = "0px 8px"
+			}
+			function ersetzen3() {
+			  let text = document.getElementById("loes3").innerHTML;
+			  document.getElementById("loes3").innerHTML = text.replace("_________________", "Je ne le mange pas.");
+
+			  c3.style.backgroundColor = '	rgb(204,255,204)';
+				c3.style.borderRadius = "10px"; 
+				c3.style.padding = "0px 8px"
+			}
+			function ersetzen4() {
+			  let text = document.getElementById("loes4").innerHTML;
+			  document.getElementById("loes4").innerHTML = text.replace("_________________", "Je veux le manger.");
+
+			  c4.style.backgroundColor = '	rgb(204,255,204)';
+				c4.style.borderRadius = "10px"; 
+				c4.style.padding = "0px 8px"
+			}
+			function ersetzen5() {
+			  let text = document.getElementById("loes5").innerHTML;
+			  document.getElementById("loes5").innerHTML = text.replace("_________________", "Il veut lui écrire.");
+
+			  c5.style.backgroundColor = '		rgb(204,204,255)';
+				c5.style.borderRadius = "10px"; 
+				c5.style.padding = "0px 8px"
+			}
+			function ersetzen6() {
+			  let text = document.getElementById("loes6").innerHTML;
+			  document.getElementById("loes6").innerHTML = text.replace("_________________", "Je leur ai donné un cadeau.");
+
+			  c6.style.backgroundColor = '		rgb(204,204,255)';
+				c6.style.borderRadius = "10px"; 
+				c6.style.padding = "0px 8px"
+			}
+			function ersetzen7() {
+			  let text = document.getElementById("loes7").innerHTML;
+			  document.getElementById("loes7").innerHTML = text.replace("_________________", "La prof leur explique les devoirs.");
+
+			  c7.style.backgroundColor = '		rgb(204,204,255)';
+				c7.style.borderRadius = "10px"; 
+				c7.style.padding = "0px 8px"
+			}
+			 function checkMe() {
+			   var checkbx = document.getElementById("checkbx");
+			   var hilfe = document.getElementById("erklaerung");
+
+			   if(checkbx.checked == true){
+			     hilfe.style.display = "block";
+			   } else {
+			     hilfe.style.display = "none";
+			   }
+			 }
+       function checkMeTa() {
+			   var checkbx_ta = document.getElementById("checkbx_ta");
+			   var hilfe_ta = document.getElementById("erklaerung_ta");
+
+			   if(checkbx_ta.checked == true){
+			     hilfe_ta.style.display = "block";
+			   } else {
+			     hilfe_ta.style.display = "none";
+			   }
+			 }
+		</script>
+		<body>
+			<h3>Setze die richtigen Pronomen (direkt oder indirekt) ein.</h3>
+      <div id="hilfeblock">
+        <h4>Hilfe</h4>
+			<form>
+				<input type="checkbox" id="checkbx" onclick="checkMe()" /> Regeln
+				anzeigen (ja/nein)
+			</form>
+			<div id="erklaerung" style="background-color: #ffe0a6" ;>
+				<ul>
+					<li style="line-height: 30px; ">
+						Die <span style="color: #228b22">direkten Objekte</span> stehen
+						direkt hinter dem Verb.<br />Die
+						<span style="color: #0000ff">indirekten Objekte</span> werden durch
+						die Präposition <span style="color: #0000ff">à</span> <span margin-bottom: 14px;> Verb getrennt.</span>
+					</li>
+					<li style="margin-bottom: 14px; margin-top: 14px;">Die Objektpronomen stehen <u>vor</u> dem konjugierten Verb.</li>
+					<li style="line-height: 30px">
+						Wenn es in einem Satz ein
+						<span style="color: #228b22">direktes</span> und ein
+						<span style="color: #0000ff">indirektes Objektpronomen</span>
+						gibt,<br />steht das <span style="color: #228b22">direkte</span>
+						<u>vor</u> dem
+						<span style="color: #0000ff">indirekten Objektpronomen</span>.
+					</li>
+					<li style="margin-bottom: 14px; margin-top: 14px;">
+						Bei der Verneinung werden Pronomen + Verb durch die
+						Verneinungsklammer umschlossen.
+					</li>
+					<li>
+						Wenn im Satz ein Infinitiv vorkommt, steht das Objektpronomen
+						<u>vor</u>
+						dem Infinitiv.
+					</li>
+				</ul>
+			</div>
+      <br />
+      <form>
+				<input type="checkbox" id="checkbx_ta" onclick="checkMeTa()" /> direkte und indirekte Pronomen, Tabelle anzeigen (ja/nein)
+			</form>
+      <div id="erklaerung_ta"; >
+			<table width="40%";>
+				<tr>
+					<tr>
+						<th id="thick_sp_gruen">direkte<br />
+						Objektpronomen</th>
+            <th id="thick_sp_blau">
+              indirekte<br />
+              Objektpronomen
+            </th>
+					</tr>
+					
+				</tr>
+				<tr>
+					<td id="sp_gruen">me, m′</td>
+					<td id="sp_blau">me, m′</td>
+				</tr>
+				<tr>
+					<td id="sp_gruen">te, t′</td>
+					<td id="sp_blau">te, t′</td>
+				</tr>
+        <tr>
+					<td id="sp_gruen"><span style="border: 2px solid #b22222; padding: 1px;">&nbsp &nbsp &nbsp le, la, l′&nbsp &nbsp &nbsp</span></td>
+					<td id="sp_blau"><span style="border: 2px solid #b22222; padding: 1px;">&nbsp &nbsp &nbsp &nbsp lui &nbsp &nbsp &nbsp &nbsp</span></td>
+				</tr>
+				<tr>
+					<td id="sp_gruen">nous</td>
+					<td id="sp_blau">nous</td>
+				</tr>
+        <tr>
+					<td id="sp_gruen">vous</td>
+					<td id="sp_blau">vous</td>
+				</tr>
+				<tr>
+					<td id="sp_gruen" style="border-bottom: 2.5px solid black"><span style="border: 2px solid #b22222; padding: 1px;">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp les &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</span></td>
+					<td id="sp_blau" style="border-bottom: 2.5px solid black"><span style="border: 2px solid #b22222; padding: 1px;">&nbsp &nbsp &nbsp &nbsp &nbsp leur &nbsp &nbsp &nbsp &nbsp &nbsp</span></td>
+				</tr>
+			</table>
+      </div>
+    </div>
+			<p id="demo1">
+				Je mange <span id="c1" style="background-color: none">une banane</span>.
+			</p>
+			<p id="loes1">_________________</p>
+			<button onclick="ersetzen1()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo2">
+				Je téléphone <span id="c2" style="background-color: none">à ma copine</span>.
+			</p>
+			<p id="loes2">_________________</p>
+			<button onclick="ersetzen2()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo3">
+				Je ne mange pas <span id="c3" style="background-color: none">un gâteau</span>.
+			</p>
+			<p id="loes3">_________________</p>
+			<button onclick="ersetzen3()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo4">
+				Je veux manger <span id="c4" style="background-color: none">un chocolat</span>.
+			</p>
+			<p id="loes4">_________________</p>
+			<button onclick="ersetzen4()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo5">
+				Il veut écrire <span id="c5" style="background-color: none">à Nathalie</span>.
+			</p>
+			<p id="loes5">_________________</p>
+			<button onclick="ersetzen5()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo6">
+				J'ai donné un cadeau <span id="c6" style="background-color: none">aux invités</span>.
+			</p>
+			<p id="loes6">_________________</p>
+			<button onclick="ersetzen6()">Lösung anzeigen</button>
+			<br />
+			<hr style="border: 1.5px solid #ffa54f" />
+			<p id="demo7">
+				La prof explique les devoirs <span id="c7" style="background-color: none">aux élèves</span>.
+			</p>
+			<p id="loes7">_________________</p>
+			<button onclick="ersetzen7()">Lösung anzeigen</button>
+		</body>
+	</head>
+</html>

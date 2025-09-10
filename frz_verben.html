@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Französische Verben (12 wichtige)</title>
+		<link rel="icon" type="image/x-icon" href="/france.png">
+		<!-- <link rel="stylesheet" href="style.css" /> -->
+		<link rel="stylesheet" href="hamburger.css" />
+		<style>
+			body {
+				background-image: url("france.png");
+				background-repeat: no-repeat;
+  			background-position: center;
+				background-attachment: fixed;
+				background-size: cover;
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: 0;
+				text-align: center;
+				list-style: none;
+				text-decoration: none;
+			}
+			h1 {
+				text-align: center;
+				color: #292929;
+				margin: 15px;
+				font-size: 32px;
+			}
+			.flex-container {
+				display: flex;
+				flex-wrap: wrap;
+				color: black;
+				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+					sans-serif;
+				/* background-color: DodgerBlue; */
+				background-color: rgba(30, 143, 255, 0.20);
+				justify-content: center;
+				/* align-content: center; */
+				padding: 15px 0px;
+			}
+			.flex-container > div {
+				background-color: #add1f9;
+				width: 100px;
+				margin: 5px 10px;
+				text-align: center;
+				line-height: 60px;
+				font-size: 26px;
+				border: 4px solid darkgray;
+				/* flex-basis: auto; */
+			}
+			.flex-verb {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 0px 0px;
+				border: 0px solid red;
+				margin-top: 0px;
+			}
+			.flex-verb > div {
+				background-color: rgba(164, 164, 164, 0.505);
+				width: 360px;
+				margin: 5px 2px;
+				padding: 0px 15px;
+				text-align: left;
+				line-height: 50px;
+				font-size: 26px;
+				border: 2px solid rgb(138, 138, 138);
+			}
+			#verbFrz {
+				color: green;
+				font-size: 28px;
+				font-weight: bold;
+				text-align: center;
+				padding-top: 15px;
+				border: none;
+				background-color: white;
+			}
+			#verbFrz:hover {
+				cursor: pointer;
+				border: 0px solid red;
+			}
+			#verb_0:hover, #verb_1:hover, #verb_2:hover, #verb_3:hover, #verb_4:hover, #verb_5:hover, #verb_6:hover, #verb_7:hover, #verb_8:hover, #verb_9:hover, #verb_10:hover, #verb_11:hover {
+				cursor: pointer;
+				border: 4px solid red;
+			}
+			#hilfe {
+				position: absolute;
+				top: 12px;
+				left: 214px;
+				text-align: center;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				border-radius: 25px;
+				margin: 5px;
+				font-size: 26px;
+				font-weight: bold;
+				background-color: rgb(178, 54, 54);
+				color: white;
+			}
+			#hilfe:hover {
+				cursor: pointer;
+				background-color: rgb(166, 9, 9);
+				font-size: 32px;
+			}
+			button{
+				border: 2px solid red; 
+				background-color: red;
+			}
+			input[type="checkbox"] {
+				accent-color: skyblue;
+        width: 36px;
+        height: 36px;
+				margin: 0px;
+				margin-top: 5px;
+				margin-left: 4px;
+      }
+			#videoLiAus{
+				display: flex;
+				justify-content: center;
+				padding-top: 0px;
+				padding: 8px;
+				background-color: rgba(255, 0, 0, 0.751);
+				position: absolute;
+				top: 6px;
+				left: 74px;
+				width: 116px;
+				height: 44px;
+			}
+			#ytPfeil{
+				width: 32px;
+				height: 45px;
+				font-size: 26px;
+				text-align: center;
+				padding: 0px 15px;
+				margin-right: 5px;
+				background-color: rgb(178, 54, 54);
+				color: white;
+			}
+			/* input{ */
+			#checkeins{
+				font-size: 24px;
+				color: #ff0000;
+				background-color: #add1f9;
+				display: block;
+			}
+			input:hover{
+				cursor: pointer;
+				color: yellow;	
+			}
+			#ichDu {
+				font-size: 18px;
+				color: green;
+			}
+			#link {
+				background-color: rgba(95, 158, 160, 0.76);
+				font-size: 26px;
+				margin-top: 10px;
+				padding: 5px;
+				/* height: 42px; */
+				width: 350px;
+				justify-content: left;
+				border: 0px solid rgba(0, 0, 0, 0.401);
+				display: block;
+			}
+			a {
+				color: #ff0000;
+				font-size: 26px;
+				font-weight: bold;
+				text-decoration: none;
+			}
+			a:hover {
+				color: yellow;
+				cursor: pointer;
+			}
+			#fz_dt{
+				display: flex;
+				justify-content: center;
+				padding-top: 15px;
+				background-color: white;
+				border: none;
+			}
+			#fz_dt:hover{
+				cursor: pointer;
+			}
+			#fz, #dt {
+				color: green;
+				font-size: 30px;
+				font-weight: normal;
+			}
+			#fz {
+				font-weight: bold;
+			}
+			#containerURL{
+				color: #ff0000;
+				font-size: 26px;
+				font-weight: bold;
+				text-decoration: none;
+				background-color:		#add1f9;
+				margin-top: 10px;
+				padding: 5px;
+				width: 390px;
+				justify-content: center	;
+				border: 0px solid rgba(0, 0, 0, 0.401);
+				display: none;
+				line-height: 30px;
+			}
+			@media screen and (max-width: 800px) {
+  		h1 {text-align: right;
+				margin-right: 15px;
+				font-size: 30px;
+			}
+			}
+			.linie {
+    		width: 40px;
+    		height: 3px;
+    		background-color: white;
+    		border-radius: 2px;
+    		position: absolute;
+			}
+
+.einsham {
+    top: 8px;
+}
+
+.zweiham {
+    top: 20px;
+}
+
+.dreiham {
+    top: 32px;
+}
+
+.rahmen {
+		top: -45px;
+    width: 40px;
+    height: 44px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background: rgb(206, 106, 107);
+    cursor: pointer;
+    border-radius: 2px;
+    position: relative;
+    margin-left: 6px;
+}
+
+#click {
+    display: none;
+}
+
+ul {
+    display: none;
+    font-size: 2em;
+    background: white;
+    margin: 0;
+}
+
+#click:checked~ul {
+    display: block;
+}
+
+#click:checked~label .einsham {
+    transform: rotate(-45deg);
+    top: 20px;
+    transition: transform 0.5s;
+}
+
+#click:checked~label .zweiham {
+    opacity: 0;
+}
+
+#click:checked~label .dreiham {
+    transform: rotate(45deg);
+    top: 20px;
+    transition: transform 0.5s;
+}
+li{
+	font-size: 24px;
+	list-style-type: none;
+	padding: 6px 0;
+}
+li:hover{
+	background-color: skyblue	;
+}
+ul{
+	width: 280px;
+	text-align: left;
+	margin: 0px;
+	padding-left: 5px;
+}
+#liHi{
+	background-color: skyblue;
+	margin-top: -44px;
+	margin-left: 6px;
+}
+.link_ausgeblendet{
+	color:#878787;
+}
+.li_bearb{
+	font-size: 16px;
+}
+		</style>
+	</head>
+	<body>
+		<h1>Französische Verben 1 (Présent)</h1>
+		<div id="hilfe" onclick="hilfeFenster()">i</div>
+		<!-- Video-Link Ein / Aus -->
+		<div id="videoLiAus" onclick="myFunction()">
+		<div id="ytPfeil">&#9655;</div>
+		<div id="Vein_aus"></div>  
+		<input type="checkbox" name="antwort" id="checkeins">
+		</div>
+		
+		<input type="checkbox" id="click">
+    <label for="click">
+      <div class="rahmen">
+        <div class="linie einsham"></div>
+        <div class="linie zweiham"></div>
+        <div class="linie dreiham"></div>
+      </div>
+    </label>
+			<ul id="liHi">
+      	<li>Home</li>
+				<li class="link_ausgeblendet">Verben 1</li>
+				<li><a href="frz_verben_2.html">Verben 2</a></li>
+      	<li><a href="ce_cet_cette_ces.html">ce, cet, cette, ces</a></li>
+      	<li><a href="pronomen_(direkt-indirekt).html">Pronomen</a></li>
+				<li><a href="beau_nouveau_vieux.html">beau, nouveau, vieux</a></li>
+      	<li class="link_ausgeblendet">Straßburg <span class="li_bearb">(in Bearbeitung)</span></li>
+				<li class="link_ausgeblendet">frei</li>
+				<li><a href="notizen.html">Notizen</a></li>
+    	</ul>
+		<div class="flex-container">
+			<div id="verb_0" onclick="verbFragen(0)">être</div>
+			<div id="verb_1" onclick="verbFragen(1)">avoir</div>
+			<div id="verb_2" onclick="verbFragen(2)">faire</div>
+			<div id="verb_3" onclick="verbFragen(3)">parler</div>
+			<div id="verb_4" onclick="verbFragen(4)">aller</div>
+			<div id="verb_5" onclick="verbFragen(5)">prendre</div>
+			<div id="verb_6" onclick="verbFragen(6)">acheter</div>
+			<div id="verb_7" onclick="verbFragen(7)">boire</div>
+			<div id="verb_8" onclick="verbFragen(8)">dire</div>
+			<div id="verb_9" onclick="verbFragen(9)">payer</div>
+			<div id="verb_10" onclick="verbFragen(10)">devoir</div>
+			<div id="verb_11" onclick="verbFragen(11)">pouvoir</div>
+		</div>
+		<div class="flex-verb">
+			<div id="fz_dt" onclick="verbLoesen(jo)">
+				<div id="fz"></div>
+				<div id="dt"></div>
+			</div>
+			<!-- <div id="verbFrz" onclick="verbLoesen(jo)"></div> -->
+			<div id="je">
+				je &nbsp;&nbsp;<span id="ichDu"
+					><span style="font-weight: bold">ich</span> 1. Person Singular</span
+				>
+			</div>
+			<div id="tu">
+				tu &nbsp;&nbsp;<span id="ichDu"
+					><span style="font-weight: bold">du</span> 2. Person Singular</span
+				>
+			</div>
+			<div id="il">
+				il, elle, on &nbsp;<span id="ichDu"
+					><span style="font-weight: bold">er, sie, man, wir</span> 3. Pers.
+					Sing.</span
+				>
+			</div>
+			<div id="nous">
+				nous &nbsp;&nbsp;<span id="ichDu"
+					><span style="font-weight: bold">wir</span> 1. Person Plural</span
+				>
+			</div>
+			<div id="vous">
+				vous &nbsp;&nbsp;<span id="ichDu"
+					><span style="font-weight: bold">ihr, Sie</span> 2. Person Plural
+				</span>
+			</div>
+			<div id="ils">
+				ils, elles &nbsp;&nbsp;<span id="ichDu"
+					><span style="font-weight: bold">sie (m), sie (w)</span> 3. Person
+					Plural
+				</span>
+			</div>
+			<div id="containerURL"><a id="url_jo" href="">YouTube Video</a></div>
+		<script defer>
+			const verbenFragen = [
+				{
+					verbFrz: "être &nbsp;",
+					verbDt: "(sein)",
+					je: "je",
+				},
+				{
+					verbFrz: "avoir &nbsp;",
+					verbDt: "(haben)",
+					je: "j'",
+				},
+				{
+					verbFrz: "faire &nbsp;",
+					verbDt: "(machen, tun)",
+					je: "je",
+				},
+				{
+					verbFrz: "parler &nbsp;",
+					verbDt: "(sprechen)",
+					je: "je",
+				},
+				{
+					verbFrz: "aller &nbsp;",
+					verbDt: "(gehen, fahren)",
+					je: "je",
+				},
+				{
+					verbFrz: "prendre &nbsp;",
+					verbDt: "(nehmen)",
+					je: "je",
+				},
+				{
+					verbFrz: "acheter &nbsp;",
+					verbDt: "(kaufen)",
+					je: "j'",
+				},
+				{
+					verbFrz: "boire &nbsp;",
+					verbDt: "(trinken)",
+					je: "je",
+				},
+				{
+					verbFrz: "dire &nbsp;",
+					verbDt: "(sagen)",
+					je: "je",
+				},
+				{
+					verbFrz: "payer &nbsp;",
+					verbDt: "(zahlen, bezahlen)",
+					je: "je",
+				},
+				{
+					verbFrz: "devoir &nbsp;",
+					verbDt: "müssen",
+					je: "je",
+				},
+				{
+					verbFrz: "pouvoir &nbsp;",
+					verbDt: "können",
+					je: "je",
+				},
+			];
+			const verbenLoes = [
+				{
+					verbFrz: "être &nbsp;",
+					verbDt: "(sein)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=wfXOWP4EMqk\">YT-Video bei BesserEinfachErklärt</a>",
+					answers: [
+						{ je: "suis" },
+						{ tu: "es" },
+						{ il: "est" },
+						{ nous: "sommes" },
+						{ vous: "êtes" },
+						{ ils: "sont" },
+					],
+				},
+				{
+					verbFrz: "avoir &nbsp;",
+					verbDt: "(haben)",
+					urlYT: "<a href=\"https://www.youtube.com/shorts/4C7xFnW3xug\">YT-Video bei @AdelineTalks</a>",
+					answers: [
+						{ je: "ai" },
+						{ tu: "as" },
+						{ il: "a" },
+						{ nous: "avons" },
+						{ vous: "avez" },
+						{ ils: "ont" },
+					],
+				},
+				{
+					verbFrz: "faire &nbsp;",
+					verbDt: "(machen, tun)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=7kRMMCcKY6g\">YT-Video bei Learn French Language and Culture</a>",
+					answers: [
+						{ je: "fais" },
+						{ tu: "fais" },
+						{ il: "fait" },
+						{ nous: "faisons" },
+						{ vous: "faites" },
+						{ ils: "font" },
+					],
+				},
+				{
+					verbFrz: "parler &nbsp;",
+					verbDt: "(sprechen)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=DTlh3bkXIJs\">YT-Video bei StudyFrench</a>",
+					answers: [
+						{ je: "parle" },
+						{ tu: "parles" },
+						{ il: "parle" },
+						{ nous: "parlons" },
+						{ vous: "parlez" },
+						{ ils: "parlent" },
+					],
+				},
+				{
+					verbFrz: "aller &nbsp;",
+					verbDt: "(gehen, fahren)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=WFYdb2pr9oQ\">YT-Video bei Learn French With Frencheezi</a>",
+					answers: [
+						{ je: "vais" },
+						{ tu: "vas" },
+						{ il: "va" },
+						{ nous: "allons" },
+						{ vous: "allez" },
+						{ ils: "vont" },
+					],
+				},
+				{
+					verbFrz: "prendre &nbsp;",
+					verbDt: "(nehmen)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=H8POWz2AXmI\">YT-Video bei The perfect French with Dylane</a>",
+					answers: [
+						{ je: "prends" },
+						{ tu: "prends" },
+						{ il: "prend" },
+						{ nous: "prenons" },
+						{ vous: "prenez" },
+						{ ils: "prennent" },
+					],
+				},
+				{
+					verbFrz: "acheter &nbsp;",
+					verbDt: "(kaufen)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=WH0ScQzunw0\">YT-Video bei Learn French with Divi</a>",
+					answers: [
+						{ je: "achète" },
+						{ tu: "achètes" },
+						{ il: "achète" },
+						{ nous: "achetons" },
+						{ vous: "achetez" },
+						{ ils: "achètent" },
+					],
+				},
+				{
+					verbFrz: "boire &nbsp;",
+					verbDt: "(trinken)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=xTKMW6L8h_0\">YT-Video bei French School TV</a>",
+					answers: [
+						{ je: "bois" },
+						{ tu: "bois" },
+						{ il: "boit" },
+						{ nous: "buvons" },
+						{ vous: "buvez" },
+						{ ils: "boivent" },
+					],
+				},
+				{
+					verbFrz: "dire &nbsp;",
+					verbDt: "(sagen)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=z-bcLipdt-M\">YT-Video bei Learn French Language and Culture</a>",
+					answers: [
+						{ je: "dis" },
+						{ tu: "dis" },
+						{ il: "dit" },
+						{ nous: "disons" },
+						{ vous: "dites" },
+						{ ils: "disent" },
+					],
+				},
+				{
+					verbFrz: "payer &nbsp;",
+					verbDt: "(zahlen, bezahlen)",
+					urlYT: "<a href=\"https://www.youtube.com/watch?v=Kn37KAgsd8I\">YT-Video bei Fourmi Languages</a>",
+					answers: [
+						{ je: "paie / paye" },
+						{ tu: "paies / payes" },
+						{ il: "paie / paye" },
+						{ nous: "payons" },
+						{ vous: "payez" },
+						{ ils: "paient / payent" },
+					],
+				},
+				{
+					verbFrz: "devoir &nbsp;",
+					verbDt: "müssen",
+					urlYT: "",
+					answers: [
+						{ je: "dois" },
+						{ tu: "dois" },
+						{ il: "doit" },
+						{ nous: "devons" },
+						{ vous: "devez" },
+						{ ils: "doivent" },
+					],
+				},
+				{
+					verbFrz: "pouvoir &nbsp;",
+					verbDt: "können",
+					urlYT: "",
+					answers: [
+						{ je: "peux" },
+						{ tu: "peux" },
+						{ il: "peut" },
+						{ nous: "pouvons" },
+						{ vous: "pouvez" },
+						{ ils: "peuvent" },
+					],
+				},
+			];
+			let jo = 0;
+			const tu = "tu";
+			const il = "il, elle, on";
+			const nous = "nous";
+			const vous = "vous";
+			const ils = "ils, elles";
+			function verbFragen(index) {
+				jo = index;
+				const klammer = "&nbsp;&nbsp;[...]";
+				let klammerFarbe = klammer.fontcolor("blue");
+
+				document.getElementById("fz").innerHTML =
+					verbenFragen[index].verbFrz;
+				document.getElementById("dt").innerHTML =
+					verbenFragen[index].verbDt;
+				document.getElementById("je").innerHTML =
+					verbenFragen[index].je + klammerFarbe;
+				document.getElementById("tu").innerHTML = tu + klammerFarbe;
+				document.getElementById("il").innerHTML = il + klammerFarbe;
+				document.getElementById("nous").innerHTML = nous + klammerFarbe;
+				document.getElementById("vous").innerHTML = vous + klammerFarbe;
+				document.getElementById("ils").innerHTML = ils + klammerFarbe;
+				var urlBox = document.getElementById("containerURL")
+				urlBox.style.display = "none";
+			}
+			function verbLoesen(index) {
+				let conjugje = verbenLoes[index].answers[0].je;
+				let conjugjeFarbe = conjugje.fontcolor("blue");
+				let conjugtu = verbenLoes[index].answers[1].tu;
+				let conjugtuFarbe = conjugtu.fontcolor("blue");
+				let conjugil = verbenLoes[index].answers[2].il;
+				let conjugilFarbe = conjugil.fontcolor("blue");
+				let conjugnous = verbenLoes[index].answers[3].nous;
+				let conjugnousFarbe = conjugnous.fontcolor("blue");
+				let conjugvous = verbenLoes[index].answers[4].vous;
+				let conjugvousFarbe = conjugvous.fontcolor("blue");
+				let conjugils = verbenLoes[index].answers[5].ils;
+				let conjugilsFarbe = conjugils.fontcolor("blue");
+				if (verbenFragen[index].je == "je") {
+					document.getElementById("je").innerHTML =
+						verbenFragen[index].je + " " + conjugjeFarbe;
+				} else {
+					document.getElementById("je").innerHTML =
+						verbenFragen[index].je + "" + conjugjeFarbe;
+				}
+				document.getElementById("tu").innerHTML = tu + " " + conjugtuFarbe;
+				document.getElementById("il").innerHTML = il + " " + conjugilFarbe;
+				document.getElementById("nous").innerHTML =
+					nous + " " + conjugnousFarbe;
+				document.getElementById("vous").innerHTML =
+					vous + " " + conjugvousFarbe;
+				document.getElementById("ils").innerHTML = ils + " " + conjugilsFarbe;
+				// document.getElementById("url_jo").innerHTML = verbenLoes[index].urlYT;
+
+				var urlBox = document.getElementById("containerURL")
+					if ((Linkein == 0) || (verbenLoes[index].urlYT === "")) {
+					urlBox.style.display = "none";
+				} else {
+					const containerURL = document.getElementById("containerURL");
+					containerURL.innerHTML = verbenLoes[index].urlYT;
+					urlBox.style.display = "block";
+				}
+			}
+			function hilfeFenster() {
+				alert(
+					"Wenn man auf das Verb (grüner Text) klickt kommen die Lösungen!  \n Durch die Anwahl über die checkBox rechts vom Dreieck, wird der Video-Link angezeigt, wenn es ein Video zum Verb gibt."	
+				);
+			}
+
+			var x = document.getElementById("checkeins");
+			var zwei=document.getElementById("videoLiAus");	
+			let Linkein = "0";
+			x.addEventListener("click", myFunction);
+			function myFunction() {
+			if(x.checked){
+				Linkein = "1";
+				x.style.accentColor = "skyblue";
+				zwei.style.backgroundColor = "rgba(0, 128, 0, 0.741)";
+			}else{
+				Linkein = "0";
+				// x.style.accentColor = "orange";
+				x.style.backgroundColor = "orange";
+				zwei.style.backgroundColor =  "rgba(255, 0, 0, 0.751)";
+			}
+			}	
+			
+		</script>
+	</body>
+</html>

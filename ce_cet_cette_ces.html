@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<div id="fragen">
+		<title>Französisch Quiz (ce, cet, cette, ces)</title>
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			#li_home{
+				color: black;
+				font-size: 3rem;
+				padding-left: 6px;
+				text-decoration: none;
+				margin-top: -18px;
+			}
+			#li_home:hover{
+				color: yellow;
+        cursor: pointer;
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<a id="li_home" href="frz_verben.html">⌂</a>
+		<div id="fragen">
+			<div class="container">
+				<h2>Französisch Quiz</h2>
+				<h3>Demonstrativbegleiter</h3>
+				<h3>
+					ce, cet, cette, ces &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+					<span style="color: rgba(0, 0, 0, 0.393); font-size: 24px"
+					>(16 Fragen)</span>
+			</h3>
+			<hr />
+			<h4 id="question">Question will appear here</h4>
+				<div class="answer-buttons">
+					<button>Answer 1</button>
+					<button>Answer 2</button>
+					<button>Answer 3</button>
+					<button>Answer 4</button>
+					</div>
+				<button id="next">nächste Frage</button>
+			</div>	
+		</div>
+		<div id="hilfeblock">
+			<form>
+				<input type="checkbox" id="checkbx_hilfe" onclick="checkMeHi()" />Hilfe
+				anzeigen (ja/nein)
+			</form>
+			<div id="hilfe" ;>
+				<div id="hiFett">Demonstrativbegleiter</div>
+				<div id="hiGr">dieser, diese, dieses</div>
+				<table class="tg" style="undefined;table-layout: fixed; width: 380px"><colgroup>
+					<col style="width: 60px">
+					<col style="width: 80px">
+					<col style="width: 86px">
+					<col style="width: 70px">
+					</colgroup>
+					<thead>
+						<tr>
+							<th class="tg-f3f7" colspan="2">Maskulinum</th>
+							<th class="tg-48no">Feminium</th>
+							<th class="tg-0lax"></th>
+						</tr></thead>
+					<tbody>
+						<tr>
+							<td class="tg-ccme">ce</td>
+							<td class="tg-ccme">*cet</td>
+							<td class="tg-n7dx">cette</td>
+							<td class="tg-cpa8">Singular</td>
+						</tr>
+						<tr>
+							<td class="tg-ccme" colspan="2">ces</td>
+							<td class="tg-n7dx">ces</td>
+							<td class="tg-cpa8">Plural</td>
+						</tr>
+						<tr>
+							<td class="tg-l0c7" colspan="4"><span style="font-weight:bold">*cet</span> vor Vokalen oder stummen h</td>
+						</tr>
+					</tbody>
+					</table>
+					<p id="klAbstand">&nbsp;</p>
+					<div id="link">
+					<a href="https://www.youtube.com/watch?v=qXNZY0FhUQY" target="_blank">
+						<div id="link">&nbsp;YouTube&nbsp;&nbsp;&nbsp;<span style="color: hsla(0, 0%, 100%, 0.833); font-size: 20px;">Video bei "Fit für Franze"</span></div>
+						</a>
+					</div>
+						<div id="link">
+							<a href="pronomen_(direkt-indirekt).html" target="_blank">
+								<div id="linkP">&nbsp;Pronomen&nbsp;&nbsp;&nbsp;<span style="color: hsla(0, 0%, 100%, 0.833); font-size: 20px;">direkt, indirekt</span></div>
+								</a>
+						</div>
+			</div>
+		</div>
+		<script src="script.js" defer></script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Notizen</title>
+		<link rel="stylesheet" href="notizen.css" />
+		<script src="notizen.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1>Notizen</h1>
+			<div>
+				<button class="add-note-btn" onclick="openNoteDialog()">
+					+ neue Notiz
+				</button>
+				<button id="themeToggleBtn" class="theme-toggle-btn">🌙</button>
+			</div>
+		</header>
+
+		<main id="notesContainer" class="notes-grid"></main>
+
+		<dialog id="noteDialog">
+			<div class="dialog-content">
+				<div class="dialog-header">
+					<h2 class="dialog-title" id="dialogTitle">neue Notiz</h2>
+					<button class="close-btn" onclick="closeNoteDialog()">x</button>
+				</div>
+
+				<form id="noteForm">
+					<div class="form-group">
+						<label for="noteTitle" class="form-label">Titel</label>
+						<input
+							type="text"
+							id="noteTitle"
+							class="form-input"
+							placeholder="Überschrift der Notiz..."
+							required
+						/>
+					</div>
+
+					<div class="form-group">
+						<label for="noteContent" class="form-label">Inhalt</label>
+						<textarea
+							id="noteContent"
+							class="form-textarea"
+							placeholder="Schreibe hier deine Notiz..."
+							required
+						></textarea>
+					</div>
+
+					<div class="dialog-actions">
+						<button
+							type="button"
+							class="cancel-btn"
+							onclick="closeNoteDialog()"
+						>
+							abbrechen
+						</button>
+						<button type="submit" class="save-btn">speichern</button>
+					</div>
+				</form>
+			</div>
+		</dialog>
+	</body>
+</html>
