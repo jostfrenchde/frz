@@ -9,11 +9,11 @@
 		<link rel="stylesheet" href="hamburger.css" />
 		<style>
 			body {
-				background-image: url("france.png");
+				background-image: url("bg_jo1.png");
 				background-repeat: no-repeat;
   			background-position: center;
 				background-attachment: fixed;
-				background-size: cover;
+				background-size: cover; 
 				margin: 0;
 				padding: 0;
 				border: 0;
@@ -34,10 +34,8 @@
 				color: black;
 				font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
 					sans-serif;
-				/* background-color: DodgerBlue; */
 				background-color: rgba(30, 143, 255, 0.20);
 				justify-content: center;
-				/* align-content: center; */
 				padding: 15px 0px;
 			}
 			.flex-container > div {
@@ -88,13 +86,13 @@
 			}
 			#hilfe {
 				position: absolute;
-				top: 12px;
-				left: 214px;
+				top: 16px;
+				left: 126px;
 				text-align: center;
-				width: 50px;
-				height: 50px;
-				line-height: 50px;
-				border-radius: 25px;
+				width: 44px;
+				height: 44px;
+				line-height: 44px;
+				border-radius: 22px;
 				margin: 5px;
 				font-size: 26px;
 				font-weight: bold;
@@ -130,6 +128,14 @@
 				width: 116px;
 				height: 44px;
 			}
+			#videoOnOff{
+				position: absolute;
+				top: 15px;
+				left: 64px;
+				font-size: 44px;
+				border:none;
+				background-color:transparent;
+			}
 			#ytPfeil{
 				width: 32px;
 				height: 45px;
@@ -160,7 +166,6 @@
 				font-size: 26px;
 				margin-top: 10px;
 				padding: 5px;
-				/* height: 42px; */
 				width: 350px;
 				justify-content: left;
 				border: 0px solid rgba(0, 0, 0, 0.401);
@@ -212,6 +217,14 @@
   		h1 {text-align: right;
 				margin-right: 15px;
 				font-size: 30px;
+			}
+			#hilfe {
+				position: absolute;
+				top: 46px;
+			}
+			#videoOnOff{
+				position: absolute;
+				top: 46px;
 			}
 			}
 			.linie {
@@ -302,18 +315,18 @@ ul{
 .li_bearb{
 	font-size: 16px;
 }
+ img{
+	width: 60px;
+	position: absolute;
+				top: 25px;
+				left: 65px;
+ }
 		</style>
 	</head>
 	<body>
 		<h1>Französische Verben 1 (Présent)</h1>
 		<div id="hilfe" onclick="hilfeFenster()">i</div>
-		<!-- Video-Link Ein / Aus -->
-		<div id="videoLiAus" onclick="myFunction()">
-		<div id="ytPfeil">&#9655;</div>
-		<div id="Vein_aus"></div>  
-		<input type="checkbox" name="antwort" id="checkeins">
-		</div>
-		
+		<button id="videoOnOff" onclick="toggleVideoOnOff()">⏸️</button>
 		<input type="checkbox" id="click">
     <label for="click">
       <div class="rahmen">
@@ -672,27 +685,22 @@ ul{
 			}
 			function hilfeFenster() {
 				alert(
-					"Wenn man auf das Verb (grüner Text) klickt kommen die Lösungen!  \n Durch die Anwahl über die checkBox rechts vom Dreieck, wird der Video-Link angezeigt, wenn es ein Video zum Verb gibt."	
+					"Wenn man auf das Verb (grüner Text) klickt, kommen die Lösungen!  \n Mit einem Klick auf ⏸️ oder ▶️, wird der Video-Link angezeigt oder ausgeblendet, wenn es ein Video zum Verb gibt.\n \n ⏸️ Video-Link aus \n ▶️ Video-Link ein."
 				);
 			}
-
-			var x = document.getElementById("checkeins");
-			var zwei=document.getElementById("videoLiAus");	
+			var clicked = false;
 			let Linkein = "0";
-			x.addEventListener("click", myFunction);
-			function myFunction() {
-			if(x.checked){
-				Linkein = "1";
-				x.style.accentColor = "skyblue";
-				zwei.style.backgroundColor = "rgba(0, 128, 0, 0.741)";
-			}else{
-				Linkein = "0";
-				// x.style.accentColor = "orange";
-				x.style.backgroundColor = "orange";
-				zwei.style.backgroundColor =  "rgba(255, 0, 0, 0.751)";
+			function toggleVideoOnOff(){
+				if(!clicked){
+					clicked = true;
+					Linkein = "1";
+					document.getElementById("videoOnOff").innerHTML = "▶️";	
+				}else{
+					clicked = false;
+					Linkein = "0";
+					document.getElementById("videoOnOff").innerHTML = "⏸️";	
+				}
 			}
-			}	
-			
 		</script>
 	</body>
 </html>
