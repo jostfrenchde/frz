@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sanja</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				font-size: 1.5rem;
+			}
+			.container-1 {
+				/* background: gainsboro; */
+        display: flex;
+        justify-content: center;
+			}
+      .container-1 div {
+        width: 80%;
+				border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+      }
+			#box-1 {
+				background-color: blanchedalmond;
+			}
+      #box-2 {
+				background-color: #FFFACD;
+			}
+      .container-2 {
+				/* background: gainsboro; */
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+			}
+      .container-2 div {
+        width: 90%;
+				border-radius: 10px;
+        padding: 5px;
+        margin: 0px;
+      }
+      #box-3 {
+				background-color: #00F5FF;
+			}
+      .abstand {
+        font-size: 0.4rem;
+      }
+      textarea {
+        resize: none;
+        margin-left: 2px;
+        font-size: 1.25rem;
+        padding-left: 10px;
+        margin-left: 5px;
+      }
+      #satz-1 {
+        /* background-color: rgb(0,139,0); */
+        color: blue;
+      }
+      #satz-2 {
+        /* background-color: rgb(224,0,0); */
+        color: black;
+      }
+       #btn_pruef{
+        background-color: rgb(149, 149, 149);
+        color: 	yellow;  
+        font-size: 1.75rem;
+        font-weight: 500;
+				text-align: center;
+        padding: 5px 60px;
+        margin-left: 40px;
+				margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 15px;
+       }
+       #btn_pruef:hover {
+        background-color: rgb(107, 107, 107);
+				cursor: pointer;
+        font-weight: 700;
+        transition-duration: 0.2s;
+			}
+		</style>
+    <script defer>
+      function checkMeOk() {
+        var b1c = document.getElementById("satz-1");
+			   var b1 = document.getElementById("satz-1").value;
+			   if(b1 == "Couchez-vous toujours à la même heure."){
+          b1c.style.backgroundColor = '		rgb(0,139,0)';
+          b1c.style.color = '		rgb(255,255,255)';
+			   } else if(b1 != ""){
+          b1c.style.backgroundColor = '		rgb(224,0,0)';
+          b1c.style.color = '		rgb(255,255,255)';
+			   } else if(b1 == ""){
+          b1c.style.color = '		rgb(0,0,0)';
+         }
+         var b2c = document.getElementById("satz-2");
+			   var b2 = document.getElementById("satz-2").value;
+			   if(b2 == "Promenez-vous avant de vous coucher."){
+          b2c.style.backgroundColor = '		rgb(0,139,0)';
+          b2c.style.color = '		rgb(255,255,255)';
+			   } else if(b2 != ""){
+          b2c.style.backgroundColor = '		rgb(224,0,0)';
+          b2c.style.color = '		rgb(255,255,255)';
+          } else if(b2 == ""){
+          b2c.style.color = '		rgb(0,0,0)';
+         }
+         var b3c = document.getElementById("satz-3");
+			   var b3 = document.getElementById("satz-3").value;
+			   if(b3 == "Buvez un verre de lait avant d’aller au lit."){
+          b3c.style.backgroundColor = '		rgb(0,139,0)';
+          b3c.style.color = '		rgb(255,255,255)';
+			   } else if(b3 != ""){
+          b3c.style.backgroundColor = '		rgb(224,0,0)';
+          b3c.style.color = '		rgb(255,255,255)';
+			   } else if(b3 == ""){
+          b3c.style.color = '		rgb(0,0,0)';
+         }
+         var b4c = document.getElementById("satz-4");
+			   var b4 = document.getElementById("satz-4").value;
+			   if(b4 == "Prenez un bain chaud."){
+          b4c.style.backgroundColor = '		rgb(0,139,0)';
+          b4c.style.color = '		rgb(255,255,255)';
+			   } else if(b4 != ""){
+          b4c.style.backgroundColor = '		rgb(224,0,0)';
+          b4c.style.color = '		rgb(255,255,255)';
+			   } else if(b4 == ""){
+          b4c.style.color = '		rgb(0,0,0)';
+         }
+         var b5c = document.getElementById("satz-5");
+			   var b5 = document.getElementById("satz-5").value;
+			   if(b5 == "Ouvrez la fenêtre de la chambre."){
+          b5c.style.backgroundColor = '		rgb(0,139,0)';
+          b5c.style.color = '		rgb(255,255,255)';
+			   } else if(b5 != ""){
+          b5c.style.backgroundColor = '		rgb(224,0,0)';
+          b5c.style.color = '		rgb(255,255,255)';
+			   } else if(b5 == ""){
+          b5c.style.color = '		rgb(0,0,0)';
+         }
+         var b6c = document.getElementById("satz-6");
+			   var b6 = document.getElementById("satz-6").value;
+			   if(b6 == "Détendez-vous et pensez à des choses agréables."){
+          b6c.style.backgroundColor = '		rgb(0,139,0)';
+          b6c.style.color = '		rgb(255,255,255)';
+			   } else if(b6 != ""){
+          b6c.style.backgroundColor = '		rgb(224,0,0)';
+          b6c.style.color = '		rgb(255,255,255)';
+			   } else if(b6 == ""){
+          b6c.style.color = '		rgb(0,0,0)';
+         }
+         var b7c = document.getElementById("satz-7");
+			   var b7 = document.getElementById("satz-7").value;
+			   if(b7 == "Faites du yoga."){
+          b7c.style.backgroundColor = '		rgb(0,139,0)';
+          b7c.style.color = '		rgb(255,255,255)';
+			   } else if(b7 != ""){
+          b7c.style.backgroundColor = '		rgb(224,0,0)';
+          b7c.style.color = '		rgb(255,255,255)';
+			   } else if(b7 == ""){
+          b7c.style.color = '		rgb(0,0,0)';
+         }
+			 }
+    </script>
+	</head>
+	<br>
+		<div class="container-1">
+			<div id="box-1"><span style="font-weight: bold;">Im Unterricht gemacht:</span></br>Seite 24; 4</br>Seite 117; 6,7</br>Seite 118 komplett </div>
+			<div id="box-2"><span style="font-weight: bold;">Hausaufgaben:</span></br>Seite 119, 120 komplett</br>Seite 28 anschauen</div>
+		</div>
+    <div class="container-2">
+      <div id="box-3"><span style="font-size: 1.2rem;">Seite 118</span></br><span style="font-weight: bold;">9 &nbsp;Quelques conseils pour bien dormir. Mettez ces conseils à l'impératif.</span>
+        <div class="abstand">&nbsp;</div>
+        <div><span style="font-weight: bold;">VOUS NE DORMEZ PAS BIEN ? VOICI QUELQUES CONSEILS POUR MIEUX DORMIR :</span></div>
+        <div class="abstand">&nbsp;</div>
+        <div>1. Se coucher toujours à la même heure.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-1" name="satz-1" placeholder="Couchez-vous toujours à la même heure."></textarea>
+        <div>2. Se promener avant de se coucher.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-2" name="satz-2"></textarea>
+        <div>3. Boire un verre de lait avant d'aller au lit.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-3" name="satz-3"></textarea>
+        <div>4. Prendre un bain chaud.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-4" name="satz-4"></textarea>
+        <div>5. Ouvrir la fenêtre de la chambre.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-5" name="satz-5"></textarea>
+        <div>6. Se détendre et penser à des choses agréables.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-6" name="satz-6"></textarea>
+        <div>7. Faire du yoga.</div>
+        <textarea type="text" size="40" cols="26" rows=2 id="satz-7" name="satz-7"></textarea>
+        <div class="abstand">&nbsp;</div>
+        <div>Et si vous ne dormez toujours pas, comptez les moutons !</div>
+        <button type="button" id="btn_pruef" onclick="checkMeOk()">
+        überprüfen
+        </button>
+      </div>
+    </div>
+	</body>
+</html>
