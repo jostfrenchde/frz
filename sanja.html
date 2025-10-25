@@ -98,6 +98,7 @@
       font-size: 1.2rem;
       color: #696969;
       padding: 5px;
+      padding-right: 10px;
       /* border: 1px solid black; */
 	  }
     #datum:hover {
@@ -117,7 +118,7 @@
 				font-weight: bold;
 				background-color: rgb(178, 54, 54);
 				color: white;
-        border: 1px solid red;
+        margin-left: 10px;
 			}
 			#hilfe:hover {
 				cursor: pointer;
@@ -325,7 +326,7 @@
          }
          var b16c = document.getElementById("satz-16");
 			   var b16 = document.getElementById("satz-16").value;
-			   if(b16 == "N’oublie pas tes devoirs." || b16 == "N'oublie pas tes devoirs."){
+			   if(b16 == "N’oublie pas tes devoirs." || b16 == "N'oublie pas tes devoirs." || b16 == "N′oublie pas tes devoirs."){
           b16c.style.backgroundColor = '		rgb(0,139,0)';
           b16c.style.color = '		rgb(255,255,255)';
 			   } else if(b16 != ""){
@@ -347,7 +348,7 @@
          }
          var b18c = document.getElementById("satz-18");
 			   var b18 = document.getElementById("satz-18").value;
-			   if(b18 == "N’organise pas de fête à la maison." || b18 == "N'organise pas de fête à la maison."){
+			   if(b18 == "N’organise pas de fête à la maison." || b18 == "N'organise pas de fête à la maison." || b18 == "N′organise pas de fête à la maison."){
           b18c.style.backgroundColor = '		rgb(0,139,0)';
           b18c.style.color = '		rgb(255,255,255)';
 			   } else if(b18 != ""){
@@ -431,7 +432,7 @@
     }
     function hilfeFenster() {
 				alert(
-					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum klickt, kommen die kompletten Lösungen. "
+					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum und die Uhrzeit klickt, kommen die kompletten Lösungen. "
 				);
 			}
   </script>
