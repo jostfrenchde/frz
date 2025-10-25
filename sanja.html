@@ -10,10 +10,14 @@
 				padding: 0;
 				font-size: 1.5rem;
 			}
+      .kopf-container {
+        display: flex;
+        justify-content: space-between;
+      }
 			.container-1 {
-				/* background: gainsboro; */
         display: flex;
         justify-content: center;
+        margin-top: -20px;
 			}
       .container-1 div {
         width: 80%;
@@ -42,8 +46,27 @@
       #box-3 {
 				background-color: #00F5FF;
 			}
+      .container-3 {
+				/* background: gainsboro; */
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+			}
+      .container-3 div {
+        width: 90%;
+				border-radius: 10px;
+        padding: 5px;
+        margin-top: 0px;
+      }
+      #box-4   {
+				background-color: #00EE76;
+			}
       .abstand {
         font-size: 0.4rem;
+      }
+      .abstand-2 {
+        font-size: 0.0rem;
       }
       textarea {
         resize: none;
@@ -51,14 +74,6 @@
         font-size: 1.25rem;
         padding-left: 10px;
         margin-left: 5px;
-      }
-      #satz-1 {
-        /* background-color: rgb(0,139,0); */
-        color: blue;
-      }
-      #satz-2 {
-        /* background-color: rgb(224,0,0); */
-        color: black;
       }
        #btn_pruef{
         background-color: rgb(149, 149, 149);
@@ -78,10 +93,103 @@
         font-weight: 700;
         transition-duration: 0.2s;
 			}
+      #datum {
+		  font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+      color: #696969;
+      padding: 5px;
+      /* border: 1px solid black; */
+	  }
+    #datum:hover {
+      cursor: pointer;
+    }
+    .kopf-item {
+      margin-bottom: -20px;
+    }
+    #hilfe {
+				text-align: center;
+				width: 44px;
+				height: 44px;
+				line-height: 44px;
+				border-radius: 22px;
+				margin: 5px;
+				font-size: 26px;
+				font-weight: bold;
+				background-color: rgb(178, 54, 54);
+				color: white;
+        border: 1px solid red;
+			}
+			#hilfe:hover {
+				cursor: pointer;
+				background-color: rgb(166, 9, 9);
+				font-size: 32px;
+			}
 		</style>
     <script defer>
+      function loesungen() {
+        var b21c = document.getElementById("satz-1");
+        b21c.value = "Couchez-vous toujours à la même heure.";
+        b21c.style.backgroundColor = '		rgb(255,250,205)';
+        b21c.style.color = '		rgb(0,0,0)';
+        var b22c = document.getElementById("satz-2");
+        b22c.value = "Promenez-vous avant de vous coucher.";
+        b22c.style.backgroundColor = '		rgb(255,250,205)';
+        b22c.style.color = '		rgb(0,0,0)';
+        var b23c = document.getElementById("satz-3");
+        b23c.value = "Buvez un verre de lait avant d'aller au lit.";
+        b23c.style.backgroundColor = '		rgb(255,250,205)';
+        b23c.style.color = '		rgb(0,0,0)';
+        var b24c = document.getElementById("satz-4");
+        b24c.value = "Prenez un bain chaud.";
+        b24c.style.backgroundColor = '		rgb(255,250,205)';
+        b24c.style.color = '		rgb(0,0,0)';
+        var b25c = document.getElementById("satz-5");
+        b25c.value = "Ouvrez la fenêtre de la chambre.";
+        b25c.style.backgroundColor = '		rgb(255,250,205)';
+        b25c.style.color = '		rgb(0,0,0)';
+        var b26c = document.getElementById("satz-6");
+        b26c.value = "Détendez-vous et pensez à des choses agréables.";
+        b26c.style.backgroundColor = '		rgb(255,250,205)';
+        b26c.style.color = '		rgb(0,0,0)';
+        var b27c = document.getElementById("satz-7");
+        b27c.value = "Faites du yoga.";
+        b27c.style.backgroundColor = '		rgb(255,250,205)';
+        b27c.style.color = '		rgb(0,0,0)';
+        var b31c = document.getElementById("satz-11");
+        b31c.value = "Mange régulièrement.";
+        b31c.style.backgroundColor = '		rgb(255,250,205)';
+        b31c.style.color = '		rgb(0,0,0)';
+        var b32c = document.getElementById("satz-12");
+        b32c.value = "Ne sors pas tous les soirs.";
+        b32c.style.backgroundColor = '		rgb(255,250,205)';
+        b32c.style.color = '		rgb(0,0,0)';
+        var b33c = document.getElementById("satz-13");
+        b33c.value = "Couche-toi avant minuit.";
+        b33c.style.backgroundColor = '		rgb(255,250,205)';
+        b33c.style.color = '		rgb(0,0,0)';
+        var b34c = document.getElementById("satz-14");
+        b34c.value = "Ne bois pas d’alcool.";
+        b34c.style.backgroundColor = '		rgb(255,250,205)';
+        b34c.style.color = '		rgb(0,0,0)';
+        var b35c = document.getElementById("satz-15");
+        b35c.value = "Fais du sport.";
+        b35c.style.backgroundColor = '		rgb(255,250,205)';
+        b35c.style.color = '		rgb(0,0,0)';
+        var b36c = document.getElementById("satz-16");
+        b36c.value = "N’oublie pas tes devoirs.";
+        b36c.style.backgroundColor = '		rgb(255,250,205)';
+        b36c.style.color = '		rgb(0,0,0)';
+        var b37c = document.getElementById("satz-17");
+        b37c.value = "Ne rentre pas trop tard.";
+        b37c.style.backgroundColor = '		rgb(255,250,205)';
+        b37c.style.color = '		rgb(0,0,0)';
+        var b38c = document.getElementById("satz-18");
+        b38c.value = "N’organise pas de fête à la maison.";
+        b38c.style.backgroundColor = '		rgb(255,250,205)';
+        b38c.style.color = '		rgb(0,0,0)';
+      }
       function checkMeOk() {
-        var b1c = document.getElementById("satz-1");
+         var b1c = document.getElementById("satz-1");
 			   var b1 = document.getElementById("satz-1").value;
 			   if(b1 == "Couchez-vous toujours à la même heure."){
           b1c.style.backgroundColor = '		rgb(0,139,0)';
@@ -159,8 +267,179 @@
           b7c.style.color = '		rgb(0,0,0)';
          }
 			 }
-    </script>
+       function checkMeOk_2() {
+         var b11c = document.getElementById("satz-11");
+			   var b11 = document.getElementById("satz-11").value;
+			   if(b11 == "Mange régulièrement."){
+          b11c.style.backgroundColor = '		rgb(0,139,0)';
+          b11c.style.color = '		rgb(255,255,255)';
+			   } else if(b11 != ""){
+          b11c.style.backgroundColor = '		rgb(224,0,0)';
+          b11c.style.color = '		rgb(255,255,255)';
+			   } else if(b11 == ""){
+          b11c.style.color = '		rgb(0,0,0)';
+         }
+         var b12c = document.getElementById("satz-12");
+			   var b12 = document.getElementById("satz-12").value;
+			   if(b12 == "Ne sors pas tous les soirs."){
+          b12c.style.backgroundColor = '		rgb(0,139,0)';
+          b12c.style.color = '		rgb(255,255,255)';
+			   } else if(b12 != ""){
+          b12c.style.backgroundColor = '		rgb(224,0,0)';
+          b12c.style.color = '		rgb(255,255,255)';
+          } else if(b12 == ""){
+          b12c.style.color = '		rgb(0,0,0)';
+         }
+         var b13c = document.getElementById("satz-13");
+			   var b13 = document.getElementById("satz-13").value;
+			   if(b13 == "Couche-toi avant minuit."){
+          b13c.style.backgroundColor = '		rgb(0,139,0)';
+          b13c.style.color = '		rgb(255,255,255)';
+			   } else if(b13 != ""){
+          b13c.style.backgroundColor = '		rgb(224,0,0)';
+          b13c.style.color = '		rgb(255,255,255)';
+			   } else if(b13 == ""){
+          b13c.style.color = '		rgb(0,0,0)';
+         }
+         var b14c = document.getElementById("satz-14");
+			   var b14 = document.getElementById("satz-14").value;
+			   if(b14 == "Ne bois pas d’alcool." || b14 == "Ne bois pas d'alcool."){
+          b14c.style.backgroundColor = '		rgb(0,139,0)';
+          b14c.style.color = '		rgb(255,255,255)';
+			   } else if(b14 != ""){
+          b14c.style.backgroundColor = '		rgb(224,0,0)';
+          b14c.style.color = '		rgb(255,255,255)';
+			   } else if(b14 == ""){
+          b14c.style.color = '		rgb(0,0,0)';
+         }
+         var b15c = document.getElementById("satz-15");
+			   var b15 = document.getElementById("satz-15").value;
+			   if(b15 == "Fais du sport."){
+          b15c.style.backgroundColor = '		rgb(0,139,0)';
+          b15c.style.color = '		rgb(255,255,255)';
+			   } else if(b15 != ""){
+          b15c.style.backgroundColor = '		rgb(224,0,0)';
+          b15c.style.color = '		rgb(255,255,255)';
+			   } else if(b15 == ""){
+          b15c.style.color = '		rgb(0,0,0)';
+         }
+         var b16c = document.getElementById("satz-16");
+			   var b16 = document.getElementById("satz-16").value;
+			   if(b16 == "N’oublie pas tes devoirs." || b16 == "N'oublie pas tes devoirs."){
+          b16c.style.backgroundColor = '		rgb(0,139,0)';
+          b16c.style.color = '		rgb(255,255,255)';
+			   } else if(b16 != ""){
+          b16c.style.backgroundColor = '		rgb(224,0,0)';
+          b16c.style.color = '		rgb(255,255,255)';
+			   } else if(b16 == ""){
+          b16c.style.color = '		rgb(0,0,0)';
+         }
+         var b17c = document.getElementById("satz-17");
+			   var b17 = document.getElementById("satz-17").value;
+			   if(b17 == "Ne rentre pas trop tard."){
+          b17c.style.backgroundColor = '		rgb(0,139,0)';
+          b17c.style.color = '		rgb(255,255,255)';
+			   } else if(b17 != ""){
+          b17c.style.backgroundColor = '		rgb(224,0,0)';
+          b17c.style.color = '		rgb(255,255,255)';
+			   } else if(b17 == ""){
+          b17c.style.color = '		rgb(0,0,0)';
+         }
+         var b18c = document.getElementById("satz-18");
+			   var b18 = document.getElementById("satz-18").value;
+			   if(b18 == "N’organise pas de fête à la maison." || b18 == "N'organise pas de fête à la maison."){
+          b18c.style.backgroundColor = '		rgb(0,139,0)';
+          b18c.style.color = '		rgb(255,255,255)';
+			   } else if(b18 != ""){
+          b18c.style.backgroundColor = '		rgb(224,0,0)';
+          b18c.style.color = '		rgb(255,255,255)';
+			   } else if(b18 == ""){
+          b18c.style.color = '		rgb(0,0,0)';
+         }
+			 }
+       // Datum und Uhrzeit anzeigen
+    myInterval = setInterval(dateZeit, 1000);
+    function dateZeit() {
+      var datum1 = new Date();
+      const wochentag = [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+      ];
+      const monat = [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+      ];
+      const tag = [
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix",
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+        "vingt",
+        "ving-et-un",
+        "vingt-deux",
+        "vingt-trois",
+        "vingt-quatre",
+        "vingt-cinq",
+        "vingt-six",
+        "vingt-sept",
+        "vingt-huit",
+        "vingt-neuf",
+        "trente",
+        "trente-et-un",
+      ];
+    var datum = document.getElementById("datum");
+    var Tag = tag[datum1.getDate() - 1];
+    var Wochentag = wochentag[datum1.getDay()];
+    var Monat = monat[datum1.getMonth()];
+    var Stunden = datum1.getHours();
+    var Minuten = addZero(datum1.getMinutes());
+    datum.innerHTML =
+      Wochentag + ", " + Tag + " " + Monat + " " + Stunden + ":" + Minuten;
+    }
+    function addZero(num) {
+      return num < 10 ? `0${num}` : num;
+    }
+    function hilfeFenster() {
+				alert(
+					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum klickt, kommen die kompletten Lösungen. "
+				);
+			}
+  </script>
 	</head>
+  <div class="kopf-container">
+  <div id="hilfe" onclick="hilfeFenster()">i</div>
+  <div id="datum" onclick="loesungen()">date</div>
+  </div>
 	<br>
 		<div class="container-1">
 			<div id="box-1"><span style="font-weight: bold;">Im Unterricht gemacht:</span></br>Seite 24; 4</br>Seite 117; 6,7</br>Seite 118 komplett </div>
@@ -188,6 +467,31 @@
         <div class="abstand">&nbsp;</div>
         <div>Et si vous ne dormez toujours pas, comptez les moutons !</div>
         <button type="button" id="btn_pruef" onclick="checkMeOk()">
+        überprüfen
+        </button>
+      </div>
+    </div>
+    <div class="container-3">
+      <div id="box-4"><span style="font-size: 1.2rem;">Seite 118</span></br><span style="font-weight: bold;">10 &nbsp;Nadia, 16 ans, reste une semaine seule à la maison. Formulez les conseils de sa mère.</span>
+        <div class="abstand">&nbsp;</div>
+        <div>1. manger régulièrement</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-11" name="satz-11" placeholder="Mange régulièrement."></textarea>
+        <div>2. sortir tous les soirs</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-12" name="satz-12"></textarea>
+        <div>3. se coucher avant minuit</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-13" name="satz-13"></textarea>
+        <div>4. boire de l'alcool</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-14" name="satz-14"></textarea>
+        <div>5. faire du sport</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-15" name="satz-15"></textarea>
+        <div>6. oublier les devoirs</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-16" name="satz-16"></textarea>
+        <div>7. rentrer trop tard</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-17" name="satz-17"></textarea>
+        <div>8. organiser une fête à la maison</div>
+        <textarea type="text" size="40" cols="26" rows=1 id="satz-18" name="satz-18"></textarea>
+        <div class="abstand-2">&nbsp;</div>
+        <button type="button" id="btn_pruef" onclick="checkMeOk_2()">
         überprüfen
         </button>
       </div>
