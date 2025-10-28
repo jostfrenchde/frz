@@ -47,7 +47,6 @@
 				background-color: #00F5FF;
 			}
       .container-3 {
-				/* background: gainsboro; */
         display: flex;
         justify-content: center;
         margin-top: 20px;
@@ -74,6 +73,57 @@
         font-size: 1.25rem;
         padding-left: 10px;
         margin-left: 5px;
+      }
+      .erkl-container {
+        display: flex;
+        justify-content: center;
+        margin-top: -5px;
+        margin-bottom: -15px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        letter-spacing: 1.0px;
+      }
+      .erkl-container div {
+        width: 90%;
+			  border-radius: 10px;
+        padding: 5px;
+        margin: 10px;
+        color: white;
+      }
+      #erkl_1 {
+				background-color: #ee0097;
+			}
+      #klappe {
+        display: none;
+      }
+      .klapp {
+        font-size: 1.25rem;
+      }
+      .klapp:hover {
+        color: rgb(117, 202, 117);
+        cursor: pointer;
+      }
+      #klapp_01:hover {
+        color: rgb(117, 202, 117);
+        cursor: pointer;
+      }
+      .klapp_2 {
+        
+      }
+      .klapp_2:hover {
+        color: rgb(117, 202, 117);
+        cursor: pointer;
+      }
+      .erkl_bo {
+        font-weight: bolder;
+        color: #00F5FF;
+      }
+      #erkl_text {
+        display: none;
+      }
+      table {
+        letter-spacing: 0.8px;
+        font-size: 1.25rem;
+        display: block;
       }
        #btn_pruef{
         background-color: rgb(149, 149, 149);
@@ -432,9 +482,35 @@
     }
     function hilfeFenster() {
 				alert(
-					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum und die Uhrzeit klickt, kommen die kompletten Lösungen. "
+					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum und die Uhrzeit klickt, kommen die kompletten Lösungen.\n\nWenn man in der pinken Erlärbox auf weitere Erklärungen klickt, kommen weitere Erklärungen, und unten kann man sich Beispielsätze anzeigen lassen. Diese kann man ein- und ausblenden."
 				);
 			}
+      function klappe() {
+        var klappe = document.getElementById('klappe');
+        var klapp_01 = document.getElementById('klapp_01');
+        if (klappe.style.display === 'block') {
+          klappe.style.display = 'none';
+          klapp_01.innerText = '▼';
+          klapp_01.style.color = '		rgb(255,255,255)';
+        } else {
+           klappe.style.display = 'block';
+           klapp_01.innerText = "▲";
+           klapp_01.style.color = '		rgb(0,0,255)';
+        }
+      }
+      function klappe_2() {
+        var klapp_2 = document.getElementById('klapp_02');
+        var klapp_02 = document.getElementById('erkl_text');
+        if (klapp_02.style.display === 'block') {
+          klapp_02.style.display = 'none';
+          klapp_2.style.color = '		rgb(255,255,255)';
+          klapp_2.innerText = '▼';
+        } else {
+           klapp_02.style.display = 'block';
+           klapp_2.style.color = '		rgb(0,0,255)';
+           klapp_2.innerText = '▲';
+        }
+      }
   </script>
 	</head>
   <div class="kopf-container">
@@ -446,6 +522,21 @@
 			<div id="box-1"><span style="font-weight: bold;">Im Unterricht gemacht:</span></br>Seite 24; 4</br>Seite 117; 6,7</br>Seite 118 komplett </div>
 			<div id="box-2"><span style="font-weight: bold;">Hausaufgaben:</span></br>Seite 119, 120 komplett</br>Seite 28 anschauen</div>
 		</div>
+    <div class="erkl-container">
+      <div id="erkl_1">
+      <div style="font-weight: bold">Der Imperativ erteilt Befehle oder Aufforderungen.
+      </div>
+      <div class="klapp_2" onclick="klappe_2()">weitere Erklärungen ... <span id="klapp_02">&nbsp;▼&nbsp;</span></div>  
+      <div id="erkl_text">
+      <div><span style="color: #00F5FF;">♦</span> &nbsp;Der Imperativ wird wie das Präsens gebildet. Die Verben auf <span class="erkl_bo">-er</span> verlieren allerdings in der Du-Form das <span class="erkl_bo">s</span>. <br>
+      Nur vor <span class="erkl_bo">en</span> und <span class="erkl_bo">y</span> bleibt das <span class="erkl_bo">s</span> aus Aussprachegründen erhalten:&nbsp;Parle<span class="erkl_bo">s</span>-en à Paul !  Sprich darüber mit Paul!
+      </div>
+      <div><span style="color: #00F5FF;">♦</span> &nbsp;Pronomen werden an den Imperativ angehängt: Couche-<span class="erkl_bo">toi</span>. Mangez-<span class="erkl_bo">le</span>. Buvez-<span class="erkl_bo">en</span>.</div>
+      <div class="klapp" onclick="klappe()">einige Beispielsätze: <span id="klapp_01">&nbsp;▼&nbsp;</span></div>
+      <div class="table_component" id="klappe" role="region" tabindex="0"><table><tbody><tr><td>Parle plus fort !</td><td>Rede lauter!</td></tr><tr><td>Allons-y</td><td>Gehen wir!</td></tr><tr><td>Attendez-nous !</td><td>Wartet auf uns!</td></tr><tr><td>Sois gentil !</td><td>Sei nett!</td></tr><tr><td>N'aie pas peur !</td><td>Hab keine Angst!</td></tr><tr><td>Sache que tu as raison !&nbsp;</td><td>Sei gewiss, das du Recht hast!</td></tr><tr><td>Mangez peu et dormez beaucoup.&nbsp;</td><td>Essen Sie wenig, und schlafen Sie viel.</td></tr><tr><td>Prenez du magnésium.&nbsp;</td><td>Nehmen Sie Magnesium.</td></tr><tr><td>Parlez plus lentement, s'il vous plaît.&nbsp;</td><td>Sprechen Sie langsamer, bitte.</td></tr><tr><td>Attendez un moment.&nbsp;</td><td>Warten Sie einen Moment.</td></tr><tr><td>Ne parle pas !&nbsp;</td><td>Sprich nicht!</td></tr></tbody></table></div>
+    </div>
+    </div>
+    </div>
     <div class="container-2">
       <div id="box-3"><span style="font-size: 1.2rem;">Seite 118</span></br><span style="font-weight: bold;">9 &nbsp;Quelques conseils pour bien dormir. Mettez ces conseils à l'impératif.</span>
         <div class="abstand">&nbsp;</div>
