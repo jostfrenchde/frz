@@ -482,7 +482,7 @@
     }
     function hilfeFenster() {
 				alert(
-					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum und die Uhrzeit klickt, kommen die kompletten Lösungen.\n\nWenn man in der pinken Erlärbox auf weitere Erklärungen klickt, kommen weitere Erklärungen, und unten kann man sich Beispielsätze anzeigen lassen. Diese kann man ein- und ausblenden."
+					"Bei der Eingabe muß alles stimmen. Klein- Großschreibung alle Akzents richtig gesetzt und am Ende keine Leerzeichen.\n\nWenn man oben rechts auf das Datum und die Uhrzeit klickt, kommen die kompletten Lösungen.\n\nWenn man in der pinken Erklärbox auf weitere Erklärungen ＋ klickt, kommen weitere Erklärungen, und unten kann man sich einige Beispielsätze ＋ anzeigen lassen. Wenn man auf 𑁋 klickt, werden sie wieder  ausgeblendet."
 				);
 			}
       function klappe() {
@@ -490,12 +490,11 @@
         var klapp_01 = document.getElementById('klapp_01');
         if (klappe.style.display === 'block') {
           klappe.style.display = 'none';
-          klapp_01.innerText = '▼';
+          klapp_01.innerText = '＋';
           klapp_01.style.color = '		rgb(255,255,255)';
         } else {
            klappe.style.display = 'block';
-           klapp_01.innerText = "▲";
-           klapp_01.style.color = '		rgb(0,0,255)';
+           klapp_01.innerText = "𑁋";
         }
       }
       function klappe_2() {
@@ -504,11 +503,10 @@
         if (klapp_02.style.display === 'block') {
           klapp_02.style.display = 'none';
           klapp_2.style.color = '		rgb(255,255,255)';
-          klapp_2.innerText = '▼';
+          klapp_2.innerText = '＋';
         } else {
            klapp_02.style.display = 'block';
-           klapp_2.style.color = '		rgb(0,0,255)';
-           klapp_2.innerText = '▲';
+           klapp_2.innerText = '𑁋';
         }
       }
   </script>
@@ -526,13 +524,13 @@
       <div id="erkl_1">
       <div style="font-weight: bold">Der Imperativ erteilt Befehle oder Aufforderungen.
       </div>
-      <div class="klapp_2" onclick="klappe_2()">weitere Erklärungen ... <span id="klapp_02">&nbsp;▼&nbsp;</span></div>  
+      <div class="klapp_2" onclick="klappe_2()">weitere Erklärungen ... <span id="klapp_02">&nbsp;＋&nbsp;</span></div>  
       <div id="erkl_text">
       <div><span style="color: #00F5FF;">♦</span> &nbsp;Der Imperativ wird wie das Präsens gebildet. Die Verben auf <span class="erkl_bo">-er</span> verlieren allerdings in der Du-Form das <span class="erkl_bo">s</span>. <br>
       Nur vor <span class="erkl_bo">en</span> und <span class="erkl_bo">y</span> bleibt das <span class="erkl_bo">s</span> aus Aussprachegründen erhalten:&nbsp;Parle<span class="erkl_bo">s</span>-en à Paul !  Sprich darüber mit Paul!
       </div>
       <div><span style="color: #00F5FF;">♦</span> &nbsp;Pronomen werden an den Imperativ angehängt: Couche-<span class="erkl_bo">toi</span>. Mangez-<span class="erkl_bo">le</span>. Buvez-<span class="erkl_bo">en</span>.</div>
-      <div class="klapp" onclick="klappe()">einige Beispielsätze: <span id="klapp_01">&nbsp;▼&nbsp;</span></div>
+      <div class="klapp" onclick="klappe()">einige Beispielsätze: <span id="klapp_01">&nbsp;＋&nbsp;</span></div>
       <div class="table_component" id="klappe" role="region" tabindex="0"><table><tbody><tr><td>Parle plus fort !</td><td>Rede lauter!</td></tr><tr><td>Allons-y</td><td>Gehen wir!</td></tr><tr><td>Attendez-nous !</td><td>Wartet auf uns!</td></tr><tr><td>Sois gentil !</td><td>Sei nett!</td></tr><tr><td>N'aie pas peur !</td><td>Hab keine Angst!</td></tr><tr><td>Sache que tu as raison !&nbsp;</td><td>Sei gewiss, das du Recht hast!</td></tr><tr><td>Mangez peu et dormez beaucoup.&nbsp;</td><td>Essen Sie wenig, und schlafen Sie viel.</td></tr><tr><td>Prenez du magnésium.&nbsp;</td><td>Nehmen Sie Magnesium.</td></tr><tr><td>Parlez plus lentement, s'il vous plaît.&nbsp;</td><td>Sprechen Sie langsamer, bitte.</td></tr><tr><td>Attendez un moment.&nbsp;</td><td>Warten Sie einen Moment.</td></tr><tr><td>Ne parle pas !&nbsp;</td><td>Sprich nicht!</td></tr></tbody></table></div>
     </div>
     </div>
