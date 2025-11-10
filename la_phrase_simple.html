@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>La phrase simple</title>
+		<style>
+			body {
+				background-color: rgb(186, 233, 233);
+				margin: 0;
+				padding: 0;
+				font-size: 1.5rem;
+				font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+				letter-spacing: 0rem;
+			}
+			.kopf-container {
+				display: flex;
+				justify-content: space-between;
+			}
+			#jo-ueb {
+				display: flex;
+				justify-content: center;
+				margin-top: 20px;
+				padding-bottom: 1rem;
+				font-size: 2rem;
+				font-weight: bold;
+			}
+			#jo-1 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #04aa6d;
+			}
+			#jo-2 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #2196f3;
+			}
+			#jo-3 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #f44336;
+			}
+			#jo-5 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #d05f5f;
+			}
+			.container-1 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			#klappe-1 {
+				display: none;
+			}
+			#klappe-2 {
+				display: none;
+			}
+			#klappe-3 {
+				display: none;
+			}
+			#klappe-5 {
+				display: none;
+			}
+			.container-1 div {
+				width: 90%;
+				padding: 0px;
+				margin: 0px;
+			}
+			.container-2 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-2 div {
+				width: 90%;
+				padding: 0px;
+				margin: 0px;
+			}
+			.container-3 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-3 div {
+				/* width: 90%; */
+				margin-left: 0px;
+				padding-left: 40px;
+				/* border: 2px blue solid; */
+			}
+			.container-5 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			#erkl-1 {
+				margin: 10px auto;
+				font-size: 1.8rem;
+				font-weight: bold;
+				color: blue;
+			}
+			#erkl-2 {
+				margin: 10px auto;
+				font-size: 1.8rem;
+				font-weight: bold;
+				color: blue;
+			}
+			#erkl-3 {
+				margin: 10px auto;
+				font-size: 1.8rem;
+				font-weight: bold;
+				color: blue;
+				padding-left: 40px;
+				/* border: 2px red solid; */
+			}
+			#erkl-5 {
+				margin: 10px auto;
+				font-size: 1.8rem;
+				font-weight: bold;
+				padding-left: 40px;
+				color: blue;
+			}
+			.jo-table {
+				border-collapse: collapse;
+				width: 90%;
+				margin: 10px auto;
+				font-size: 1.0rem;
+				/* scale: 0.7; */
+			}
+			#mySidenav a {
+				position: absolute;
+				left: -125px;
+				transition: 0.3s;
+				padding: 15px;
+				width: 120px;
+				text-decoration: none;
+				font-size: 1.25rem;
+				color: white;
+				border-radius: 0 5px 5px 0;
+			}
+			#mySidenav a:hover {
+				left: 0;
+			}
+			#grund {
+				top: 20px;
+				font-size: 0.2rem;
+				background-color: #04aa6d;
+			}
+			#ne_pas {
+				top: 80px;
+				background-color: #2196f3;
+			}
+			#frage {
+				top: 140px;
+				background-color: #f44336;
+			}
+			#ausblend {
+				top: 200px;
+				background-color: #555;
+			}
+			#verben {
+				top: 260px;
+				background-color: #d05f5f;
+			}
+			.abst {
+				padding-bottom: 0.25rem;
+				font-weight: bold;
+			}
+			.table-container {
+				display: flex;
+				gap: 120px;
+				justify-content: center;
+				flex-wrap: wrap; /* erlaubt Umbruch bei kleinen Displays */
+			}
+
+			table {
+				border-collapse: collapse;
+				width: 260px;
+				background-color: white;
+				box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+				margin-bottom: 20px; /* Abstand nach unten, falls untereinander */
+			}
+
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 8px;
+				text-align: center;
+			}
+
+			th {
+				background-color: #2c3e50;
+				color: white;
+			}
+
+			tr:nth-child(even) {
+				background-color: #f2f2f2;
+			}
+
+			/* Responsive Design: Tabellen untereinander bei schmalem Bildschirm */
+			@media (max-width: 700px) {
+				.table-container {
+					flex-direction: column;
+					align-items: center;
+					gap: 20px;
+				}
+
+				#container-etre {
+					flex-direction: column;
+				}	
+
+				table {
+					width: 90%;
+				}
+			}
+			.conjug-verb-d {
+				background-color: #f2f2f2;
+				resize: none;
+				margin-left: 2px;
+				font-size: 1.25rem;
+				padding-left: 5px;
+				margin-left: 5px;
+			}
+			.conjug-verb-h {
+				background-color: white;
+				resize: none;
+				margin-left: 2px;
+				font-size: 1.25rem;
+				padding-left: 5px;
+				margin-left: 5px;
+			}
+			#btn_pruef {
+				display: flex;
+				background-color: rgb(149, 149, 149);
+				color: yellow;
+				font-size: 1.25rem;
+				font-weight: 500;
+				text-align: center;
+				padding: 5px 30px;
+				margin-left: 10px;
+				margin-top: -15px;
+				margin-bottom: 20px;
+				border-radius: 10px;
+			}
+			#btn_pruef:hover {
+				background-color: rgb(107, 107, 107);
+				cursor: pointer;
+				font-weight: 700;
+				transition-duration: 0.2s;
+			}
+			.zeile_v_btn {
+				background-color: #ffffe0;
+				border: none;
+				font-size: 0.4rem;
+			}
+			.zeile_btn {
+				background-color: rgb(149, 149, 149);
+				border: none;
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: yellow;
+			}
+			.zeile_btn:hover {
+				background-color: rgb(107, 107, 107);
+				cursor: pointer;
+				font-weight: 700;
+				transition-duration: 0.2s;
+			}
+		</style>
+		<script defer>
+			verb_etre = ["suis", "es", "est", "sommes", "êtes", "sont"];
+			verb_avoir = ["ai", "as", "a", "avons", "avez", "ont"];
+			verb_faire = ["fais", "fais", "fait", "faisons", "faites", "font"];
+			verb_aller = ["vais", "vas", "va", "allons", "allez", "vont"];
+			verb_boire = ["bois", "bois", "boit", "buvons", "buvez", "boivent"];
+			verb_acheter = [
+				"achète",
+				"achètes",
+				"achète",
+				"achetons",
+				"achetez",
+				"achètent",
+			];
+			function klapp_1() {
+				var klappe = document.getElementById("klappe-1");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_2() {
+				var klappe = document.getElementById("klappe-2");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_3() {
+				var klappe = document.getElementById("klappe-3");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_4() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+			}
+			function klapp_5() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-5");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function checkMeOk_etre() {
+				var a1c = document.getElementById("a1");
+				var a1 = document.getElementById("a1").value;
+				if (a1 == verb_etre[0]) {
+					a1c.style.backgroundColor = "		rgb(0,139,0)";
+					a1c.style.color = "		rgb(255,255,255)";
+				} else if (a1 != "") {
+					a1c.style.backgroundColor = "		rgb(224,0,0)";
+					a1c.style.color = "		rgb(255,255,255)";
+				} else if (a1 == "") {
+					a1c.style.color = "		rgb(0,0,0)";
+				}
+				var a2c = document.getElementById("a2");
+				var a2 = document.getElementById("a2").value;
+				if (a2 == verb_etre[1]) {
+					a2c.style.backgroundColor = "		rgb(0,139,0)";
+					a2c.style.color = "		rgb(255,255,255)";
+				} else if (a2 != "") {
+					a2c.style.backgroundColor = "		rgb(224,0,0)";
+					a2c.style.color = "		rgb(255,255,255)";
+				} else if (a2 == "") {
+					a2c.style.color = "		rgb(0,0,0)";
+				}
+				var a3c = document.getElementById("a3");
+				var a3 = document.getElementById("a3").value;
+				if (a3 == verb_etre[2]) {
+					a3c.style.backgroundColor = "		rgb(0,139,0)";
+					a3c.style.color = "		rgb(255,255,255)";
+				} else if (a3 != "") {
+					a3c.style.backgroundColor = "		rgb(224,0,0)";
+					a3c.style.color = "		rgb(255,255,255)";
+				} else if (a3 == "") {
+					a3c.style.color = "		rgb(0,0,0)";
+				}
+				var a4c = document.getElementById("a4");
+				var a4 = document.getElementById("a4").value;
+				if (a4 == verb_etre[3]) {
+					a4c.style.backgroundColor = "		rgb(0,139,0)";
+					a4c.style.color = "		rgb(255,255,255)";
+				} else if (a4 != "") {
+					a4c.style.backgroundColor = "		rgb(224,0,0)";
+					a4c.style.color = "		rgb(255,255,255)";
+				} else if (a4 == "") {
+					a4c.style.color = "		rgb(0,0,0)";
+				}
+				var a5c = document.getElementById("a5");
+				var a5 = document.getElementById("a5").value;
+				if (a5 == verb_etre[4]) {
+					a5c.style.backgroundColor = "		rgb(0,139,0)";
+					a5c.style.color = "		rgb(255,255,255)";
+				} else if (a5 != "") {
+					a5c.style.backgroundColor = "		rgb(224,0,0)";
+					a5c.style.color = "		rgb(255,255,255)";
+				} else if (a5 == "") {
+					a5c.style.color = "		rgb(0,0,0)";
+				}
+				var a6c = document.getElementById("a6");
+				var a6 = document.getElementById("a6").value;
+				if (a6 == verb_etre[5]) {
+					a6c.style.backgroundColor = "		rgb(0,139,0)";
+					a6c.style.color = "		rgb(255,255,255)";
+				} else if (a6 != "") {
+					a6c.style.backgroundColor = "		rgb(224,0,0)";
+					a6c.style.color = "		rgb(255,255,255)";
+				} else if (a6 == "") {
+					a6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_avoir() {
+				var b1c = document.getElementById("b1");
+				var b1 = document.getElementById("b1").value;
+				if (b1 == verb_avoir[0]) {
+					b1c.style.backgroundColor = "		rgb(0,139,0)";
+					b1c.style.color = "		rgb(255,255,255)";
+				} else if (b1 != "") {
+					b1c.style.backgroundColor = "		rgb(224,0,0)";
+					b1c.style.color = "		rgb(255,255,255)";
+				} else if (b1 == "") {
+					b1c.style.color = "		rgb(0,0,0)";
+				}
+				var b2c = document.getElementById("b2");
+				var b2 = document.getElementById("b2").value;
+				if (b2 == verb_avoir[1]) {
+					b2c.style.backgroundColor = "		rgb(0,139,0)";
+					b2c.style.color = "		rgb(255,255,255)";
+				} else if (b2 != "") {
+					b2c.style.backgroundColor = "		rgb(224,0,0)";
+					b2c.style.color = "		rgb(255,255,255)";
+				} else if (b2 == "") {
+					b2c.style.color = "		rgb(0,0,0)";
+				}
+				var b3c = document.getElementById("b3");
+				var b3 = document.getElementById("b3").value;
+				if (b3 == verb_avoir[2]) {
+					b3c.style.backgroundColor = "		rgb(0,139,0)";
+					b3c.style.color = "		rgb(255,255,255)";
+				} else if (b3 != "") {
+					b3c.style.backgroundColor = "		rgb(224,0,0)";
+					b3c.style.color = "		rgb(255,255,255)";
+				} else if (b3 == "") {
+					b3c.style.color = "		rgb(0,0,0)";
+				}
+				var b4c = document.getElementById("b4");
+				var b4 = document.getElementById("b4").value;
+				if (b4 == verb_avoir[3]) {
+					b4c.style.backgroundColor = "		rgb(0,139,0)";
+					b4c.style.color = "		rgb(255,255,255)";
+				} else if (b4 != "") {
+					b4c.style.backgroundColor = "		rgb(224,0,0)";
+					b4c.style.color = "		rgb(255,255,255)";
+				} else if (b4 == "") {
+					b4c.style.color = "		rgb(0,0,0)";
+				}
+				var b5c = document.getElementById("b5");
+				var b5 = document.getElementById("b5").value;
+				if (b5 == verb_avoir[4]) {
+					b5c.style.backgroundColor = "		rgb(0,139,0)";
+					b5c.style.color = "		rgb(255,255,255)";
+				} else if (b5 != "") {
+					b5c.style.backgroundColor = "		rgb(224,0,0)";
+					b5c.style.color = "		rgb(255,255,255)";
+				} else if (b5 == "") {
+					b5c.style.color = "		rgb(0,0,0)";
+				}
+				var b6c = document.getElementById("b6");
+				var b6 = document.getElementById("b6").value;
+				if (b6 == verb_avoir[5]) {
+					b6c.style.backgroundColor = "		rgb(0,139,0)";
+					b6c.style.color = "		rgb(255,255,255)";
+				} else if (b6 != "") {
+					b6c.style.backgroundColor = "		rgb(224,0,0)";
+					b6c.style.color = "		rgb(255,255,255)";
+				} else if (b6 == "") {
+					b6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_faire() {
+				var c1c = document.getElementById("c1");
+				var c1 = document.getElementById("c1").value;
+				if (c1 == verb_faire[0]) {
+					c1c.style.backgroundColor = "		rgb(0,139,0)";
+					c1c.style.color = "		rgb(255,255,255)";
+				} else if (c1 != "") {
+					c1c.style.backgroundColor = "		rgb(224,0,0)";
+					c1c.style.color = "		rgb(255,255,255)";
+				} else if (c1 == "") {
+					c1c.style.color = "		rgb(0,0,0)";
+				}
+				var c2c = document.getElementById("c2");
+				var c2 = document.getElementById("c2").value;
+				if (c2 == verb_faire[1]) {
+					c2c.style.backgroundColor = "		rgb(0,139,0)";
+					c2c.style.color = "		rgb(255,255,255)";
+				} else if (c2 != "") {
+					c2c.style.backgroundColor = "		rgb(224,0,0)";
+					c2c.style.color = "		rgb(255,255,255)";
+				} else if (c2 == "") {
+					c2c.style.color = "		rgb(0,0,0)";
+				}
+				var c3c = document.getElementById("c3");
+				var c3 = document.getElementById("c3").value;
+				if (c3 == verb_faire[2]) {
+					c3c.style.backgroundColor = "		rgb(0,139,0)";
+					c3c.style.color = "		rgb(255,255,255)";
+				} else if (c3 != "") {
+					c3c.style.backgroundColor = "		rgb(224,0,0)";
+					c3c.style.color = "		rgb(255,255,255)";
+				} else if (c3 == "") {
+					c3c.style.color = "		rgb(0,0,0)";
+				}
+				var c4c = document.getElementById("c4");
+				var c4 = document.getElementById("c4").value;
+				if (c4 == verb_faire[3]) {
+					c4c.style.backgroundColor = "		rgb(0,139,0)";
+					c4c.style.color = "		rgb(255,255,255)";
+				} else if (c4 != "") {
+					c4c.style.backgroundColor = "		rgb(224,0,0)";
+					c4c.style.color = "		rgb(255,255,255)";
+				} else if (c4 == "") {
+					c4c.style.color = "		rgb(0,0,0)";
+				}
+				var c5c = document.getElementById("c5");
+				var c5 = document.getElementById("c5").value;
+				if (c5 == verb_faire[4]) {
+					c5c.style.backgroundColor = "		rgb(0,139,0)";
+					c5c.style.color = "		rgb(255,255,255)";
+				} else if (c5 != "") {
+					c5c.style.backgroundColor = "		rgb(224,0,0)";
+					c5c.style.color = "		rgb(255,255,255)";
+				} else if (c5 == "") {
+					c5c.style.color = "		rgb(0,0,0)";
+				}
+				var c6c = document.getElementById("c6");
+				var c6 = document.getElementById("c6").value;
+				if (c6 == verb_faire[5]) {
+					c6c.style.backgroundColor = "		rgb(0,139,0)";
+					c6c.style.color = "		rgb(255,255,255)";
+				} else if (c6 != "") {
+					c6c.style.backgroundColor = "		rgb(224,0,0)";
+					c6c.style.color = "		rgb(255,255,255)";
+				} else if (c6 == "") {
+					c6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_aller() {
+				var d1c = document.getElementById("d1");
+				var d1 = document.getElementById("d1").value;
+				if (d1 == verb_aller[0]) {
+					d1c.style.backgroundColor = "		rgb(0,139,0)";
+					d1c.style.color = "		rgb(255,255,255)";
+				} else if (d1 != "") {
+					d1c.style.backgroundColor = "		rgb(224,0,0)";
+					d1c.style.color = "		rgb(255,255,255)";
+				} else if (d1 == "") {
+					d1c.style.color = "		rgb(0,0,0)";
+				}
+				var d2c = document.getElementById("d2");
+				var d2 = document.getElementById("d2").value;
+				if (d2 == verb_aller[1]) {
+					d2c.style.backgroundColor = "		rgb(0,139,0)";
+					d2c.style.color = "		rgb(255,255,255)";
+				} else if (d2 != "") {
+					d2c.style.backgroundColor = "		rgb(224,0,0)";
+					d2c.style.color = "		rgb(255,255,255)";
+				} else if (d2 == "") {
+					d2c.style.color = "		rgb(0,0,0)";
+				}
+				var d3c = document.getElementById("d3");
+				var d3 = document.getElementById("d3").value;
+				if (d3 == verb_aller[2]) {
+					d3c.style.backgroundColor = "		rgb(0,139,0)";
+					d3c.style.color = "		rgb(255,255,255)";
+				} else if (d3 != "") {
+					d3c.style.backgroundColor = "		rgb(224,0,0)";
+					d3c.style.color = "		rgb(255,255,255)";
+				} else if (d3 == "") {
+					d3c.style.color = "		rgb(0,0,0)";
+				}
+				var d4c = document.getElementById("d4");
+				var d4 = document.getElementById("d4").value;
+				if (d4 == verb_aller[3]) {
+					d4c.style.backgroundColor = "		rgb(0,139,0)";
+					d4c.style.color = "		rgb(255,255,255)";
+				} else if (d4 != "") {
+					d4c.style.backgroundColor = "		rgb(224,0,0)";
+					d4c.style.color = "		rgb(255,255,255)";
+				} else if (d4 == "") {
+					d4c.style.color = "		rgb(0,0,0)";
+				}
+				var d5c = document.getElementById("d5");
+				var d5 = document.getElementById("d5").value;
+				if (d5 == verb_aller[4]) {
+					d5c.style.backgroundColor = "		rgb(0,139,0)";
+					d5c.style.color = "		rgb(255,255,255)";
+				} else if (d5 != "") {
+					d5c.style.backgroundColor = "		rgb(224,0,0)";
+					d5c.style.color = "		rgb(255,255,255)";
+				} else if (d5 == "") {
+					d5c.style.color = "		rgb(0,0,0)";
+				}
+				var d6c = document.getElementById("d6");
+				var d6 = document.getElementById("d6").value;
+				if (d6 == verb_aller[5]) {
+					d6c.style.backgroundColor = "		rgb(0,139,0)";
+					d6c.style.color = "		rgb(255,255,255)";
+				} else if (d6 != "") {
+					d6c.style.backgroundColor = "		rgb(224,0,0)";
+					d6c.style.color = "		rgb(255,255,255)";
+				} else if (d6 == "") {
+					d6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_boire() {
+				var e1c = document.getElementById("e1");
+				var e1 = document.getElementById("e1").value;
+				if (e1 == verb_boire[0]) {
+					e1c.style.backgroundColor = "		rgb(0,139,0)";
+					e1c.style.color = "		rgb(255,255,255)";
+				} else if (e1 != "") {
+					e1c.style.backgroundColor = "		rgb(224,0,0)";
+					e1c.style.color = "		rgb(255,255,255)";
+				} else if (e1 == "") {
+					e1c.style.color = "		rgb(0,0,0)";
+				}
+				var e2c = document.getElementById("e2");
+				var e2 = document.getElementById("e2").value;
+				if (e2 == verb_boire[1]) {
+					e2c.style.backgroundColor = "		rgb(0,139,0)";
+					e2c.style.color = "		rgb(255,255,255)";
+				} else if (e2 != "") {
+					e2c.style.backgroundColor = "		rgb(224,0,0)";
+					e2c.style.color = "		rgb(255,255,255)";
+				} else if (e2 == "") {
+					e2c.style.color = "		rgb(0,0,0)";
+				}
+				var e3c = document.getElementById("e3");
+				var e3 = document.getElementById("e3").value;
+				if (e3 == verb_boire[2]) {
+					e3c.style.backgroundColor = "		rgb(0,139,0)";
+					e3c.style.color = "		rgb(255,255,255)";
+				} else if (e3 != "") {
+					e3c.style.backgroundColor = "		rgb(224,0,0)";
+					e3c.style.color = "		rgb(255,255,255)";
+				} else if (e3 == "") {
+					e3c.style.color = "		rgb(0,0,0)";
+				}
+				var e4c = document.getElementById("e4");
+				var e4 = document.getElementById("e4").value;
+				if (e4 == verb_boire[3]) {
+					e4c.style.backgroundColor = "		rgb(0,139,0)";
+					e4c.style.color = "		rgb(255,255,255)";
+				} else if (e4 != "") {
+					e4c.style.backgroundColor = "		rgb(224,0,0)";
+					e4c.style.color = "		rgb(255,255,255)";
+				} else if (e4 == "") {
+					e4c.style.color = "		rgb(0,0,0)";
+				}
+				var e5c = document.getElementById("e5");
+				var e5 = document.getElementById("e5").value;
+				if (e5 == verb_boire[4]) {
+					e5c.style.backgroundColor = "		rgb(0,139,0)";
+					e5c.style.color = "		rgb(255,255,255)";
+				} else if (e5 != "") {
+					e5c.style.backgroundColor = "		rgb(224,0,0)";
+					e5c.style.color = "		rgb(255,255,255)";
+				} else if (e5 == "") {
+					e5c.style.color = "		rgb(0,0,0)";
+				}
+				var e6c = document.getElementById("e6");
+				var e6 = document.getElementById("e6").value;
+				if (e6 == verb_boire[5]) {
+					e6c.style.backgroundColor = "		rgb(0,139,0)";
+					e6c.style.color = "		rgb(255,255,255)";
+				} else if (e6 != "") {
+					e6c.style.backgroundColor = "		rgb(224,0,0)";
+					e6c.style.color = "		rgb(255,255,255)";
+				} else if (e6 == "") {
+					e6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_acheter() {
+				var f1c = document.getElementById("f1");
+				var f1 = document.getElementById("f1").value;
+				if (f1 == verb_acheter[0]) {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("f2");
+				var f2 = document.getElementById("f2").value;
+				if (f2 == verb_acheter[1]) {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("f3");
+				var f3 = document.getElementById("f3").value;
+				if (f3 == verb_acheter[2]) {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("f4");
+				var f4 = document.getElementById("f4").value;
+				if (f4 == verb_acheter[3]) {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("f5");
+				var f5 = document.getElementById("f5").value;
+				if (f5 == verb_acheter[4]) {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+				var f6c = document.getElementById("f6");
+				var f6 = document.getElementById("f6").value;
+				if (f6 == verb_acheter[5]) {
+					f6c.style.backgroundColor = "		rgb(0,139,0)";
+					f6c.style.color = "		rgb(255,255,255)";
+				} else if (f6 != "") {
+					f6c.style.backgroundColor = "		rgb(224,0,0)";
+					f6c.style.color = "		rgb(255,255,255)";
+				} else if (f6 == "") {
+					f6c.style.color = "		rgb(0,0,0)";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="jo-ueb">La phrase simple</div>
+		<!-- seitliches Menü -->
+		<div id="mySidenav" class="sidenav">
+			<a href="#" id="grund" onclick="klapp_1()">Grundstruktur</a>
+			<a href="#" id="ne_pas" onclick="klapp_2()">Verneinung</a>
+			<a href="#" id="frage" onclick="klapp_3()">Fragesätze</a>
+			<a href="#" id="ausblend" onclick="klapp_4()">Ausblenden</a>
+			<a href="#" id="verben" onclick="klapp_5()">Verben</a>
+		</div>
+		<div class="container-1" id="klappe-1">
+			<div id="jo-1">
+				<div id="erkl-1">Grundstruktur</div>
+				<table class="jo-table">
+					<tr>
+						<th style="color: #3e6e9e">Subject</th>
+						<th style="color: #1abc9c">conjugated verb</th>
+						<th style="color: #e67e22">article</th>
+						<th style="color: #f4d03f">noun</th>
+					</tr>
+					<tr>
+						<td>Je</td>
+						<td>mange</td>
+						<td>une</td>
+						<td>pomme.</td>
+					</tr>
+					<tr>
+						<td>Tu</td>
+						<td>regardes</td>
+						<td>un</td>
+						<td>film.</td>
+					</tr>
+					<tr>
+						<td>Il</td>
+						<td>boit</td>
+						<td>un</td>
+						<td>jus d’orange.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="container-2" id="klappe-2">
+			<div id="jo-2">
+				<div id="erkl-2">Verneinung: ne ... pas</div>
+				<table class="jo-table">
+					<tr>
+						<th style="color: #3e6e9e">Subject</th>
+						<th style="color: #1abc9c">ne</th>
+						<th style="color: #e67e22">conjugated verb</th>
+						<th style="color: #1abc9c">pas</th>
+						<th style="color: #f4d03f">noun</th>
+					</tr>
+					<tr>
+						<td>Il</td>
+						<td>ne</td>
+						<td>travail</td>
+						<td>pas.</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Il</td>
+						<td>ne</td>
+						<td>veut</td>
+						<td>pas</td>
+						<td>boire.</td>
+					</tr>
+					<tr>
+						<td>Je</td>
+						<td colspan="2">n’ai</td>
+						<td>pas</td>
+						<td>dormi.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="container-3" id="klappe-3">
+			<div id="jo-3">
+				<div id="erkl-3">Fragen bilden</div>
+				<div class="abst">a) Mit „est-ce que“</div>
+				<div>Est-ce que tu parles français ? → Sprichst du Französisch?</div>
+				<br />
+				<div class="abst">b) Mit Intonation (wie im Deutschen)</div>
+				<div>Tu parles français ? (nur mit Betonung, typisch im Alltag)</div>
+				<br />
+				<div class="abst">c) Inversion (formell)</div>
+				<div>Parles-tu français ?</div>
+			</div>
+		</div>
+
+		<div class="container-5" id="klappe-5">
+			<div id="jo-5">
+				<div id="erkl-5">Verben konjugieren (présent)</div>
+				<div class="table-container">
+						<table>
+							<tr>
+								<th>être</th>
+								<th>sein</th>
+							</tr>
+							<tr>
+								<td>je</td>
+								<td>
+									<input
+										class="conjug-verb-d"
+										type="text"
+										id="a1"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>tu</td>
+								<td>
+									<input
+										class="conjug-verb-h"
+										type="text"
+										id="a2"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>il, elle, on</td>
+								<td>
+									<input
+										class="conjug-verb-d"
+										type="text"
+										id="a3"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>nous</td>
+								<td>
+									<input
+										class="conjug-verb-h"
+										type="text"
+										id="a4"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>vous</td>
+								<td>
+									<input
+										class="conjug-verb-d"
+										type="text"
+										id="a5"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr>
+								<td>ils, elles</td>
+								<td>
+									<input
+										class="conjug-verb-h"
+										type="text"
+										id="a6"
+										name="value"
+										maxlength="10"
+										size="10"
+										placeholder="✎"
+									/>
+								</td>
+							</tr>
+							<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_etre()">überprüfen</td></tr>
+						</table>
+						</div>
+					<div class="table-container">
+					<table>
+						<tr>
+							<th>avoir</th>
+							<th>haben</th>
+						</tr>
+						<tr>
+							<td>j'</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="b1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>tu</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="b2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>il, elle, on</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="b3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>nous</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="b4"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>vous</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="b5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>ils, elles</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="b6"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_avoir()">überprüfen</td></tr>
+					</table>
+					</div>
+					<div class="table-container">
+					<table>
+						<tr>
+							<th>faire</th>
+							<th>machen, tun</th>
+						</tr>
+						<tr>
+							<td>je</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="c1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>tu</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="c2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>il, elle, on</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="c3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>nous</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="c4"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>vous</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="c5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>ils, elles</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="c6"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_faire()">überprüfen</td></tr>
+					</table>
+					</div>
+					<div class="table-container">
+					<table>
+						<tr>
+							<th>aller</th>
+							<th>gehen, fahren</th>
+						</tr>
+						<tr>
+							<td>je</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="d1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>tu</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="d2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>il, elle, on</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="d3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>nous</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="d4"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>vous</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="d5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>ils, elles</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="d6"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_aller()">überprüfen</td></tr>
+					</table>
+					</div>
+					<div class="table-container">
+					<table>
+						<tr>
+							<th>boire</th>
+							<th>trinken</th>
+						</tr>
+						<tr>
+							<td>je</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="e1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>tu</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="e2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>il, elle, on</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="e3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>nous</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="e4"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>vous</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="e5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>ils, elles</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="e6"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_boire()">überprüfen</td></tr>
+					</table>
+					</div>
+					<div class="table-container">
+					<table>
+						<tr>
+							<th>acheter</th>
+							<th>haben</th>
+						</tr>
+						<tr>
+							<td>j'</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="f1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>tu</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="f2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>il, elle, on</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="f3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>nous</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="f4"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>vous</td>
+							<td>
+								<input
+									class="conjug-verb-d"
+									type="text"
+									id="f5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr>
+							<td>ils, elles</td>
+							<td>
+								<input
+									class="conjug-verb-h"
+									type="text"
+									id="f6"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/>
+							</td>
+						</tr>
+						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_acheter()">überprüfen</td></tr>
+					</table>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
