@@ -20,10 +20,12 @@
 			#jo-ueb {
 				display: flex;
 				justify-content: center;
-				margin-top: 20px;
+				margin-top: -18px;
 				padding-bottom: 1rem;
+				color: rgb(150, 70, 70);
 				font-size: 2rem;
 				font-weight: bold;
+				text-decoration: none;
 			}
 			#jo-1 {
 				width: 90%;
@@ -53,6 +55,13 @@
 				padding: 15px;
 				border: 5px solid #d05f5f;
 			}
+			#jo-6 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #da1a9d;
+			}
 			.container-1 {
 				display: flex;
 				justify-content: center;
@@ -71,6 +80,9 @@
 				display: none;
 			}
 			#klappe-5 {
+				display: none;
+			}
+			#klappe-6 {
 				display: none;
 			}
 			.container-1 div {
@@ -113,21 +125,35 @@
 				padding: 10px;
 				color: black;
 			}
+			.container-6 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-6 div {
+				/* width: 90%; */
+				margin-left: 0px;
+				padding-left: 40px;
+				/* border: 2px blue solid; */
+			}
 			#erkl-1 {
 				margin: 10px auto;
-				font-size: 1.8rem;
+				font-size: 1.5rem;
 				font-weight: bold;
 				color: blue;
 			}
 			#erkl-2 {
 				margin: 10px auto;
-				font-size: 1.8rem;
+				font-size: 1.5rem;
 				font-weight: bold;
 				color: blue;
 			}
 			#erkl-3 {
 				margin: 10px auto;
-				font-size: 1.8rem;
+				font-size: 1.5rem;
 				font-weight: bold;
 				color: blue;
 				padding-left: 40px;
@@ -135,24 +161,31 @@
 			}
 			#erkl-5 {
 				margin: 10px auto;
-				font-size: 1.8rem;
+				font-size: 1.5rem;
 				font-weight: bold;
 				padding-left: 40px;
 				color: blue;
+			}
+			#erkl-6 {
+				margin: 10px auto;
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: blue;
+				padding-left: 40px;
+				/* border: 2px red solid; */
 			}
 			.jo-table {
 				border-collapse: collapse;
 				width: 90%;
 				margin: 10px auto;
 				font-size: 1.0rem;
-				/* scale: 0.7; */
 			}
 			#mySidenav a {
 				position: absolute;
-				left: -125px;
+				left: -145px;
 				transition: 0.3s;
 				padding: 15px;
-				width: 120px;
+				width: 140px;
 				text-decoration: none;
 				font-size: 1.25rem;
 				color: white;
@@ -160,6 +193,9 @@
 			}
 			#mySidenav a:hover {
 				left: 0;
+			}
+			.sidenav {
+			
 			}
 			#grund {
 				top: 20px;
@@ -181,6 +217,10 @@
 			#verben {
 				top: 260px;
 				background-color: #d05f5f;
+			}
+			#ueb-1 {
+				top: 320px;
+				background-color: #da1a9d;
 			}
 			.abst {
 				padding-bottom: 0.25rem;
@@ -286,6 +326,15 @@
 				font-weight: 700;
 				transition-duration: 0.2s;
 			}
+			#datum {
+		  font-family: Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+      color: #696969;
+      padding: 0px;
+      padding-left: 5px;
+			padding-bottom: 30px;
+			text-align: left;
+	  	}
 		</style>
 		<script defer>
 			verb_etre = ["suis", "es", "est", "sommes", "êtes", "sont"];
@@ -341,6 +390,20 @@
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
 				var klappe = document.getElementById("klappe-5");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_6() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-6");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
@@ -755,10 +818,84 @@
 					f6c.style.color = "		rgb(0,0,0)";
 				}
 			}
+			// Datum und Uhrzeit anzeigen
+    myInterval = setInterval(dateZeit, 1000);
+    function dateZeit() {
+      var datum1 = new Date();
+      const wochentag = [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+      ];
+      const monat = [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+      ];
+      const tag = [
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix",
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+        "vingt",
+        "ving-et-un",
+        "vingt-deux",
+        "vingt-trois",
+        "vingt-quatre",
+        "vingt-cinq",
+        "vingt-six",
+        "vingt-sept",
+        "vingt-huit",
+        "vingt-neuf",
+        "trente",
+        "trente-et-un",
+      ];
+    var datum = document.getElementById("datum");
+    var Tag = tag[datum1.getDate() - 1];
+    var Wochentag = wochentag[datum1.getDay()];
+    var Monat = monat[datum1.getMonth()];
+    var Stunden = datum1.getHours();
+    var Minuten = addZero(datum1.getMinutes());
+    datum.innerHTML =
+      Wochentag + ", " + Tag + " " + Monat + " " + Stunden + ":" + Minuten;
+    }
+    function addZero(num) {
+      return num < 10 ? `0${num}` : num;
+    }
 		</script>
 	</head>
 	<body>
-		<div id="jo-ueb">La phrase simple</div>
+		<div id="datum">date</div>
+  	</div>
+		<div><a href="#" id="jo-ueb">La phrase simple</a></div>
 		<!-- seitliches Menü -->
 		<div id="mySidenav" class="sidenav">
 			<a href="#" id="grund" onclick="klapp_1()">Grundstruktur</a>
@@ -766,6 +903,7 @@
 			<a href="#" id="frage" onclick="klapp_3()">Fragesätze</a>
 			<a href="#" id="ausblend" onclick="klapp_4()">Ausblenden</a>
 			<a href="#" id="verben" onclick="klapp_5()">Verben</a>
+			<a href="#" id="ueb-1" onclick="klapp_6()">Übung 1</a>
 		</div>
 		<div class="container-1" id="klappe-1">
 			<div id="jo-1">
@@ -805,9 +943,9 @@
 				<table class="jo-table">
 					<tr>
 						<th style="color: #3e6e9e">Subject</th>
-						<th style="color: #1abc9c">ne</th>
-						<th style="color: #e67e22">conjugated verb</th>
-						<th style="color: #1abc9c">pas</th>
+						<th style="color: #e67e22">ne</th>
+						<th style="color: #1abc9c">conjugated verb</th>
+						<th style="color: #e67e22">pas</th>
 						<th style="color: #f4d03f">noun</th>
 					</tr>
 					<tr>
@@ -1417,6 +1555,18 @@
 					</div>	
 				</div>
 			</div>
+			<div class="container-6" id="klappe-6">
+			<div id="jo-6">
+				<div id="erkl-6">Übung 1</div>
+				<div class="abst">Vervollständige die Sätze mit der korrekten Konjugation.</div><br />
+				<div>1. Je ___ une pomme. (manger)</div>
+				<br />
+				<div>2. Tu ___ de l'eau. (boire)</div><br />
+				<div>3. Il ___ à l'école. (aller)</div><br />
+				<div>4. Nous ___ la télé. (regarder)</div><br />
+				<div>5. Elles ___ un livre. (lire)</div>
+			</div>
+		</div>
 		</div>
 	</body>
 </html>
