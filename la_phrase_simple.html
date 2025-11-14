@@ -22,7 +22,7 @@
 				justify-content: center;
 				margin-top: -18px;
 				padding-bottom: 1rem;
-				color: rgb(150, 70, 70);
+				color: rgb(150, 70, 70)	;
 				font-size: 2rem;
 				font-weight: bold;
 				text-decoration: none;
@@ -62,6 +62,13 @@
 				padding: 15px;
 				border: 5px solid #da1a9d;
 			}
+			#jo-7 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid rebeccapurple;
+			}
 			.container-1 {
 				display: flex;
 				justify-content: center;
@@ -83,6 +90,9 @@
 				display: none;
 			}
 			#klappe-6 {
+				display: none;
+			}
+			#klappe-7 {
 				display: none;
 			}
 			.container-1 div {
@@ -114,7 +124,7 @@
 			.container-3 div {
 				/* width: 90%; */
 				margin-left: 0px;
-				padding-left: 40px;
+				padding-left: 10px;
 				/* border: 2px blue solid; */
 			}
 			.container-5 {
@@ -134,10 +144,18 @@
 				color: black;
 			}
 			.container-6 div {
-				/* width: 90%; */
-				margin-left: 0px;
-				padding-left: 40px;
-				/* border: 2px blue solid; */
+				padding-left: 10px;
+			}
+			.container-7 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-7 div {
+				padding-left: 10px;
 			}
 			#erkl-1 {
 				margin: 10px auto;
@@ -156,14 +174,13 @@
 				font-size: 1.5rem;
 				font-weight: bold;
 				color: blue;
-				padding-left: 40px;
-				/* border: 2px red solid; */
+				padding-left: 10px;
 			}
 			#erkl-5 {
 				margin: 10px auto;
 				font-size: 1.5rem;
 				font-weight: bold;
-				padding-left: 40px;
+				padding-left: 26px;
 				color: blue;
 			}
 			#erkl-6 {
@@ -171,7 +188,15 @@
 				font-size: 1.5rem;
 				font-weight: bold;
 				color: blue;
-				padding-left: 40px;
+				padding-left: 10px;
+				/* border: 2px red solid; */
+			}
+			#erkl-7 {
+				margin: 10px auto;
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: blue;
+				padding-left: 10px;
 				/* border: 2px red solid; */
 			}
 			.jo-table {
@@ -222,9 +247,16 @@
 				top: 320px;
 				background-color: #da1a9d;
 			}
+			#ueb-2 {
+				top: 380px;
+				background-color: rebeccapurple;
+			}
 			.abst {
 				padding-bottom: 0.25rem;
 				font-weight: bold;
+			}
+			.abst_ueb2 {
+				padding-bottom: 0.8rem;
 			}
 			.table-container {
 				display: flex;
@@ -328,13 +360,17 @@
 			}
 			#datum {
 		  font-family: Arial, Helvetica, sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.0rem;
       color: #696969;
       padding: 0px;
       padding-left: 5px;
 			padding-bottom: 30px;
 			text-align: left;
 	  	}
+			.btn_frag_abst {
+				box-shadow: none;
+				margin-top: 20px;
+			}
 		</style>
 		<script defer>
 			verb_etre = ["suis", "es", "est", "sommes", "êtes", "sont"];
@@ -404,6 +440,20 @@
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
 				var klappe = document.getElementById("klappe-6");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_7() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-7");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
@@ -818,6 +868,120 @@
 					f6c.style.color = "		rgb(0,0,0)";
 				}
 			}
+			function checkMeOk_ueb1() {
+				var f1c = document.getElementById("ueb1-fr_1");
+				var f1 = document.getElementById("ueb1-fr_1").value;
+				if (f1 == "mange") {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("ueb1-fr_2");
+				var f2 = document.getElementById("ueb1-fr_2").value;
+				if (f2 == "bois") {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("ueb1-fr_3");
+				var f3 = document.getElementById("ueb1-fr_3").value;
+				if (f3 == "va") {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("ueb1-fr_4");
+				var f4 = document.getElementById("ueb1-fr_4").value;
+				if (f4 == "regardons") {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("ueb1-fr_5");
+				var f5 = document.getElementById("ueb1-fr_5").value;
+				if (f5 == "lisent") {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_ueb2() {
+				var f1c = document.getElementById("ueb2-fr_1");
+				var f1 = document.getElementById("ueb2-fr_1").value;
+				if (f1 == "Je n’aime pas le café." || f1 == "Je n‘aime pas le café." || f1 == "Je n'aime pas le café.") {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("ueb2-fr_2");
+				var f2 = document.getElementById("ueb2-fr_2").value;
+				if (f2 == "Il ne travaille pas à Paris.") {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("ueb2-fr_3");
+				var f3 = document.getElementById("ueb2-fr_3").value;
+				if (f3 == "Nous ne regardons pas la télé.") {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("ueb2-fr_4");
+				var f4 = document.getElementById("ueb2-fr_4").value;
+				if (f4 == "Vous n’avez pas de voiture." || f4 == "Vous n‘avez pas de voiture." || f4 == "Vous n'avez pas de voiture.") {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("ueb2-fr_5");
+				var f5 = document.getElementById("ueb2-fr_5").value;
+				if (f5 == "Elles ne vont pas à l’école." || f5 == "Elles ne vont pas à l‘école." || f5 == "Elles ne vont pas à l'école.") {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+			}
 			// Datum und Uhrzeit anzeigen
     myInterval = setInterval(dateZeit, 1000);
     function dateZeit() {
@@ -904,6 +1068,8 @@
 			<a href="#" id="ausblend" onclick="klapp_4()">Ausblenden</a>
 			<a href="#" id="verben" onclick="klapp_5()">Verben</a>
 			<a href="#" id="ueb-1" onclick="klapp_6()">Übung 1</a>
+			<a href="#" id="ueb-2" onclick="klapp_7()">Übung 2</a>
+		</div>
 		</div>
 		<div class="container-1" id="klappe-1">
 			<div id="jo-1">
@@ -1003,8 +1169,8 @@
 										type="text"
 										id="a1"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1017,8 +1183,8 @@
 										type="text"
 										id="a2"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1031,8 +1197,8 @@
 										type="text"
 										id="a3"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1045,8 +1211,8 @@
 										type="text"
 										id="a4"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1059,8 +1225,8 @@
 										type="text"
 										id="a5"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1073,8 +1239,8 @@
 										type="text"
 										id="a6"
 										name="value"
-										maxlength="10"
-										size="10"
+										maxlength="8"
+										size="8"
 										placeholder="✎"
 									/>
 								</td>
@@ -1559,12 +1725,122 @@
 			<div id="jo-6">
 				<div id="erkl-6">Übung 1</div>
 				<div class="abst">Vervollständige die Sätze mit der korrekten Konjugation.</div><br />
-				<div>1. Je ___ une pomme. (manger)</div>
+				<div>1. Je <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_1"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/> &nbsp;une pomme. (manger)</div>
 				<br />
-				<div>2. Tu ___ de l'eau. (boire)</div><br />
-				<div>3. Il ___ à l'école. (aller)</div><br />
-				<div>4. Nous ___ la télé. (regarder)</div><br />
-				<div>5. Elles ___ un livre. (lire)</div>
+				<div>2. Tu <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_2"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/> &nbsp;de l'eau. (boire)</div><br />
+				<div>3. Il <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_3"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/> &nbsp;à l'école. (aller)</div><br />
+				<div>4. Nous <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_4"
+									name="value"
+									maxlength="10"
+									size="10"
+									placeholder="✎"
+								/> &nbsp;la télé. (regarder)</div><br />
+				<div>5. Elles <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_5"
+									name="value"
+									maxlength="8"
+									size="8"
+									placeholder="✎"
+								/> &nbsp;un livre. (lire)</div>
+				<table class="btn_frag_abst">
+					<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_ueb1()">überprüfen</td></tr>
+					</table>
+			</div>
+		</div>
+		<div class="container-7" id="klappe-7">
+			<div id="jo-7">
+				<div id="erkl-7">Übung 2</div>
+				<div class="abst">Mache die Sätze negativ (mit „ne … pas“)</div><br />
+				<div>1. J’aime le café.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_1"
+									name="value"
+									maxlength="32"
+									size="32"
+									placeholder="✎"
+								/> </div>
+				<br />
+				<div>2. Il travaille à Paris.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_2"
+									name="value"
+									maxlength="32"
+									size="32"
+									placeholder="✎"
+								/></div><br />
+				<div>3. Nous regardons la télé.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_3"
+									name="value"
+									maxlength="32"
+									size="32"
+									placeholder="✎"
+								/></div><br />
+				<div>4. Vous avez une voiture.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_4"
+									name="value"
+									maxlength="32"
+									size="32"
+									placeholder="✎"
+								/></div><br />
+				<div>5. Elles vont à l’école.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_5"
+									name="value"
+									maxlength="32"
+									size="32"
+									placeholder="✎"
+								/></div>
+				<table class="btn_frag_abst">
+					<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_ueb2()">überprüfen</td></tr>
+					</table>
 			</div>
 		</div>
 		</div>
