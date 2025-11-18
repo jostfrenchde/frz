@@ -69,6 +69,13 @@
 				padding: 15px;
 				border: 5px solid rebeccapurple;
 			}
+			#jo-8 {
+				width: 90%;
+				border-radius: 10px;
+				background-color: #ffffe0;
+				padding: 15px;
+				border: 5px solid #fdcb00;
+			}
 			.container-1 {
 				display: flex;
 				justify-content: center;
@@ -93,6 +100,9 @@
 				display: none;
 			}
 			#klappe-7 {
+				display: none;
+			}
+			#klappe-8 {
 				display: none;
 			}
 			.container-1 div {
@@ -157,6 +167,17 @@
 			.container-7 div {
 				padding-left: 10px;
 			}
+			.container-8 {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-8 div {
+				padding-left: 10px;
+			}
 			#erkl-1 {
 				margin: 10px auto;
 				font-size: 1.5rem;
@@ -189,7 +210,6 @@
 				font-weight: bold;
 				color: blue;
 				padding-left: 10px;
-				/* border: 2px red solid; */
 			}
 			#erkl-7 {
 				margin: 10px auto;
@@ -197,7 +217,13 @@
 				font-weight: bold;
 				color: blue;
 				padding-left: 10px;
-				/* border: 2px red solid; */
+			}
+			#erkl-8 {
+				margin: 10px auto;
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: blue;
+				padding-left: 10px;
 			}
 			.jo-table {
 				border-collapse: collapse;
@@ -250,6 +276,13 @@
 			#ueb-2 {
 				top: 380px;
 				background-color: rebeccapurple;
+			}
+			#ueb2-fr_4_hilfe {
+				display: none;
+			}
+			#ueb-3 {
+			top: 440px;
+			background-color: #fdcb00;
 			}
 			.abst {
 				padding-bottom: 0.25rem;
@@ -358,6 +391,14 @@
 				font-weight: 700;
 				transition-duration: 0.2s;
 			}
+			.satz_n_btn {
+				margin-top: -40px;
+				background-color: #ffffe0;
+				border-color: #ffffe0;
+				border-collapse: none;
+				box-shadow: none;
+				font-size: 1.5rem;
+			}
 			#datum {
 		  font-family: Arial, Helvetica, sans-serif;
       font-size: 1.0rem;
@@ -371,690 +412,26 @@
 				box-shadow: none;
 				margin-top: 20px;
 			}
+			#btn_etre_audio {
+				display: none;
+			}
+			#btn_avoir_audio {
+				display: none;
+			}
+			#btn_faire_audio {
+				display: none;
+			}
+			#btn_aller_audio {
+				display: none;
+			}
+			#btn_boire_audio {
+				display: none;
+			}
+			#btn_acheter_audio {
+				display: none;
+			}
+			
 		</style>
-		<script defer>
-			verb_etre = ["suis", "es", "est", "sommes", "êtes", "sont"];
-			verb_avoir = ["ai", "as", "a", "avons", "avez", "ont"];
-			verb_faire = ["fais", "fais", "fait", "faisons", "faites", "font"];
-			verb_aller = ["vais", "vas", "va", "allons", "allez", "vont"];
-			verb_boire = ["bois", "bois", "boit", "buvons", "buvez", "boivent"];
-			verb_acheter = [
-				"achète",
-				"achètes",
-				"achète",
-				"achetons",
-				"achetez",
-				"achètent",
-			];
-			function klapp_1() {
-				var klappe = document.getElementById("klappe-1");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function klapp_2() {
-				var klappe = document.getElementById("klappe-2");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function klapp_3() {
-				var klappe = document.getElementById("klappe-3");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function klapp_4() {
-				var klappe_11 = document.getElementById("klappe-1");
-				var klappe_12 = document.getElementById("klappe-2");
-				var klappe_13 = document.getElementById("klappe-3");
-				klappe_11.style.display = "none";
-				klappe_12.style.display = "none";
-				klappe_13.style.display = "none";
-			}
-			function klapp_5() {
-				var klappe_11 = document.getElementById("klappe-1");
-				var klappe_12 = document.getElementById("klappe-2");
-				var klappe_13 = document.getElementById("klappe-3");
-				klappe_11.style.display = "none";
-				klappe_12.style.display = "none";
-				klappe_13.style.display = "none";
-				var klappe = document.getElementById("klappe-5");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function klapp_6() {
-				var klappe_11 = document.getElementById("klappe-1");
-				var klappe_12 = document.getElementById("klappe-2");
-				var klappe_13 = document.getElementById("klappe-3");
-				klappe_11.style.display = "none";
-				klappe_12.style.display = "none";
-				klappe_13.style.display = "none";
-				var klappe = document.getElementById("klappe-6");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function klapp_7() {
-				var klappe_11 = document.getElementById("klappe-1");
-				var klappe_12 = document.getElementById("klappe-2");
-				var klappe_13 = document.getElementById("klappe-3");
-				klappe_11.style.display = "none";
-				klappe_12.style.display = "none";
-				klappe_13.style.display = "none";
-				var klappe = document.getElementById("klappe-7");
-				if (klappe.style.display === "block") {
-					klappe.style.display = "none";
-				} else {
-					klappe.style.display = "block";
-				}
-			}
-			function checkMeOk_etre() {
-				var a1c = document.getElementById("a1");
-				var a1 = document.getElementById("a1").value;
-				if (a1 == verb_etre[0]) {
-					a1c.style.backgroundColor = "		rgb(0,139,0)";
-					a1c.style.color = "		rgb(255,255,255)";
-				} else if (a1 != "") {
-					a1c.style.backgroundColor = "		rgb(224,0,0)";
-					a1c.style.color = "		rgb(255,255,255)";
-				} else if (a1 == "") {
-					a1c.style.color = "		rgb(0,0,0)";
-				}
-				var a2c = document.getElementById("a2");
-				var a2 = document.getElementById("a2").value;
-				if (a2 == verb_etre[1]) {
-					a2c.style.backgroundColor = "		rgb(0,139,0)";
-					a2c.style.color = "		rgb(255,255,255)";
-				} else if (a2 != "") {
-					a2c.style.backgroundColor = "		rgb(224,0,0)";
-					a2c.style.color = "		rgb(255,255,255)";
-				} else if (a2 == "") {
-					a2c.style.color = "		rgb(0,0,0)";
-				}
-				var a3c = document.getElementById("a3");
-				var a3 = document.getElementById("a3").value;
-				if (a3 == verb_etre[2]) {
-					a3c.style.backgroundColor = "		rgb(0,139,0)";
-					a3c.style.color = "		rgb(255,255,255)";
-				} else if (a3 != "") {
-					a3c.style.backgroundColor = "		rgb(224,0,0)";
-					a3c.style.color = "		rgb(255,255,255)";
-				} else if (a3 == "") {
-					a3c.style.color = "		rgb(0,0,0)";
-				}
-				var a4c = document.getElementById("a4");
-				var a4 = document.getElementById("a4").value;
-				if (a4 == verb_etre[3]) {
-					a4c.style.backgroundColor = "		rgb(0,139,0)";
-					a4c.style.color = "		rgb(255,255,255)";
-				} else if (a4 != "") {
-					a4c.style.backgroundColor = "		rgb(224,0,0)";
-					a4c.style.color = "		rgb(255,255,255)";
-				} else if (a4 == "") {
-					a4c.style.color = "		rgb(0,0,0)";
-				}
-				var a5c = document.getElementById("a5");
-				var a5 = document.getElementById("a5").value;
-				if (a5 == verb_etre[4]) {
-					a5c.style.backgroundColor = "		rgb(0,139,0)";
-					a5c.style.color = "		rgb(255,255,255)";
-				} else if (a5 != "") {
-					a5c.style.backgroundColor = "		rgb(224,0,0)";
-					a5c.style.color = "		rgb(255,255,255)";
-				} else if (a5 == "") {
-					a5c.style.color = "		rgb(0,0,0)";
-				}
-				var a6c = document.getElementById("a6");
-				var a6 = document.getElementById("a6").value;
-				if (a6 == verb_etre[5]) {
-					a6c.style.backgroundColor = "		rgb(0,139,0)";
-					a6c.style.color = "		rgb(255,255,255)";
-				} else if (a6 != "") {
-					a6c.style.backgroundColor = "		rgb(224,0,0)";
-					a6c.style.color = "		rgb(255,255,255)";
-				} else if (a6 == "") {
-					a6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_avoir() {
-				var b1c = document.getElementById("b1");
-				var b1 = document.getElementById("b1").value;
-				if (b1 == verb_avoir[0]) {
-					b1c.style.backgroundColor = "		rgb(0,139,0)";
-					b1c.style.color = "		rgb(255,255,255)";
-				} else if (b1 != "") {
-					b1c.style.backgroundColor = "		rgb(224,0,0)";
-					b1c.style.color = "		rgb(255,255,255)";
-				} else if (b1 == "") {
-					b1c.style.color = "		rgb(0,0,0)";
-				}
-				var b2c = document.getElementById("b2");
-				var b2 = document.getElementById("b2").value;
-				if (b2 == verb_avoir[1]) {
-					b2c.style.backgroundColor = "		rgb(0,139,0)";
-					b2c.style.color = "		rgb(255,255,255)";
-				} else if (b2 != "") {
-					b2c.style.backgroundColor = "		rgb(224,0,0)";
-					b2c.style.color = "		rgb(255,255,255)";
-				} else if (b2 == "") {
-					b2c.style.color = "		rgb(0,0,0)";
-				}
-				var b3c = document.getElementById("b3");
-				var b3 = document.getElementById("b3").value;
-				if (b3 == verb_avoir[2]) {
-					b3c.style.backgroundColor = "		rgb(0,139,0)";
-					b3c.style.color = "		rgb(255,255,255)";
-				} else if (b3 != "") {
-					b3c.style.backgroundColor = "		rgb(224,0,0)";
-					b3c.style.color = "		rgb(255,255,255)";
-				} else if (b3 == "") {
-					b3c.style.color = "		rgb(0,0,0)";
-				}
-				var b4c = document.getElementById("b4");
-				var b4 = document.getElementById("b4").value;
-				if (b4 == verb_avoir[3]) {
-					b4c.style.backgroundColor = "		rgb(0,139,0)";
-					b4c.style.color = "		rgb(255,255,255)";
-				} else if (b4 != "") {
-					b4c.style.backgroundColor = "		rgb(224,0,0)";
-					b4c.style.color = "		rgb(255,255,255)";
-				} else if (b4 == "") {
-					b4c.style.color = "		rgb(0,0,0)";
-				}
-				var b5c = document.getElementById("b5");
-				var b5 = document.getElementById("b5").value;
-				if (b5 == verb_avoir[4]) {
-					b5c.style.backgroundColor = "		rgb(0,139,0)";
-					b5c.style.color = "		rgb(255,255,255)";
-				} else if (b5 != "") {
-					b5c.style.backgroundColor = "		rgb(224,0,0)";
-					b5c.style.color = "		rgb(255,255,255)";
-				} else if (b5 == "") {
-					b5c.style.color = "		rgb(0,0,0)";
-				}
-				var b6c = document.getElementById("b6");
-				var b6 = document.getElementById("b6").value;
-				if (b6 == verb_avoir[5]) {
-					b6c.style.backgroundColor = "		rgb(0,139,0)";
-					b6c.style.color = "		rgb(255,255,255)";
-				} else if (b6 != "") {
-					b6c.style.backgroundColor = "		rgb(224,0,0)";
-					b6c.style.color = "		rgb(255,255,255)";
-				} else if (b6 == "") {
-					b6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_faire() {
-				var c1c = document.getElementById("c1");
-				var c1 = document.getElementById("c1").value;
-				if (c1 == verb_faire[0]) {
-					c1c.style.backgroundColor = "		rgb(0,139,0)";
-					c1c.style.color = "		rgb(255,255,255)";
-				} else if (c1 != "") {
-					c1c.style.backgroundColor = "		rgb(224,0,0)";
-					c1c.style.color = "		rgb(255,255,255)";
-				} else if (c1 == "") {
-					c1c.style.color = "		rgb(0,0,0)";
-				}
-				var c2c = document.getElementById("c2");
-				var c2 = document.getElementById("c2").value;
-				if (c2 == verb_faire[1]) {
-					c2c.style.backgroundColor = "		rgb(0,139,0)";
-					c2c.style.color = "		rgb(255,255,255)";
-				} else if (c2 != "") {
-					c2c.style.backgroundColor = "		rgb(224,0,0)";
-					c2c.style.color = "		rgb(255,255,255)";
-				} else if (c2 == "") {
-					c2c.style.color = "		rgb(0,0,0)";
-				}
-				var c3c = document.getElementById("c3");
-				var c3 = document.getElementById("c3").value;
-				if (c3 == verb_faire[2]) {
-					c3c.style.backgroundColor = "		rgb(0,139,0)";
-					c3c.style.color = "		rgb(255,255,255)";
-				} else if (c3 != "") {
-					c3c.style.backgroundColor = "		rgb(224,0,0)";
-					c3c.style.color = "		rgb(255,255,255)";
-				} else if (c3 == "") {
-					c3c.style.color = "		rgb(0,0,0)";
-				}
-				var c4c = document.getElementById("c4");
-				var c4 = document.getElementById("c4").value;
-				if (c4 == verb_faire[3]) {
-					c4c.style.backgroundColor = "		rgb(0,139,0)";
-					c4c.style.color = "		rgb(255,255,255)";
-				} else if (c4 != "") {
-					c4c.style.backgroundColor = "		rgb(224,0,0)";
-					c4c.style.color = "		rgb(255,255,255)";
-				} else if (c4 == "") {
-					c4c.style.color = "		rgb(0,0,0)";
-				}
-				var c5c = document.getElementById("c5");
-				var c5 = document.getElementById("c5").value;
-				if (c5 == verb_faire[4]) {
-					c5c.style.backgroundColor = "		rgb(0,139,0)";
-					c5c.style.color = "		rgb(255,255,255)";
-				} else if (c5 != "") {
-					c5c.style.backgroundColor = "		rgb(224,0,0)";
-					c5c.style.color = "		rgb(255,255,255)";
-				} else if (c5 == "") {
-					c5c.style.color = "		rgb(0,0,0)";
-				}
-				var c6c = document.getElementById("c6");
-				var c6 = document.getElementById("c6").value;
-				if (c6 == verb_faire[5]) {
-					c6c.style.backgroundColor = "		rgb(0,139,0)";
-					c6c.style.color = "		rgb(255,255,255)";
-				} else if (c6 != "") {
-					c6c.style.backgroundColor = "		rgb(224,0,0)";
-					c6c.style.color = "		rgb(255,255,255)";
-				} else if (c6 == "") {
-					c6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_aller() {
-				var d1c = document.getElementById("d1");
-				var d1 = document.getElementById("d1").value;
-				if (d1 == verb_aller[0]) {
-					d1c.style.backgroundColor = "		rgb(0,139,0)";
-					d1c.style.color = "		rgb(255,255,255)";
-				} else if (d1 != "") {
-					d1c.style.backgroundColor = "		rgb(224,0,0)";
-					d1c.style.color = "		rgb(255,255,255)";
-				} else if (d1 == "") {
-					d1c.style.color = "		rgb(0,0,0)";
-				}
-				var d2c = document.getElementById("d2");
-				var d2 = document.getElementById("d2").value;
-				if (d2 == verb_aller[1]) {
-					d2c.style.backgroundColor = "		rgb(0,139,0)";
-					d2c.style.color = "		rgb(255,255,255)";
-				} else if (d2 != "") {
-					d2c.style.backgroundColor = "		rgb(224,0,0)";
-					d2c.style.color = "		rgb(255,255,255)";
-				} else if (d2 == "") {
-					d2c.style.color = "		rgb(0,0,0)";
-				}
-				var d3c = document.getElementById("d3");
-				var d3 = document.getElementById("d3").value;
-				if (d3 == verb_aller[2]) {
-					d3c.style.backgroundColor = "		rgb(0,139,0)";
-					d3c.style.color = "		rgb(255,255,255)";
-				} else if (d3 != "") {
-					d3c.style.backgroundColor = "		rgb(224,0,0)";
-					d3c.style.color = "		rgb(255,255,255)";
-				} else if (d3 == "") {
-					d3c.style.color = "		rgb(0,0,0)";
-				}
-				var d4c = document.getElementById("d4");
-				var d4 = document.getElementById("d4").value;
-				if (d4 == verb_aller[3]) {
-					d4c.style.backgroundColor = "		rgb(0,139,0)";
-					d4c.style.color = "		rgb(255,255,255)";
-				} else if (d4 != "") {
-					d4c.style.backgroundColor = "		rgb(224,0,0)";
-					d4c.style.color = "		rgb(255,255,255)";
-				} else if (d4 == "") {
-					d4c.style.color = "		rgb(0,0,0)";
-				}
-				var d5c = document.getElementById("d5");
-				var d5 = document.getElementById("d5").value;
-				if (d5 == verb_aller[4]) {
-					d5c.style.backgroundColor = "		rgb(0,139,0)";
-					d5c.style.color = "		rgb(255,255,255)";
-				} else if (d5 != "") {
-					d5c.style.backgroundColor = "		rgb(224,0,0)";
-					d5c.style.color = "		rgb(255,255,255)";
-				} else if (d5 == "") {
-					d5c.style.color = "		rgb(0,0,0)";
-				}
-				var d6c = document.getElementById("d6");
-				var d6 = document.getElementById("d6").value;
-				if (d6 == verb_aller[5]) {
-					d6c.style.backgroundColor = "		rgb(0,139,0)";
-					d6c.style.color = "		rgb(255,255,255)";
-				} else if (d6 != "") {
-					d6c.style.backgroundColor = "		rgb(224,0,0)";
-					d6c.style.color = "		rgb(255,255,255)";
-				} else if (d6 == "") {
-					d6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_boire() {
-				var e1c = document.getElementById("e1");
-				var e1 = document.getElementById("e1").value;
-				if (e1 == verb_boire[0]) {
-					e1c.style.backgroundColor = "		rgb(0,139,0)";
-					e1c.style.color = "		rgb(255,255,255)";
-				} else if (e1 != "") {
-					e1c.style.backgroundColor = "		rgb(224,0,0)";
-					e1c.style.color = "		rgb(255,255,255)";
-				} else if (e1 == "") {
-					e1c.style.color = "		rgb(0,0,0)";
-				}
-				var e2c = document.getElementById("e2");
-				var e2 = document.getElementById("e2").value;
-				if (e2 == verb_boire[1]) {
-					e2c.style.backgroundColor = "		rgb(0,139,0)";
-					e2c.style.color = "		rgb(255,255,255)";
-				} else if (e2 != "") {
-					e2c.style.backgroundColor = "		rgb(224,0,0)";
-					e2c.style.color = "		rgb(255,255,255)";
-				} else if (e2 == "") {
-					e2c.style.color = "		rgb(0,0,0)";
-				}
-				var e3c = document.getElementById("e3");
-				var e3 = document.getElementById("e3").value;
-				if (e3 == verb_boire[2]) {
-					e3c.style.backgroundColor = "		rgb(0,139,0)";
-					e3c.style.color = "		rgb(255,255,255)";
-				} else if (e3 != "") {
-					e3c.style.backgroundColor = "		rgb(224,0,0)";
-					e3c.style.color = "		rgb(255,255,255)";
-				} else if (e3 == "") {
-					e3c.style.color = "		rgb(0,0,0)";
-				}
-				var e4c = document.getElementById("e4");
-				var e4 = document.getElementById("e4").value;
-				if (e4 == verb_boire[3]) {
-					e4c.style.backgroundColor = "		rgb(0,139,0)";
-					e4c.style.color = "		rgb(255,255,255)";
-				} else if (e4 != "") {
-					e4c.style.backgroundColor = "		rgb(224,0,0)";
-					e4c.style.color = "		rgb(255,255,255)";
-				} else if (e4 == "") {
-					e4c.style.color = "		rgb(0,0,0)";
-				}
-				var e5c = document.getElementById("e5");
-				var e5 = document.getElementById("e5").value;
-				if (e5 == verb_boire[4]) {
-					e5c.style.backgroundColor = "		rgb(0,139,0)";
-					e5c.style.color = "		rgb(255,255,255)";
-				} else if (e5 != "") {
-					e5c.style.backgroundColor = "		rgb(224,0,0)";
-					e5c.style.color = "		rgb(255,255,255)";
-				} else if (e5 == "") {
-					e5c.style.color = "		rgb(0,0,0)";
-				}
-				var e6c = document.getElementById("e6");
-				var e6 = document.getElementById("e6").value;
-				if (e6 == verb_boire[5]) {
-					e6c.style.backgroundColor = "		rgb(0,139,0)";
-					e6c.style.color = "		rgb(255,255,255)";
-				} else if (e6 != "") {
-					e6c.style.backgroundColor = "		rgb(224,0,0)";
-					e6c.style.color = "		rgb(255,255,255)";
-				} else if (e6 == "") {
-					e6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_acheter() {
-				var f1c = document.getElementById("f1");
-				var f1 = document.getElementById("f1").value;
-				if (f1 == verb_acheter[0]) {
-					f1c.style.backgroundColor = "		rgb(0,139,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 != "") {
-					f1c.style.backgroundColor = "		rgb(224,0,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 == "") {
-					f1c.style.color = "		rgb(0,0,0)";
-				}
-				var f2c = document.getElementById("f2");
-				var f2 = document.getElementById("f2").value;
-				if (f2 == verb_acheter[1]) {
-					f2c.style.backgroundColor = "		rgb(0,139,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 != "") {
-					f2c.style.backgroundColor = "		rgb(224,0,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 == "") {
-					f2c.style.color = "		rgb(0,0,0)";
-				}
-				var f3c = document.getElementById("f3");
-				var f3 = document.getElementById("f3").value;
-				if (f3 == verb_acheter[2]) {
-					f3c.style.backgroundColor = "		rgb(0,139,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 != "") {
-					f3c.style.backgroundColor = "		rgb(224,0,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 == "") {
-					f3c.style.color = "		rgb(0,0,0)";
-				}
-				var f4c = document.getElementById("f4");
-				var f4 = document.getElementById("f4").value;
-				if (f4 == verb_acheter[3]) {
-					f4c.style.backgroundColor = "		rgb(0,139,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 != "") {
-					f4c.style.backgroundColor = "		rgb(224,0,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 == "") {
-					f4c.style.color = "		rgb(0,0,0)";
-				}
-				var f5c = document.getElementById("f5");
-				var f5 = document.getElementById("f5").value;
-				if (f5 == verb_acheter[4]) {
-					f5c.style.backgroundColor = "		rgb(0,139,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 != "") {
-					f5c.style.backgroundColor = "		rgb(224,0,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 == "") {
-					f5c.style.color = "		rgb(0,0,0)";
-				}
-				var f6c = document.getElementById("f6");
-				var f6 = document.getElementById("f6").value;
-				if (f6 == verb_acheter[5]) {
-					f6c.style.backgroundColor = "		rgb(0,139,0)";
-					f6c.style.color = "		rgb(255,255,255)";
-				} else if (f6 != "") {
-					f6c.style.backgroundColor = "		rgb(224,0,0)";
-					f6c.style.color = "		rgb(255,255,255)";
-				} else if (f6 == "") {
-					f6c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_ueb1() {
-				var f1c = document.getElementById("ueb1-fr_1");
-				var f1 = document.getElementById("ueb1-fr_1").value;
-				if (f1 == "mange") {
-					f1c.style.backgroundColor = "		rgb(0,139,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 != "") {
-					f1c.style.backgroundColor = "		rgb(224,0,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 == "") {
-					f1c.style.color = "		rgb(0,0,0)";
-				}
-				var f2c = document.getElementById("ueb1-fr_2");
-				var f2 = document.getElementById("ueb1-fr_2").value;
-				if (f2 == "bois") {
-					f2c.style.backgroundColor = "		rgb(0,139,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 != "") {
-					f2c.style.backgroundColor = "		rgb(224,0,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 == "") {
-					f2c.style.color = "		rgb(0,0,0)";
-				}
-				var f3c = document.getElementById("ueb1-fr_3");
-				var f3 = document.getElementById("ueb1-fr_3").value;
-				if (f3 == "va") {
-					f3c.style.backgroundColor = "		rgb(0,139,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 != "") {
-					f3c.style.backgroundColor = "		rgb(224,0,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 == "") {
-					f3c.style.color = "		rgb(0,0,0)";
-				}
-				var f4c = document.getElementById("ueb1-fr_4");
-				var f4 = document.getElementById("ueb1-fr_4").value;
-				if (f4 == "regardons") {
-					f4c.style.backgroundColor = "		rgb(0,139,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 != "") {
-					f4c.style.backgroundColor = "		rgb(224,0,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 == "") {
-					f4c.style.color = "		rgb(0,0,0)";
-				}
-				var f5c = document.getElementById("ueb1-fr_5");
-				var f5 = document.getElementById("ueb1-fr_5").value;
-				if (f5 == "lisent") {
-					f5c.style.backgroundColor = "		rgb(0,139,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 != "") {
-					f5c.style.backgroundColor = "		rgb(224,0,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 == "") {
-					f5c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			function checkMeOk_ueb2() {
-				var f1c = document.getElementById("ueb2-fr_1");
-				var f1 = document.getElementById("ueb2-fr_1").value;
-				if (f1 == "Je n’aime pas le café." || f1 == "Je n‘aime pas le café." || f1 == "Je n'aime pas le café.") {
-					f1c.style.backgroundColor = "		rgb(0,139,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 != "") {
-					f1c.style.backgroundColor = "		rgb(224,0,0)";
-					f1c.style.color = "		rgb(255,255,255)";
-				} else if (f1 == "") {
-					f1c.style.color = "		rgb(0,0,0)";
-				}
-				var f2c = document.getElementById("ueb2-fr_2");
-				var f2 = document.getElementById("ueb2-fr_2").value;
-				if (f2 == "Il ne travaille pas à Paris.") {
-					f2c.style.backgroundColor = "		rgb(0,139,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 != "") {
-					f2c.style.backgroundColor = "		rgb(224,0,0)";
-					f2c.style.color = "		rgb(255,255,255)";
-				} else if (f2 == "") {
-					f2c.style.color = "		rgb(0,0,0)";
-				}
-				var f3c = document.getElementById("ueb2-fr_3");
-				var f3 = document.getElementById("ueb2-fr_3").value;
-				if (f3 == "Nous ne regardons pas la télé.") {
-					f3c.style.backgroundColor = "		rgb(0,139,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 != "") {
-					f3c.style.backgroundColor = "		rgb(224,0,0)";
-					f3c.style.color = "		rgb(255,255,255)";
-				} else if (f3 == "") {
-					f3c.style.color = "		rgb(0,0,0)";
-				}
-				var f4c = document.getElementById("ueb2-fr_4");
-				var f4 = document.getElementById("ueb2-fr_4").value;
-				if (f4 == "Vous n’avez pas de voiture." || f4 == "Vous n‘avez pas de voiture." || f4 == "Vous n'avez pas de voiture.") {
-					f4c.style.backgroundColor = "		rgb(0,139,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 != "") {
-					f4c.style.backgroundColor = "		rgb(224,0,0)";
-					f4c.style.color = "		rgb(255,255,255)";
-				} else if (f4 == "") {
-					f4c.style.color = "		rgb(0,0,0)";
-				}
-				var f5c = document.getElementById("ueb2-fr_5");
-				var f5 = document.getElementById("ueb2-fr_5").value;
-				if (f5 == "Elles ne vont pas à l’école." || f5 == "Elles ne vont pas à l‘école." || f5 == "Elles ne vont pas à l'école.") {
-					f5c.style.backgroundColor = "		rgb(0,139,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 != "") {
-					f5c.style.backgroundColor = "		rgb(224,0,0)";
-					f5c.style.color = "		rgb(255,255,255)";
-				} else if (f5 == "") {
-					f5c.style.color = "		rgb(0,0,0)";
-				}
-			}
-			// Datum und Uhrzeit anzeigen
-    myInterval = setInterval(dateZeit, 1000);
-    function dateZeit() {
-      var datum1 = new Date();
-      const wochentag = [
-        "dimanche",
-        "lundi",
-        "mardi",
-        "mercredi",
-        "jeudi",
-        "vendredi",
-        "samedi",
-      ];
-      const monat = [
-        "janvier",
-        "février",
-        "mars",
-        "avril",
-        "mai",
-        "juin",
-        "juillet",
-        "août",
-        "septembre",
-        "octobre",
-        "novembre",
-        "décembre",
-      ];
-      const tag = [
-        "un",
-        "deux",
-        "trois",
-        "quatre",
-        "cinq",
-        "six",
-        "sept",
-        "huit",
-        "neuf",
-        "dix",
-        "onze",
-        "douze",
-        "treize",
-        "quatorze",
-        "quinze",
-        "seize",
-        "dix-sept",
-        "dix-huit",
-        "dix-neuf",
-        "vingt",
-        "ving-et-un",
-        "vingt-deux",
-        "vingt-trois",
-        "vingt-quatre",
-        "vingt-cinq",
-        "vingt-six",
-        "vingt-sept",
-        "vingt-huit",
-        "vingt-neuf",
-        "trente",
-        "trente-et-un",
-      ];
-    var datum = document.getElementById("datum");
-    var Tag = tag[datum1.getDate() - 1];
-    var Wochentag = wochentag[datum1.getDay()];
-    var Monat = monat[datum1.getMonth()];
-    var Stunden = datum1.getHours();
-    var Minuten = addZero(datum1.getMinutes());
-    datum.innerHTML =
-      Wochentag + ", " + Tag + " " + Monat + " " + Stunden + ":" + Minuten;
-    }
-    function addZero(num) {
-      return num < 10 ? `0${num}` : num;
-    }
-		</script>
 	</head>
 	<body>
 		<div id="datum">date</div>
@@ -1069,6 +446,7 @@
 			<a href="#" id="verben" onclick="klapp_5()">Verben</a>
 			<a href="#" id="ueb-1" onclick="klapp_6()">Übung 1</a>
 			<a href="#" id="ueb-2" onclick="klapp_7()">Übung 2</a>
+			<a href="#" id="ueb-3" onclick="klapp_8()">Übung 3</a>
 		</div>
 		</div>
 		<div class="container-1" id="klappe-1">
@@ -1246,7 +624,8 @@
 								</td>
 							</tr>
 							<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_etre()">überprüfen</td></tr>
+							<tr id="btn_etre"><td colspan="2" class="zeile_btn" onclick="checkMeOk_etre()">überprüfen</td></tr>
+							<tr id="btn_etre_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 
 						</table>
 						</div>
 					<div class="table-container">
@@ -1340,7 +719,8 @@
 							</td>
 						</tr>
 						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_avoir()">überprüfen</td></tr>
+							<tr id="btn_avoir"><td colspan="2" class="zeile_btn" onclick="checkMeOk_avoir()">überprüfen</td></tr>
+						<tr id="btn_avoir_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 	
 					</table>
 					</div>
 					<div class="table-container">
@@ -1434,7 +814,8 @@
 							</td>
 						</tr>
 						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_faire()">überprüfen</td></tr>
+							<tr id="btn_faire"><td colspan="2" class="zeile_btn" onclick="checkMeOk_faire()">überprüfen</td></tr>
+						<tr id="btn_faire_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 		
 					</table>
 					</div>
 					<div class="table-container">
@@ -1528,8 +909,12 @@
 							</td>
 						</tr>
 						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_aller()">überprüfen</td></tr>
+							<tr id="btn_aller"><td colspan="2" class="zeile_btn" onclick="checkMeOk_aller()">überprüfen</td></tr>
+						<tr id="btn_aller_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 		
 					</table>
+					<!-- <table class="satz_n_btn">
+						<tr><td colspan="2">On y va ?</td></tr>
+					</table> -->
 					</div>
 					<div class="table-container">
 					<table>
@@ -1622,7 +1007,8 @@
 							</td>
 						</tr>
 						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_boire()">überprüfen</td></tr>
+							<tr id="btn_boire"><td colspan="2" class="zeile_btn" onclick="checkMeOk_boire()">überprüfen</td></tr>
+						<tr id="btn_boire_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 		
 					</table>
 					</div>
 					<div class="table-container">
@@ -1716,7 +1102,8 @@
 							</td>
 						</tr>
 						<tr><td colspan="2" class="zeile_v_btn"></td></tr>
-							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_acheter()">überprüfen</td></tr>
+							<tr id="btn_acheter"><td colspan="2" class="zeile_btn" onclick="checkMeOk_acheter()">überprüfen</td></tr>
+						<tr id="btn_acheter_audio"><td colspan="2" class="zeile_btn">&#128264;</td></tr> 		
 					</table>
 					</div>	
 				</div>
@@ -1789,7 +1176,7 @@
 									id="ueb2-fr_1"
 									name="value"
 									maxlength="32"
-									size="32"
+									size="24"
 									placeholder="✎"
 								/> </div>
 				<br />
@@ -1801,7 +1188,7 @@
 									id="ueb2-fr_2"
 									name="value"
 									maxlength="32"
-									size="32"
+									size="24"
 									placeholder="✎"
 								/></div><br />
 				<div>3. Nous regardons la télé.
@@ -1812,10 +1199,13 @@
 									id="ueb2-fr_3"
 									name="value"
 									maxlength="32"
-									size="32"
+									size="24"
 									placeholder="✎"
 								/></div><br />
 				<div>4. Vous avez une voiture.
+					<div id="ueb2-fr_4_hilfe">
+					<div class="abst_ueb2"></div>
+					<div style="font-style: italic;">Tipp: Nach ne … pas wird oft de statt un/une/des verwendet (z. B. pas de voiture).</div></div>
 					<div class="abst_ueb2"></div>
 					 <input
 									class="conjug-verb-d"
@@ -1823,7 +1213,7 @@
 									id="ueb2-fr_4"
 									name="value"
 									maxlength="32"
-									size="32"
+									size="24"
 									placeholder="✎"
 								/></div><br />
 				<div>5. Elles vont à l’école.
@@ -1834,7 +1224,7 @@
 									id="ueb2-fr_5"
 									name="value"
 									maxlength="32"
-									size="32"
+									size="24"
 									placeholder="✎"
 								/></div>
 				<table class="btn_frag_abst">
@@ -1843,6 +1233,1026 @@
 					</table>
 			</div>
 		</div>
+		<div class="container-8" id="klappe-8">
+			<div id="jo-8">
+				<div id="erkl-8">Übung 3</div>
+				<div class="abst">Übersetze die Sätze ins französische.</div><br />
+				<div>1. Ich bin glücklich.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb3-fr_1"
+									name="value"
+									maxlength="32"
+									size="24"
+									placeholder="✎"
+								/> </div>
+				<br />
+				<div>2. Wir haben Hunger.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb3-fr_2"
+									name="value"
+									maxlength="32"
+									size="24"
+									placeholder="✎"
+								/></div><br />
+				<div>3. Sie gehen nach Colmar.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb3-fr_3"
+									name="value"
+									maxlength="32"
+									size="24"
+									placeholder="✎"
+								/></div><br />
+				<div>4. Ich mag Musik.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb3-fr_4"
+									name="value"
+									maxlength="32"
+									size="24"
+									placeholder="✎"
+								/></div><br />
+				<div>5. Du bist nicht müde.
+					<div class="abst_ueb2"></div>
+					 <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb3-fr_5"
+									name="value"
+									maxlength="32"
+									size="24"
+									placeholder="✎"
+								/></div>
+				<table class="btn_frag_abst">
+					<tr><td colspan="2" class="zeile_v_btn"></td></tr>
+							<tr><td colspan="2" class="zeile_btn" onclick="checkMeOk_ueb3()">überprüfen</td></tr>
+					</table>
+			</div>
 		</div>
+		</div>
+	<script defer>
+			verb_etre = ["suis", "es", "est", "sommes", "êtes", "sont"];
+			verb_avoir = ["ai", "as", "a", "avons", "avez", "ont"];
+			verb_faire = ["fais", "fais", "fait", "faisons", "faites", "font"];
+			verb_aller = ["vais", "vas", "va", "allons", "allez", "vont"];
+			verb_boire = ["bois", "bois", "boit", "buvons", "buvez", "boivent"];
+			verb_acheter = [
+				"achète",
+				"achètes",
+				"achète",
+				"achetons",
+				"achetez",
+				"achètent",
+			];
+			function klapp_1() {
+				var klappe = document.getElementById("klappe-1");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_2() {
+				var klappe = document.getElementById("klappe-2");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_3() {
+				var klappe = document.getElementById("klappe-3");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_4() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+			}
+			function klapp_5() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-5");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_6() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-6");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_7() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-7");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function klapp_8() {
+				var klappe_11 = document.getElementById("klappe-1");
+				var klappe_12 = document.getElementById("klappe-2");
+				var klappe_13 = document.getElementById("klappe-3");
+				klappe_11.style.display = "none";
+				klappe_12.style.display = "none";
+				klappe_13.style.display = "none";
+				var klappe = document.getElementById("klappe-8");
+				if (klappe.style.display === "block") {
+					klappe.style.display = "none";
+				} else {
+					klappe.style.display = "block";
+				}
+			}
+			function checkMeOk_etre() {
+				let a_richtig = 0;
+				var a1c = document.getElementById("a1");
+				var a1 = document.getElementById("a1").value;
+				if (a1 == verb_etre[0]) {
+					a1c.style.backgroundColor = "		rgb(0,139,0)";
+					a1c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;	
+				} else if (a1 != "") {
+					a1c.style.backgroundColor = "		rgb(224,0,0)";
+					a1c.style.color = "		rgb(255,255,255)";
+				} else if (a1 == "") {
+					a1c.style.color = "		rgb(0,0,0)";
+				}
+				var a2c = document.getElementById("a2");
+				var a2 = document.getElementById("a2").value;
+				if (a2 == verb_etre[1]) {
+					a2c.style.backgroundColor = "		rgb(0,139,0)";
+					a2c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;
+				} else if (a2 != "") {
+					a2c.style.backgroundColor = "		rgb(224,0,0)";
+					a2c.style.color = "		rgb(255,255,255)";
+				} else if (a2 == "") {
+					a2c.style.color = "		rgb(0,0,0)";
+				}
+				var a3c = document.getElementById("a3");
+				var a3 = document.getElementById("a3").value;
+				if (a3 == verb_etre[2]) {
+					a3c.style.backgroundColor = "		rgb(0,139,0)";
+					a3c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;
+				} else if (a3 != "") {
+					a3c.style.backgroundColor = "		rgb(224,0,0)";
+					a3c.style.color = "		rgb(255,255,255)";
+				} else if (a3 == "") {
+					a3c.style.color = "		rgb(0,0,0)";
+				}
+				var a4c = document.getElementById("a4");
+				var a4 = document.getElementById("a4").value;
+				if (a4 == verb_etre[3]) {
+					a4c.style.backgroundColor = "		rgb(0,139,0)";
+					a4c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;
+				} else if (a4 != "") {
+					a4c.style.backgroundColor = "		rgb(224,0,0)";
+					a4c.style.color = "		rgb(255,255,255)";
+				} else if (a4 == "") {
+					a4c.style.color = "		rgb(0,0,0)";
+				}
+				var a5c = document.getElementById("a5");
+				var a5 = document.getElementById("a5").value;
+				if (a5 == verb_etre[4]) {
+					a5c.style.backgroundColor = "		rgb(0,139,0)";
+					a5c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;
+				} else if (a5 != "") {
+					a5c.style.backgroundColor = "		rgb(224,0,0)";
+					a5c.style.color = "		rgb(255,255,255)";
+				} else if (a5 == "") {
+					a5c.style.color = "		rgb(0,0,0)";
+				}
+				var a6c = document.getElementById("a6");
+				var a6 = document.getElementById("a6").value;
+				if (a6 == verb_etre[5]) {
+					a6c.style.backgroundColor = "		rgb(0,139,0)";
+					a6c.style.color = "		rgb(255,255,255)";
+					a_richtig ++;
+				} else if (a6 != "") {
+					a6c.style.backgroundColor = "		rgb(224,0,0)";
+					a6c.style.color = "		rgb(255,255,255)";
+				} else if (a6 == "") {
+					a6c.style.color = "		rgb(0,0,0)";
+				}
+				if (a_richtig == 6) {	
+					var btn_etre_klappe = document.getElementById("btn_etre");
+					var btn_etre_audio_klappe = document.getElementById("btn_etre_audio");
+					btn_etre_klappe.style.display = "none";
+					btn_etre_audio_klappe.style.display = "table-row";
+				}
+			}
+		// être Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_etre = document.getElementById('btn_etre_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_etre.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_etre.style.opacity = "0.5";
+    row_etre.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_etre = new Audio('audio/etre.mp3');
+    audio_etre.volume = 0.6;
+    audio_etre.play().catch(err => console.error(err));
+		audio_etre.addEventListener('ended', () => {
+		row_etre.style.opacity = "1";
+      row_etre.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_avoir() {
+				let b_richtig = 0;
+				var b1c = document.getElementById("b1");
+				var b1 = document.getElementById("b1").value;
+				if (b1 == verb_avoir[0]) {
+					b1c.style.backgroundColor = "		rgb(0,139,0)";
+					b1c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b1 != "") {
+					b1c.style.backgroundColor = "		rgb(224,0,0)";
+					b1c.style.color = "		rgb(255,255,255)";
+				} else if (b1 == "") {
+					b1c.style.color = "		rgb(0,0,0)";
+				}
+				var b2c = document.getElementById("b2");
+				var b2 = document.getElementById("b2").value;
+				if (b2 == verb_avoir[1]) {
+					b2c.style.backgroundColor = "		rgb(0,139,0)";
+					b2c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b2 != "") {
+					b2c.style.backgroundColor = "		rgb(224,0,0)";
+					b2c.style.color = "		rgb(255,255,255)";
+				} else if (b2 == "") {
+					b2c.style.color = "		rgb(0,0,0)";
+				}
+				var b3c = document.getElementById("b3");
+				var b3 = document.getElementById("b3").value;
+				if (b3 == verb_avoir[2]) {
+					b3c.style.backgroundColor = "		rgb(0,139,0)";
+					b3c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b3 != "") {
+					b3c.style.backgroundColor = "		rgb(224,0,0)";
+					b3c.style.color = "		rgb(255,255,255)";
+				} else if (b3 == "") {
+					b3c.style.color = "		rgb(0,0,0)";
+				}
+				var b4c = document.getElementById("b4");
+				var b4 = document.getElementById("b4").value;
+				if (b4 == verb_avoir[3]) {
+					b4c.style.backgroundColor = "		rgb(0,139,0)";
+					b4c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b4 != "") {
+					b4c.style.backgroundColor = "		rgb(224,0,0)";
+					b4c.style.color = "		rgb(255,255,255)";
+				} else if (b4 == "") {
+					b4c.style.color = "		rgb(0,0,0)";
+				}
+				var b5c = document.getElementById("b5");
+				var b5 = document.getElementById("b5").value;
+				if (b5 == verb_avoir[4]) {
+					b5c.style.backgroundColor = "		rgb(0,139,0)";
+					b5c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b5 != "") {
+					b5c.style.backgroundColor = "		rgb(224,0,0)";
+					b5c.style.color = "		rgb(255,255,255)";
+				} else if (b5 == "") {
+					b5c.style.color = "		rgb(0,0,0)";
+				}
+				var b6c = document.getElementById("b6");
+				var b6 = document.getElementById("b6").value;
+				if (b6 == verb_avoir[5]) {
+					b6c.style.backgroundColor = "		rgb(0,139,0)";
+					b6c.style.color = "		rgb(255,255,255)";
+					b_richtig ++;
+				} else if (b6 != "") {
+					b6c.style.backgroundColor = "		rgb(224,0,0)";
+					b6c.style.color = "		rgb(255,255,255)";
+				} else if (b6 == "") {
+					b6c.style.color = "		rgb(0,0,0)";
+				}
+				if (b_richtig == 6) {	
+					var btn_avoir_klappe = document.getElementById("btn_avoir");
+					var btn_avoir_audio_klappe = document.getElementById("btn_avoir_audio");
+					btn_avoir_klappe.style.display = "none";
+					btn_avoir_audio_klappe.style.display = "table-row";
+				}
+			}
+				// avoir Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_avoir = document.getElementById('btn_avoir_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_avoir.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_avoir.style.opacity = "0.5";
+    row_avoir.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_avoir = new Audio('audio/avoir.mp3');
+    audio_avoir.volume = 0.7;
+    audio_avoir.play().catch(err => console.error(err));
+		audio_avoir.addEventListener('ended', () => {
+		row_avoir.style.opacity = "1";
+      row_avoir.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_faire() {
+				let c_richtig = 0;
+				var c1c = document.getElementById("c1");
+				var c1 = document.getElementById("c1").value;
+				if (c1 == verb_faire[0]) {
+					c1c.style.backgroundColor = "		rgb(0,139,0)";
+					c1c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c1 != "") {
+					c1c.style.backgroundColor = "		rgb(224,0,0)";
+					c1c.style.color = "		rgb(255,255,255)";
+				} else if (c1 == "") {
+					c1c.style.color = "		rgb(0,0,0)";
+				}
+				var c2c = document.getElementById("c2");
+				var c2 = document.getElementById("c2").value;
+				if (c2 == verb_faire[1]) {
+					c2c.style.backgroundColor = "		rgb(0,139,0)";
+					c2c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c2 != "") {
+					c2c.style.backgroundColor = "		rgb(224,0,0)";
+					c2c.style.color = "		rgb(255,255,255)";
+				} else if (c2 == "") {
+					c2c.style.color = "		rgb(0,0,0)";
+				}
+				var c3c = document.getElementById("c3");
+				var c3 = document.getElementById("c3").value;
+				if (c3 == verb_faire[2]) {
+					c3c.style.backgroundColor = "		rgb(0,139,0)";
+					c3c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c3 != "") {
+					c3c.style.backgroundColor = "		rgb(224,0,0)";
+					c3c.style.color = "		rgb(255,255,255)";
+				} else if (c3 == "") {
+					c3c.style.color = "		rgb(0,0,0)";
+				}
+				var c4c = document.getElementById("c4");
+				var c4 = document.getElementById("c4").value;
+				if (c4 == verb_faire[3]) {
+					c4c.style.backgroundColor = "		rgb(0,139,0)";
+					c4c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c4 != "") {
+					c4c.style.backgroundColor = "		rgb(224,0,0)";
+					c4c.style.color = "		rgb(255,255,255)";
+				} else if (c4 == "") {
+					c4c.style.color = "		rgb(0,0,0)";
+				}
+				var c5c = document.getElementById("c5");
+				var c5 = document.getElementById("c5").value;
+				if (c5 == verb_faire[4]) {
+					c5c.style.backgroundColor = "		rgb(0,139,0)";
+					c5c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c5 != "") {
+					c5c.style.backgroundColor = "		rgb(224,0,0)";
+					c5c.style.color = "		rgb(255,255,255)";
+				} else if (c5 == "") {
+					c5c.style.color = "		rgb(0,0,0)";
+				}
+				var c6c = document.getElementById("c6");
+				var c6 = document.getElementById("c6").value;
+				if (c6 == verb_faire[5]) {
+					c6c.style.backgroundColor = "		rgb(0,139,0)";
+					c6c.style.color = "		rgb(255,255,255)";
+					c_richtig ++;
+				} else if (c6 != "") {
+					c6c.style.backgroundColor = "		rgb(224,0,0)";
+					c6c.style.color = "		rgb(255,255,255)";
+				} else if (c6 == "") {
+					c6c.style.color = "		rgb(0,0,0)";
+				}
+				if (c_richtig == 6) {	
+					var btn_faire_klappe = document.getElementById("btn_faire");
+					var btn_faire_audio_klappe = document.getElementById("btn_faire_audio");
+					btn_faire_klappe.style.display = "none";
+					btn_faire_audio_klappe.style.display = "table-row";
+				}
+			}
+			// faire Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_faire = document.getElementById('btn_faire_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_faire.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_faire.style.opacity = "0.5";
+    row_faire.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_faire = new Audio('audio/faire.mp3');
+    audio_faire.volume = 0.6;
+    audio_faire.play().catch(err => console.error(err));
+		audio_faire.addEventListener('ended', () => {
+		row_faire.style.opacity = "1";
+      row_faire.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_aller() {
+				let d_richtig = 0;
+				var d1c = document.getElementById("d1");
+				var d1 = document.getElementById("d1").value;
+				if (d1 == verb_aller[0]) {
+					d1c.style.backgroundColor = "		rgb(0,139,0)";
+					d1c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d1 != "") {
+					d1c.style.backgroundColor = "		rgb(224,0,0)";
+					d1c.style.color = "		rgb(255,255,255)";
+				} else if (d1 == "") {
+					d1c.style.color = "		rgb(0,0,0)";
+				}
+				var d2c = document.getElementById("d2");
+				var d2 = document.getElementById("d2").value;
+				if (d2 == verb_aller[1]) {
+					d2c.style.backgroundColor = "		rgb(0,139,0)";
+					d2c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d2 != "") {
+					d2c.style.backgroundColor = "		rgb(224,0,0)";
+					d2c.style.color = "		rgb(255,255,255)";
+				} else if (d2 == "") {
+					d2c.style.color = "		rgb(0,0,0)";
+				}
+				var d3c = document.getElementById("d3");
+				var d3 = document.getElementById("d3").value;
+				if (d3 == verb_aller[2]) {
+					d3c.style.backgroundColor = "		rgb(0,139,0)";
+					d3c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d3 != "") {
+					d3c.style.backgroundColor = "		rgb(224,0,0)";
+					d3c.style.color = "		rgb(255,255,255)";
+				} else if (d3 == "") {
+					d3c.style.color = "		rgb(0,0,0)";
+				}
+				var d4c = document.getElementById("d4");
+				var d4 = document.getElementById("d4").value;
+				if (d4 == verb_aller[3]) {
+					d4c.style.backgroundColor = "		rgb(0,139,0)";
+					d4c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d4 != "") {
+					d4c.style.backgroundColor = "		rgb(224,0,0)";
+					d4c.style.color = "		rgb(255,255,255)";
+				} else if (d4 == "") {
+					d4c.style.color = "		rgb(0,0,0)";
+				}
+				var d5c = document.getElementById("d5");
+				var d5 = document.getElementById("d5").value;
+				if (d5 == verb_aller[4]) {
+					d5c.style.backgroundColor = "		rgb(0,139,0)";
+					d5c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d5 != "") {
+					d5c.style.backgroundColor = "		rgb(224,0,0)";
+					d5c.style.color = "		rgb(255,255,255)";
+				} else if (d5 == "") {
+					d5c.style.color = "		rgb(0,0,0)";
+				}
+				var d6c = document.getElementById("d6");
+				var d6 = document.getElementById("d6").value;
+				if (d6 == verb_aller[5]) {
+					d6c.style.backgroundColor = "		rgb(0,139,0)";
+					d6c.style.color = "		rgb(255,255,255)";
+					d_richtig ++;
+				} else if (d6 != "") {
+					d6c.style.backgroundColor = "		rgb(224,0,0)";
+					d6c.style.color = "		rgb(255,255,255)";
+				} else if (d6 == "") {
+					d6c.style.color = "		rgb(0,0,0)";
+				}
+				if (d_richtig == 6) {	
+					var btn_aller_klappe = document.getElementById("btn_aller");
+					var btn_aller_audio_klappe = document.getElementById("btn_aller_audio");
+					btn_aller_klappe.style.display = "none";
+					btn_aller_audio_klappe.style.display = "table-row";
+				}
+			}
+			// aller Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_aller = document.getElementById('btn_aller_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_aller.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_aller.style.opacity = "0.5";
+    row_aller.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_aller = new Audio('audio/etre.mp3');
+    audio_aller.volume = 0.6;
+    audio_aller.play().catch(err => console.error(err));
+		audio_aller.addEventListener('ended', () => {
+		row_aller.style.opacity = "1";
+      row_aller.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_boire() {
+				let e_richtig = 0;
+				var e1c = document.getElementById("e1");
+				var e1 = document.getElementById("e1").value;
+				if (e1 == verb_boire[0]) {
+					e1c.style.backgroundColor = "		rgb(0,139,0)";
+					e1c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e1 != "") {
+					e1c.style.backgroundColor = "		rgb(224,0,0)";
+					e1c.style.color = "		rgb(255,255,255)";
+				} else if (e1 == "") {
+					e1c.style.color = "		rgb(0,0,0)";
+				}
+				var e2c = document.getElementById("e2");
+				var e2 = document.getElementById("e2").value;
+				if (e2 == verb_boire[1]) {
+					e2c.style.backgroundColor = "		rgb(0,139,0)";
+					e2c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e2 != "") {
+					e2c.style.backgroundColor = "		rgb(224,0,0)";
+					e2c.style.color = "		rgb(255,255,255)";
+				} else if (e2 == "") {
+					e2c.style.color = "		rgb(0,0,0)";
+				}
+				var e3c = document.getElementById("e3");
+				var e3 = document.getElementById("e3").value;
+				if (e3 == verb_boire[2]) {
+					e3c.style.backgroundColor = "		rgb(0,139,0)";
+					e3c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e3 != "") {
+					e3c.style.backgroundColor = "		rgb(224,0,0)";
+					e3c.style.color = "		rgb(255,255,255)";
+				} else if (e3 == "") {
+					e3c.style.color = "		rgb(0,0,0)";
+				}
+				var e4c = document.getElementById("e4");
+				var e4 = document.getElementById("e4").value;
+				if (e4 == verb_boire[3]) {
+					e4c.style.backgroundColor = "		rgb(0,139,0)";
+					e4c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e4 != "") {
+					e4c.style.backgroundColor = "		rgb(224,0,0)";
+					e4c.style.color = "		rgb(255,255,255)";
+				} else if (e4 == "") {
+					e4c.style.color = "		rgb(0,0,0)";
+				}
+				var e5c = document.getElementById("e5");
+				var e5 = document.getElementById("e5").value;
+				if (e5 == verb_boire[4]) {
+					e5c.style.backgroundColor = "		rgb(0,139,0)";
+					e5c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e5 != "") {
+					e5c.style.backgroundColor = "		rgb(224,0,0)";
+					e5c.style.color = "		rgb(255,255,255)";
+				} else if (e5 == "") {
+					e5c.style.color = "		rgb(0,0,0)";
+				}
+				var e6c = document.getElementById("e6");
+				var e6 = document.getElementById("e6").value;
+				if (e6 == verb_boire[5]) {
+					e6c.style.backgroundColor = "		rgb(0,139,0)";
+					e6c.style.color = "		rgb(255,255,255)";
+					e_richtig ++;
+				} else if (e6 != "") {
+					e6c.style.backgroundColor = "		rgb(224,0,0)";
+					e6c.style.color = "		rgb(255,255,255)";
+				} else if (e6 == "") {
+					e6c.style.color = "		rgb(0,0,0)";
+				}
+				if (e_richtig == 6) {	
+					var btn_boire_klappe = document.getElementById("btn_boire");
+					var btn_boire_audio_klappe = document.getElementById("btn_boire_audio");
+					btn_boire_klappe.style.display = "none";
+					btn_boire_audio_klappe.style.display = "table-row";
+				}
+			}
+			// boire Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_boire = document.getElementById('btn_boire_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_boire.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_boire.style.opacity = "0.5";
+    row_boire.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_boire = new Audio('audio/etre.mp3');
+    audio_boire.volume = 0.6;
+    audio_boire.play().catch(err => console.error(err));
+		audio_boire.addEventListener('ended', () => {
+		row_boire.style.opacity = "1";
+      row_boire.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_acheter() {
+				let f_richtig = 0;
+				var f1c = document.getElementById("f1");
+				var f1 = document.getElementById("f1").value;
+				if (f1 == verb_acheter[0]) {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("f2");
+				var f2 = document.getElementById("f2").value;
+				if (f2 == verb_acheter[1]) {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("f3");
+				var f3 = document.getElementById("f3").value;
+				if (f3 == verb_acheter[2]) {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("f4");
+				var f4 = document.getElementById("f4").value;
+				if (f4 == verb_acheter[3]) {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("f5");
+				var f5 = document.getElementById("f5").value;
+				if (f5 == verb_acheter[4]) {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+				var f6c = document.getElementById("f6");
+				var f6 = document.getElementById("f6").value;
+				if (f6 == verb_acheter[5]) {
+					f6c.style.backgroundColor = "		rgb(0,139,0)";
+					f6c.style.color = "		rgb(255,255,255)";
+					f_richtig ++;
+				} else if (f6 != "") {
+					f6c.style.backgroundColor = "		rgb(224,0,0)";
+					f6c.style.color = "		rgb(255,255,255)";
+				} else if (f6 == "") {
+					f6c.style.color = "		rgb(0,0,0)";
+				}
+				if (f_richtig == 6) {	
+					var btn_acheter_klappe = document.getElementById("btn_acheter");
+					var btn_acheter_audio_klappe = document.getElementById("btn_acheter_audio");
+					btn_acheter_klappe.style.display = "none";
+					btn_acheter_audio_klappe.style.display = "table-row";
+				}
+			}
+			// acheter Audio abspielen	
+	document.addEventListener("DOMContentLoaded", () => {
+  const row_acheter = document.getElementById('btn_acheter_audio');
+  let locked = false; // verhindert Doppelklicks
+  row_acheter.addEventListener('click', () => {
+    if (locked) return;      // Klick blockieren wenn gesperrt
+    locked = true;
+    row_acheter.style.opacity = "0.5";
+    row_acheter.style.pointerEvents = "none"; // Zeile sperren
+    // Audio abspielen
+    const audio_acheter = new Audio('audio/etre.mp3');
+    audio_acheter.volume = 0.6;
+    audio_acheter.play().catch(err => console.error(err));
+		audio_acheter.addEventListener('ended', () => {
+		row_acheter.style.opacity = "1";
+      row_acheter.style.pointerEvents = "auto";
+      locked = false;	
+		});
+  });
+});
+			function checkMeOk_ueb1() {
+				var f1c = document.getElementById("ueb1-fr_1");
+				var f1 = document.getElementById("ueb1-fr_1").value;
+				if (f1 == "mange") {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("ueb1-fr_2");
+				var f2 = document.getElementById("ueb1-fr_2").value;
+				if (f2 == "bois") {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("ueb1-fr_3");
+				var f3 = document.getElementById("ueb1-fr_3").value;
+				if (f3 == "va") {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("ueb1-fr_4");
+				var f4 = document.getElementById("ueb1-fr_4").value;
+				if (f4 == "regardons") {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("ueb1-fr_5");
+				var f5 = document.getElementById("ueb1-fr_5").value;
+				if (f5 == "lisent") {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_ueb2() {
+				var f1c = document.getElementById("ueb2-fr_1");
+				var f1 = document.getElementById("ueb2-fr_1").value;
+				if (f1 == "Je n’aime pas le café." || f1 == "Je n‘aime pas le café." || f1 == "Je n'aime pas le café.") {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("ueb2-fr_2");
+				var f2 = document.getElementById("ueb2-fr_2").value;
+				if (f2 == "Il ne travaille pas à Paris.") {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("ueb2-fr_3");
+				var f3 = document.getElementById("ueb2-fr_3").value;
+				if (f3 == "Nous ne regardons pas la télé.") {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("ueb2-fr_4");
+				var f4 = document.getElementById("ueb2-fr_4").value;
+				if (f4 == "Vous n’avez pas de voiture." || f4 == "Vous n‘avez pas de voiture." || f4 == "Vous n'avez pas de voiture.") {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+					var f4h = document.getElementById("ueb2-fr_4_hilfe");
+				  f4h.style.display = "block";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("ueb2-fr_5");
+				var f5 = document.getElementById("ueb2-fr_5").value;
+				if (f5 == "Elles ne vont pas à l’école." || f5 == "Elles ne vont pas à l‘école." || f5 == "Elles ne vont pas à l'école.") {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			function checkMeOk_ueb3() {
+				var f1c = document.getElementById("ueb3-fr_1");
+				var f1 = document.getElementById("ueb3-fr_1").value;
+				if (f1 == "Je suis heureux." || f1 == "Je suis heureuse.") {
+					f1c.style.backgroundColor = "		rgb(0,139,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 != "") {
+					f1c.style.backgroundColor = "		rgb(224,0,0)";
+					f1c.style.color = "		rgb(255,255,255)";
+				} else if (f1 == "") {
+					f1c.style.color = "		rgb(0,0,0)";
+				}
+				var f2c = document.getElementById("ueb3-fr_2");
+				var f2 = document.getElementById("ueb3-fr_2").value;
+				if (f2 == "Nous avons faim.") {
+					f2c.style.backgroundColor = "		rgb(0,139,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 != "") {
+					f2c.style.backgroundColor = "		rgb(224,0,0)";
+					f2c.style.color = "		rgb(255,255,255)";
+				} else if (f2 == "") {
+					f2c.style.color = "		rgb(0,0,0)";
+				}
+				var f3c = document.getElementById("ueb3-fr_3");
+				var f3 = document.getElementById("ueb3-fr_3").value;
+				if (f3 == "Ils vont à Colmar.") {
+					f3c.style.backgroundColor = "		rgb(0,139,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 != "") {
+					f3c.style.backgroundColor = "		rgb(224,0,0)";
+					f3c.style.color = "		rgb(255,255,255)";
+				} else if (f3 == "") {
+					f3c.style.color = "		rgb(0,0,0)";
+				}
+				var f4c = document.getElementById("ueb3-fr_4");
+				var f4 = document.getElementById("ueb3-fr_4").value;
+				if (f4 == "J’aime la musique." || f4 == "J‘aime la musique." || f4 == "J'aime la musique.") {
+					f4c.style.backgroundColor = "		rgb(0,139,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 != "") {
+					f4c.style.backgroundColor = "		rgb(224,0,0)";
+					f4c.style.color = "		rgb(255,255,255)";
+				} else if (f4 == "") {
+					f4c.style.color = "		rgb(0,0,0)";
+				}
+				var f5c = document.getElementById("ueb3-fr_5");
+				var f5 = document.getElementById("ueb3-fr_5").value;
+				if (f5 == "Tu n’es pas fatigue." || f5 == "Tu n‘es pas fatigue." || f5 == "Tu n'es pas fatigue." || f5== "Tu n’es pas fatiguée." || f5 == "Tu n‘es pas fatiguée." || f5 == "Tu n'es pas fatiguée.") {
+					f5c.style.backgroundColor = "		rgb(0,139,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 != "") {
+					f5c.style.backgroundColor = "		rgb(224,0,0)";
+					f5c.style.color = "		rgb(255,255,255)";
+				} else if (f5 == "") {
+					f5c.style.color = "		rgb(0,0,0)";
+				}
+			}
+			// Datum und Uhrzeit anzeigen
+    myInterval = setInterval(dateZeit, 1000);
+    function dateZeit() {
+      var datum1 = new Date();
+      const wochentag = [
+        "dimanche",
+        "lundi",
+        "mardi",
+        "mercredi",
+        "jeudi",
+        "vendredi",
+        "samedi",
+      ];
+      const monat = [
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+      ];
+      const tag = [
+        "un",
+        "deux",
+        "trois",
+        "quatre",
+        "cinq",
+        "six",
+        "sept",
+        "huit",
+        "neuf",
+        "dix",
+        "onze",
+        "douze",
+        "treize",
+        "quatorze",
+        "quinze",
+        "seize",
+        "dix-sept",
+        "dix-huit",
+        "dix-neuf",
+        "vingt",
+        "ving-et-un",
+        "vingt-deux",
+        "vingt-trois",
+        "vingt-quatre",
+        "vingt-cinq",
+        "vingt-six",
+        "vingt-sept",
+        "vingt-huit",
+        "vingt-neuf",
+        "trente",
+        "trente-et-un",
+      ];
+    var datum = document.getElementById("datum");
+    var Tag = tag[datum1.getDate() - 1];
+    var Wochentag = wochentag[datum1.getDay()];
+    var Monat = monat[datum1.getMonth()];
+    var Stunden = datum1.getHours();
+    var Minuten = addZero(datum1.getMinutes());
+    datum.innerHTML =
+      Wochentag + ", " + Tag + " " + Monat + " " + Stunden + ":" + Minuten;
+    }
+    function addZero(num) {
+      return num < 10 ? `0${num}` : num;
+    }
+		</script>
 	</body>
 </html>
