@@ -84,6 +84,9 @@
 				padding: 10px;
 				color: black;
 			}
+			#klappe-anleitung {
+				/* display: none; */
+			}
 			#klappe-1 {
 				display: none;
 			}
@@ -104,6 +107,20 @@
 			}
 			#klappe-8 {
 				display: none;
+			}
+			.container-anleitung {
+				display: flex;
+				justify-content: center;
+				margin-top: 0px;
+				margin-left: 20px;
+				padding: 10px;
+				color: black;
+			}
+			.container-anleitung div {
+				/* width: 90%; */
+				margin-left: 0px;
+				padding-left: 10px;
+				/* border: 2px blue solid; */
 			}
 			.container-1 div {
 				width: 90%;
@@ -176,6 +193,13 @@
 				color: black;
 			}
 			.container-8 div {
+				padding-left: 10px;
+			}
+			#erkl-anleitung {
+				margin: 10px auto;
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: blue;
 				padding-left: 10px;
 			}
 			#erkl-1 {
@@ -449,6 +473,30 @@
 			<a href="#" id="ueb-3" onclick="klapp_8()">Übung 3</a>
 		</div>
 		</div>
+
+		<div class="container-anleitung" id="klappe-anleitung">
+			<div id="jo-anleitung">
+				<div id="erkl-anleitung">Anleitung:</div>
+				<div>Über die linken farbigen Kästchen, werden Inhalte ein- bzw. ausgeblendent.
+				<span style="background-color: #04aa6d; color: white;">Grün</span>, <span style="background-color: #2196f3; color: white;">Blau</span> und <span style="background-color: #f44336; color: white;">Rot</span> sind Erklärungen.
+				Mit <span style="background-color: #555; color: white;">Schwarz</span> werden alle Erklärungen ausgeblendet.</div>
+				<br />
+				<div><span style="background-color: #d05f5f; color: white;">Ziegelrot</span> werden die Verbkonjugationen ein- ausgeblendet. Die Erklärungen werden ausgeblendet.</div>
+				<div>Verbkonjugationen: Wenn alle die Verben richtig konjugiert wurden, erscheint statt überprüfen ein Lautsprechersymbol  🔈.
+				Über das dann eine Sounddatei abgespielt werden kann.</div>
+				<br />
+				<div><span style="background-color: #da1a9d; color: white;">Magenta</span>  → Übung 1: Vervollständige die Sätze mit der korrekten Konjugation.</div>
+				<br />
+				<div><span style="background-color: rebeccapurple; color: white;">Violett</span>  → Übung 2: Mache die Sätze negativ (mit „ne … pas“)</div>
+				<br />
+				<div><span style="background-color: #fdcb00; color: white;">Gelb</span>  → Übung 3: Übersetze die Sätze ins französische.</div>
+				<br />
+				<div>Generell können die Inhalte mit den farbigen Kästchen ein- bzw. ausgeblendet werden.</div>
+				<br />
+				<div>Diese Anleitung erscheint nur beim Aufruf der Seite. Sobald ein anderer Menüpunkt ausgewählt wird, verschwindet die Anleitung.</div>
+			</div>
+		</div>
+
 		<div class="container-1" id="klappe-1">
 			<div id="jo-1">
 				<div id="erkl-1">Grundstruktur</div>
@@ -1316,6 +1364,8 @@
 			];
 			function klapp_1() {
 				var klappe = document.getElementById("klappe-1");
+				var klappe_14 = document.getElementById("klappe-anleitung");
+				klappe_14.style.display = "none";
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
@@ -1324,6 +1374,8 @@
 			}
 			function klapp_2() {
 				var klappe = document.getElementById("klappe-2");
+				var klappe_14 = document.getElementById("klappe-anleitung");
+				klappe_14.style.display = "none";
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
@@ -1332,6 +1384,8 @@
 			}
 			function klapp_3() {
 				var klappe = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
+				klappe_14.style.display = "none";
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
@@ -1342,17 +1396,21 @@
 				var klappe_11 = document.getElementById("klappe-1");
 				var klappe_12 = document.getElementById("klappe-2");
 				var klappe_13 = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
 				klappe_11.style.display = "none";
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
+				klappe_14.style.display = "none";
 			}
 			function klapp_5() {
 				var klappe_11 = document.getElementById("klappe-1");
 				var klappe_12 = document.getElementById("klappe-2");
 				var klappe_13 = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
 				klappe_11.style.display = "none";
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
+				klappe_14.style.display = "none";
 				var klappe = document.getElementById("klappe-5");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
@@ -1364,44 +1422,53 @@
 				var klappe_11 = document.getElementById("klappe-1");
 				var klappe_12 = document.getElementById("klappe-2");
 				var klappe_13 = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
 				klappe_11.style.display = "none";
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
+				klappe_14.style.display = "none";
 				var klappe = document.getElementById("klappe-6");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
 					klappe.style.display = "block";
 				}
+				document.getElementById("jo-6").scrollIntoView({ behavior: "smooth" });
 			}
 			function klapp_7() {
 				var klappe_11 = document.getElementById("klappe-1");
 				var klappe_12 = document.getElementById("klappe-2");
 				var klappe_13 = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
 				klappe_11.style.display = "none";
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
+				klappe_14.style.display = "none";
 				var klappe = document.getElementById("klappe-7");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
 					klappe.style.display = "block";
 				}
+				document.getElementById("jo-7").scrollIntoView({ behavior: "smooth" });
 			}
 			function klapp_8() {
 				var klappe_11 = document.getElementById("klappe-1");
 				var klappe_12 = document.getElementById("klappe-2");
 				var klappe_13 = document.getElementById("klappe-3");
+				var klappe_14 = document.getElementById("klappe-anleitung");
 				klappe_11.style.display = "none";
 				klappe_12.style.display = "none";
 				klappe_13.style.display = "none";
+				klappe_14.style.display = "none";
 				var klappe = document.getElementById("klappe-8");
 				if (klappe.style.display === "block") {
 					klappe.style.display = "none";
 				} else {
 					klappe.style.display = "block";
 				}
-			}
+				document.getElementById("jo-8").scrollIntoView({ behavior: "smooth" });
+  		}
 			function checkMeOk_etre() {
 				let a_richtig = 0;
 				var a1c = document.getElementById("a1");
@@ -1796,7 +1863,7 @@
     row_aller.style.opacity = "0.5";
     row_aller.style.pointerEvents = "none"; // Zeile sperren
     // Audio abspielen
-    const audio_aller = new Audio('audio/etre.mp3');
+    const audio_aller = new Audio('audio/aller.mp3');
     audio_aller.volume = 0.6;
     audio_aller.play().catch(err => console.error(err));
 		audio_aller.addEventListener('ended', () => {
@@ -1897,7 +1964,7 @@
     row_boire.style.opacity = "0.5";
     row_boire.style.pointerEvents = "none"; // Zeile sperren
     // Audio abspielen
-    const audio_boire = new Audio('audio/etre.mp3');
+    const audio_boire = new Audio('audio/boire.mp3');
     audio_boire.volume = 0.6;
     audio_boire.play().catch(err => console.error(err));
 		audio_boire.addEventListener('ended', () => {
@@ -1998,7 +2065,7 @@
     row_acheter.style.opacity = "0.5";
     row_acheter.style.pointerEvents = "none"; // Zeile sperren
     // Audio abspielen
-    const audio_acheter = new Audio('audio/etre.mp3');
+    const audio_acheter = new Audio('audio/acheter.mp3');
     audio_acheter.volume = 0.6;
     audio_acheter.play().catch(err => console.error(err));
 		audio_acheter.addEventListener('ended', () => {
