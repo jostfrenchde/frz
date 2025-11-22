@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<br lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,7 @@
 			body {
 				margin: 0;
 				padding: 0;
-				font-size: 1.5rem;
+				font-size: 1.75rem;
 			}
       .kopf-container {
         display: flex;
@@ -61,8 +61,30 @@
       #box-4   {
 				background-color: #00EE76;
 			}
+      .container-4 {
+        display: flex;
+        justify-content: center;
+        margin-top: -20px;
+			}
+       .container-4 div {
+        width: 90%;
+				border-radius: 10px;
+        padding: 5px;
+        margin-top: 0px;
+      }
+      #box-5   {
+				background-color: #e6ee00;
+        display: none;
+        margin-bottom: 1rem;
+			}
       .abstand {
         font-size: 0.4rem;
+      }
+      .abstand_kl {
+        font-size: 0.25rem;
+      }
+      .abstand_kl_fr {
+        margin-bottom: -45px;
       }
       .abstand-2 {
         font-size: 0.0rem;
@@ -89,8 +111,23 @@
         margin: 10px;
         color: white;
       }
+      .erkl-container_2 {
+        display: flex;
+        justify-content: center;
+        margin-top: -5px;
+        margin-bottom: -15px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        letter-spacing: 1.0px;
+      }
+      .erkl-container_2 div {
+        width: 90%;
+			  border-radius: 10px;
+        padding: 5px;
+        margin: 10px;
+        color: white;
+      }
       #erkl_1 {
-				background-color: #ee0097;
+				background-color: #a92db2;
 			}
       #klappe {
         display: none;
@@ -175,6 +212,22 @@
 				background-color: rgb(166, 9, 9);
 				font-size: 32px;
 			}
+      			.conjug-verb-d {
+				background-color: #f2f2f2;
+				resize: none;
+				margin-left: 2px;
+				font-size: 1.25rem;
+				padding-left: 5px;
+				margin-left: 5px;
+			}
+			.conjug-verb-h {
+				background-color: white;
+				resize: none;
+				margin-left: 2px;
+				font-size: 1.25rem;
+				padding-left: 5px;
+				margin-left: 5px;
+			}
 		</style>
     <script defer>
       function loesungen() {
@@ -240,9 +293,9 @@
         b38c.style.color = '		rgb(0,0,0)';
       }
       function checkMeOk() {
-         var b1c = document.getElementById("satz-1");
-			   var b1 = document.getElementById("satz-1").value;
-			   if(b1 == "Couchez-vous toujours à la même heure."){
+         var b1c = document.getElementById("ueb1-fr_1");
+			   var b1 = document.getElementById("ueb1-fr_1").value;
+			   if(b1 == "que"){
           b1c.style.backgroundColor = '		rgb(0,139,0)';
           b1c.style.color = '		rgb(255,255,255)';
 			   } else if(b1 != ""){
@@ -251,9 +304,9 @@
 			   } else if(b1 == ""){
           b1c.style.color = '		rgb(0,0,0)';
          }
-         var b2c = document.getElementById("satz-2");
-			   var b2 = document.getElementById("satz-2").value;
-			   if(b2 == "Promenez-vous avant de vous coucher."){
+         var b2c = document.getElementById("ueb1-fr_2");
+			   var b2 = document.getElementById("ueb1-fr_2").value;
+			   if(b2 == "qui"){
           b2c.style.backgroundColor = '		rgb(0,139,0)';
           b2c.style.color = '		rgb(255,255,255)';
 			   } else if(b2 != ""){
@@ -262,9 +315,9 @@
           } else if(b2 == ""){
           b2c.style.color = '		rgb(0,0,0)';
          }
-         var b3c = document.getElementById("satz-3");
-			   var b3 = document.getElementById("satz-3").value;
-			   if(b3 == "Buvez un verre de lait avant d’aller au lit." || b3 == "Buvez un verre de lait avant d'aller au lit."){
+         var b3c = document.getElementById("ueb1-fr_3");
+			   var b3 = document.getElementById("ueb1-fr_3").value;
+			   if(b3 == "qui"){
           b3c.style.backgroundColor = '		rgb(0,139,0)';
           b3c.style.color = '		rgb(255,255,255)';
 			   } else if(b3 != ""){
@@ -273,9 +326,9 @@
 			   } else if(b3 == ""){
           b3c.style.color = '		rgb(0,0,0)';
          }
-         var b4c = document.getElementById("satz-4");
-			   var b4 = document.getElementById("satz-4").value;
-			   if(b4 == "Prenez un bain chaud."){
+         var b4c = document.getElementById("ueb1-fr_4");
+			   var b4 = document.getElementById("ueb1-fr_4").value;
+			   if(b4 == "que"){
           b4c.style.backgroundColor = '		rgb(0,139,0)';
           b4c.style.color = '		rgb(255,255,255)';
 			   } else if(b4 != ""){
@@ -284,9 +337,9 @@
 			   } else if(b4 == ""){
           b4c.style.color = '		rgb(0,0,0)';
          }
-         var b5c = document.getElementById("satz-5");
-			   var b5 = document.getElementById("satz-5").value;
-			   if(b5 == "Ouvrez la fenêtre de la chambre."){
+         var b5c = document.getElementById("ueb1-fr_5");
+			   var b5 = document.getElementById("ueb1-fr_5").value;
+			   if(b5 == "que"){
           b5c.style.backgroundColor = '		rgb(0,139,0)';
           b5c.style.color = '		rgb(255,255,255)';
 			   } else if(b5 != ""){
@@ -295,9 +348,9 @@
 			   } else if(b5 == ""){
           b5c.style.color = '		rgb(0,0,0)';
          }
-         var b6c = document.getElementById("satz-6");
-			   var b6 = document.getElementById("satz-6").value;
-			   if(b6 == "Détendez-vous et pensez à des choses agréables."){
+         var b6c = document.getElementById("ueb1-fr_6");
+			   var b6 = document.getElementById("ueb1-fr_6").value;
+			   if(b6 == "où"){
           b6c.style.backgroundColor = '		rgb(0,139,0)';
           b6c.style.color = '		rgb(255,255,255)';
 			   } else if(b6 != ""){
@@ -306,107 +359,97 @@
 			   } else if(b6 == ""){
           b6c.style.color = '		rgb(0,0,0)';
          }
-         var b7c = document.getElementById("satz-7");
-			   var b7 = document.getElementById("satz-7").value;
-			   if(b7 == "Faites du yoga."){
-          b7c.style.backgroundColor = '		rgb(0,139,0)';
-          b7c.style.color = '		rgb(255,255,255)';
-			   } else if(b7 != ""){
-          b7c.style.backgroundColor = '		rgb(224,0,0)';
-          b7c.style.color = '		rgb(255,255,255)';
-			   } else if(b7 == ""){
-          b7c.style.color = '		rgb(0,0,0)';
-         }
 			 }
        function checkMeOk_2() {
-         var b11c = document.getElementById("satz-11");
-			   var b11 = document.getElementById("satz-11").value;
-			   if(b11 == "Mange régulièrement."){
+        let b_richtig = 0;
+         var b11c = document.getElementById("ueb2-fr_1");
+			   var b11 = document.getElementById("ueb2-fr_1").value;
+			   if(b11 == "4"){
           b11c.style.backgroundColor = '		rgb(0,139,0)';
           b11c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b11 != ""){
           b11c.style.backgroundColor = '		rgb(224,0,0)';
           b11c.style.color = '		rgb(255,255,255)';
 			   } else if(b11 == ""){
           b11c.style.color = '		rgb(0,0,0)';
          }
-         var b12c = document.getElementById("satz-12");
-			   var b12 = document.getElementById("satz-12").value;
-			   if(b12 == "Ne sors pas tous les soirs."){
+         var b12c = document.getElementById("ueb2-fr_2");
+			   var b12 = document.getElementById("ueb2-fr_2").value;
+			   if(b12 == "3"){
           b12c.style.backgroundColor = '		rgb(0,139,0)';
           b12c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b12 != ""){
           b12c.style.backgroundColor = '		rgb(224,0,0)';
           b12c.style.color = '		rgb(255,255,255)';
           } else if(b12 == ""){
           b12c.style.color = '		rgb(0,0,0)';
          }
-         var b13c = document.getElementById("satz-13");
-			   var b13 = document.getElementById("satz-13").value;
-			   if(b13 == "Couche-toi avant minuit."){
+         var b13c = document.getElementById("ueb2-fr_3");
+			   var b13 = document.getElementById("ueb2-fr_3").value;
+			   if(b13 == "1"){
           b13c.style.backgroundColor = '		rgb(0,139,0)';
           b13c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b13 != ""){
           b13c.style.backgroundColor = '		rgb(224,0,0)';
           b13c.style.color = '		rgb(255,255,255)';
 			   } else if(b13 == ""){
           b13c.style.color = '		rgb(0,0,0)';
          }
-         var b14c = document.getElementById("satz-14");
-			   var b14 = document.getElementById("satz-14").value;
-			   if(b14 == "Ne bois pas d’alcool." || b14 == "Ne bois pas d'alcool."){
+         var b14c = document.getElementById("ueb2-fr_4");
+			   var b14 = document.getElementById("ueb2-fr_4").value;
+			   if(b14 == "2"){
           b14c.style.backgroundColor = '		rgb(0,139,0)';
           b14c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b14 != ""){
           b14c.style.backgroundColor = '		rgb(224,0,0)';
           b14c.style.color = '		rgb(255,255,255)';
 			   } else if(b14 == ""){
           b14c.style.color = '		rgb(0,0,0)';
          }
-         var b15c = document.getElementById("satz-15");
-			   var b15 = document.getElementById("satz-15").value;
-			   if(b15 == "Fais du sport."){
+         var b15c = document.getElementById("ueb2-fr_5");
+			   var b15 = document.getElementById("ueb2-fr_5").value;
+			   if(b15 == "7"){
           b15c.style.backgroundColor = '		rgb(0,139,0)';
           b15c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b15 != ""){
           b15c.style.backgroundColor = '		rgb(224,0,0)';
           b15c.style.color = '		rgb(255,255,255)';
 			   } else if(b15 == ""){
           b15c.style.color = '		rgb(0,0,0)';
          }
-         var b16c = document.getElementById("satz-16");
-			   var b16 = document.getElementById("satz-16").value;
-			   if(b16 == "N’oublie pas tes devoirs." || b16 == "N'oublie pas tes devoirs." || b16 == "N′oublie pas tes devoirs."){
+         var b16c = document.getElementById("ueb2-fr_6");
+			   var b16 = document.getElementById("ueb2-fr_6").value;
+			   if(b16 == "6"){
           b16c.style.backgroundColor = '		rgb(0,139,0)';
           b16c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b16 != ""){
           b16c.style.backgroundColor = '		rgb(224,0,0)';
           b16c.style.color = '		rgb(255,255,255)';
 			   } else if(b16 == ""){
           b16c.style.color = '		rgb(0,0,0)';
          }
-         var b17c = document.getElementById("satz-17");
-			   var b17 = document.getElementById("satz-17").value;
-			   if(b17 == "Ne rentre pas trop tard."){
+         var b17c = document.getElementById("ueb2-fr_7");
+			   var b17 = document.getElementById("ueb2-fr_7").value;
+			   if(b17 == "5"){
           b17c.style.backgroundColor = '		rgb(0,139,0)';
           b17c.style.color = '		rgb(255,255,255)';
+          b_richtig ++;
 			   } else if(b17 != ""){
           b17c.style.backgroundColor = '		rgb(224,0,0)';
           b17c.style.color = '		rgb(255,255,255)';
 			   } else if(b17 == ""){
           b17c.style.color = '		rgb(0,0,0)';
          }
-         var b18c = document.getElementById("satz-18");
-			   var b18 = document.getElementById("satz-18").value;
-			   if(b18 == "N’organise pas de fête à la maison." || b18 == "N'organise pas de fête à la maison." || b18 == "N′organise pas de fête à la maison."){
-          b18c.style.backgroundColor = '		rgb(0,139,0)';
-          b18c.style.color = '		rgb(255,255,255)';
-			   } else if(b18 != ""){
-          b18c.style.backgroundColor = '		rgb(224,0,0)';
-          b18c.style.color = '		rgb(255,255,255)';
-			   } else if(b18 == ""){
-          b18c.style.color = '		rgb(0,0,0)';
-         }
+         if (b_richtig == 7) {	
+					var container_4 = document.getElementById("box-5");
+					container_4.style.display = "table-row";
+				}
 			 }
        // Datum und Uhrzeit anzeigen
     myInterval = setInterval(dateZeit, 1000);
@@ -517,74 +560,216 @@
   </div>
 	<br>
 		<div class="container-1">
-			<div id="box-1"><span style="font-weight: bold;">Im Unterricht gemacht:</span></br>Seite 24; 4</br>Seite 117; 6,7</br>Seite 118 komplett </div>
-			<div id="box-2"><span style="font-weight: bold;">Hausaufgaben:</span></br>Seite 119, 120 komplett</br>Seite 28 anschauen</div>
+			<div id="box-1"><span style="font-weight: bold;">Im Unterricht gemacht:</span></br>Seite 30; 1d, 2a</br>dazu auch die Seite 173 angeschaut</br>Seite 31; 3a, b, c </br>die Aufgaben gemacht und auch übersetzt</div>
+			<div id="box-2"><span style="font-weight: bold;">Hausaufgaben:</span></br>Die Seiten 30, 31, 173 nochmals anschauen.</br>Michelle macht beim nächsten mal, auch nochmals Übungen dazu.</div>
 		</div>
     <div class="erkl-container">
       <div id="erkl_1">
-      <div style="font-weight: bold">Der Imperativ erteilt Befehle oder Aufforderungen.
-      </div>
-      <div class="klapp_2" onclick="klappe_2()">weitere Erklärungen ... <span id="klapp_02">&nbsp;＋&nbsp;</span></div>  
-      <div id="erkl_text">
-      <div><span style="color: #00F5FF;">♦</span> &nbsp;Der Imperativ wird wie das Präsens gebildet. Die Verben auf <span class="erkl_bo">-er</span> verlieren allerdings in der Du-Form das <span class="erkl_bo">s</span>. <br>
-      Nur vor <span class="erkl_bo">en</span> und <span class="erkl_bo">y</span> bleibt das <span class="erkl_bo">s</span> aus Aussprachegründen erhalten:&nbsp;Parle<span class="erkl_bo">s</span>-en à Paul !  Sprich darüber mit Paul!
-      </div>
-      <div><span style="color: #00F5FF;">♦</span> &nbsp;Pronomen werden an den Imperativ angehängt: Couche-<span class="erkl_bo">toi</span>. Mangez-<span class="erkl_bo">le</span>. Buvez-<span class="erkl_bo">en</span>.</div>
-      <div class="klapp" onclick="klappe()">einige Beispielsätze: <span id="klapp_01">&nbsp;＋&nbsp;</span></div>
-      <div class="table_component" id="klappe" role="region" tabindex="0"><table><tbody><tr><td>Parle plus fort !</td><td>Rede lauter!</td></tr><tr><td>Allons-y</td><td>Gehen wir!</td></tr><tr><td>Attendez-nous !</td><td>Wartet auf uns!</td></tr><tr><td>Sois gentil !</td><td>Sei nett!</td></tr><tr><td>N'aie pas peur !</td><td>Hab keine Angst!</td></tr><tr><td>Sache que tu as raison !&nbsp;</td><td>Sei gewiss, das du Recht hast!</td></tr><tr><td>Mangez peu et dormez beaucoup.&nbsp;</td><td>Essen Sie wenig, und schlafen Sie viel.</td></tr><tr><td>Prenez du magnésium.&nbsp;</td><td>Nehmen Sie Magnesium.</td></tr><tr><td>Parlez plus lentement, s'il vous plaît.&nbsp;</td><td>Sprechen Sie langsamer, bitte.</td></tr><tr><td>Attendez un moment.&nbsp;</td><td>Warten Sie einen Moment.</td></tr><tr><td>Ne parle pas !&nbsp;</td><td>Sprich nicht!</td></tr></tbody></table></div>
-    </div>
+      <div>Das Relativpronomen:</div>  
+      <div><span style="font-weight: bolder">Qui</span> und <span style="font-weight: bolder">que</span> können für Personen und <span style="text-decoration:underline;">Sachen</span> stehen.</br>Im Relativsatz ist <span style="font-weight: bolder">qui</span> immer Subjekt, <span style="font-weight: bolder">que / qu'</span> ersetzt das direkte <span style="text-decoration:underline;">Objekt.</span></br>
+      <span style="font-weight: bolder">Où</span> steht nach <span style="text-decoration:underline;">Orts-</span> und Zeitangeben. 
+      </div>  
     </div>
     </div>
     <div class="container-2">
-      <div id="box-3"><span style="font-size: 1.2rem;">Seite 118</span></br><span style="font-weight: bold;">9 &nbsp;Quelques conseils pour bien dormir. Mettez ces conseils à l'impératif.</span>
+      <div id="box-3"><span style="font-size: 1.2rem;">Seite 30</span></br><span style="font-weight: bold;">2a &nbsp;Et vos souvenirs ? Complétez avec les pronoms relatifs et un exemple.</span>
         <div class="abstand">&nbsp;</div>
-        <div><span style="font-weight: bold;">VOUS NE DORMEZ PAS BIEN ? VOICI QUELQUES CONSEILS POUR MIEUX DORMIR :</span></div>
-        <div class="abstand">&nbsp;</div>
-        <div>1. Se coucher toujours à la même heure.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-1" name="satz-1" placeholder="Couchez-vous toujours à la même heure."></textarea>
-        <div>2. Se promener avant de se coucher.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-2" name="satz-2"></textarea>
-        <div>3. Boire un verre de lait avant d'aller au lit.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-3" name="satz-3"></textarea>
-        <div>4. Prendre un bain chaud.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-4" name="satz-4"></textarea>
-        <div>5. Ouvrir la fenêtre de la chambre.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-5" name="satz-5"></textarea>
-        <div>6. Se détendre et penser à des choses agréables.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-6" name="satz-6"></textarea>
-        <div>7. Faire du yoga.</div>
-        <textarea type="text" size="40" cols="26" rows=2 id="satz-7" name="satz-7"></textarea>
-        <div class="abstand">&nbsp;</div>
-        <div>Et si vous ne dormez toujours pas, comptez les moutons !</div>
+        <div>1. Un plat <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_1"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> vous d´testiez :</div>
+        <div>2. Un disque <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_2"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> était à la mode quand vous aviez 18 ans :</div>
+        <div>3. Un livre <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_3"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> vous plaisait quand vous étiez enfant :</div>
+        <div>4. Une série <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_4"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> vous regardiez à la télé :</div>
+        <div>5. Un sport <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_5"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> vous pratiquiez souvent :</div>
+        <div>6. Un lieu <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb1-fr_6"
+									name="value"
+									maxlength="5"
+									size="5"
+									placeholder="✎"
+								/> vous passiez vos vacances :</div>
         <button type="button" id="btn_pruef" onclick="checkMeOk()">
         überprüfen
         </button>
       </div>
     </div>
     <div class="container-3">
-      <div id="box-4"><span style="font-size: 1.2rem;">Seite 118</span></br><span style="font-weight: bold;">10 &nbsp;Nadia, 16 ans, reste une semaine seule à la maison. Formulez les conseils de sa mère.</span>
-        <div class="abstand">&nbsp;</div>
-        <div>1. manger régulièrement</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-11" name="satz-11" placeholder="Mange régulièrement."></textarea>
-        <div>2. sortir tous les soirs</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-12" name="satz-12"></textarea>
-        <div>3. se coucher avant minuit</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-13" name="satz-13"></textarea>
-        <div>4. boire de l'alcool</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-14" name="satz-14"></textarea>
-        <div>5. faire du sport</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-15" name="satz-15"></textarea>
-        <div>6. oublier les devoirs</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-16" name="satz-16"></textarea>
-        <div>7. rentrer trop tard</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-17" name="satz-17"></textarea>
-        <div>8. organiser une fête à la maison</div>
-        <textarea type="text" size="40" cols="26" rows=1 id="satz-18" name="satz-18"></textarea>
+      <div id="box-4"><span style="font-size: 1.2rem;">Seite 31</span></br><span style="font-weight: bold;">3a &nbsp;Un souvenir d'enfance du petit Nicolas.</span>
+        <div class="abstand_kl">&nbsp;</div> 
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div >1. Nicolas était dans le jardin quand ...</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>2. Nicolas a suivi Alceste ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>3. Les deux garçons fumaient le cigare ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>4. Ils sont rentrés à la maison ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>5. Quand Nicolas est arrivé, son père ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>6. Sa mère était très inquiète car ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>7. Nicolas lui a expliqué ... </div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        </br>
+        <div style="color: blue; margin-bottom: 4px;">Wie gehen die obigen Sätze weiter, trage hier die Zahl ein.</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_1"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>parce qu’ils ne se sentaient pas bien.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_2"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>quand ils sont tombés malades.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_3"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>son ami Alceste est venu.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_4"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>qui avait un cigare dans sa poche.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_5"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>que c’était la fumée.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_6"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>Nicolas était tout vert.</span>
+        <div class="abstand_kl">&nbsp;</div>
+        <input
+									class="conjug-verb-d"
+									type="text"
+									id="ueb2-fr_7"
+									name="value"
+									maxlength="2"
+									size="2"
+									placeholder="✎"
+								/>
+        <span>fumait la pipe.</span>
         <div class="abstand-2">&nbsp;</div>
         <button type="button" id="btn_pruef" onclick="checkMeOk_2()">
         überprüfen
         </button>
-      </div>
+        </div>
+    </div></br> 
+    <div class="container-4">
+      <div id="box-5"><span style="font-weight: bold;">Übersetzung: &nbsp;</span></br>
+        Un souvenir d'enfance du petit Nicolas.</span>
+        <div style="color: blue;margin-top: -5px;">Eine Kindheitserinnerung vom kleinen Nicolas.</div>
+        <div class="abstand_kl">&nbsp;</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div >1. Nicolas était dans le jardin quand son ami Alceste est venu.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas war im Garten, als sein Freund Alceste gekommen ist.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>2. Nicolas a suivi Alceste qui avait un cigare dans la poche.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas folgte Alceste, der eine Zigarre in seiner Tasche hatte.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>3. Les deux garçons fumaient le cigare quand ils sont tombés malades.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Die zwei Jungen rauchten die Zigarre, als sie krank wurden.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>4. Ils sont rentrés à la maison parce qu’ils ne se sentaient pas bien.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Sie sind nach Hause gegangen, weil sie sich nicht gut fühlten.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>5. Quand Nicolas est arrivé, son père fumait la pipe.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Als Nicolas ankam, rauchte sein Vater Pfeife.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>6. Sa mère était très inquiète car Nicolas était tout vert.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Seine Mutter war sehr beunruhigt, denn Nicolas war ganz grün.</div>
+        <div class="abstand_kl_fr">&nbsp;</div>
+        <div>7. Nicolas lui a expliqué que c’était la fumée.</div>
+        <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas erklärte ihr, dass es wegen des Rauchs war.</div>
+        <div class="abstand_kl">&nbsp;</div>
+    </div>
+    </div>  
+     <div class="erkl-container_2">
+      <div id="erkl_1">
+      <div>Imparfait und passé composé:</div>  
+      <div>Innerhalb einer Erzählung wird der Rahmen oder der Hintergrund im <span style="text-decoration:underline;">imparfait</span> beschrieben. Ereignisse und neu einsetzende Handlungen stehen im <span style="text-decoration:underline;">passé composé.</span></br> 
+      </div>  
+    </div>
     </div>
 	</body>
 </html>
