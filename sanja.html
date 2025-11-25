@@ -13,11 +13,13 @@
       .kopf-container {
         display: flex;
         justify-content: space-between;
+        margin-top: -25px;
       }
 			.container-1 {
         display: flex;
         justify-content: center;
         margin-top: -20px;
+        font-size: 1.5rem;
 			}
       .container-1 div {
         width: 80%;
@@ -73,10 +75,52 @@
         margin-top: 0px;
       }
       #box-5   {
-				background-color: #e6ee00;
+        background-color: #ecef66;
         display: none;
         margin-bottom: 1rem;
 			}
+      #imp_1 {
+        background-color: #ecef66;
+      }
+      #imp_2 {
+        background-color: #ecef66;
+      }
+      #imp_3 {
+        background-color: #ecef66;
+      }
+      #imp_4 {
+        background-color: #ecef66;
+      }
+      #imp_5 {
+        background-color: #ecef66;
+      }
+      #imp_6 {
+        background-color: #ecef66;
+      }
+      #imp_7 {
+        background-color: #ecef66;
+      }
+      #imp_8 {
+        background-color: #ecef66;
+      }
+      #passe_1 {
+        background-color: #ecef66;
+      }
+      #passe_2 {
+        background-color: #ecef66;
+      }
+      #passe_3 {
+        background-color: #ecef66;
+      }
+      #passe_4 {
+        background-color: #ecef66;
+      }
+      #passe_5 {
+        background-color: #ecef66;
+      }
+      #passe_6 {
+        background-color: #ecef66;
+      }
       .abstand {
         font-size: 0.4rem;
       }
@@ -451,6 +495,78 @@
 					container_4.style.display = "table-row";
 				}
 			 }
+       function imp_gesamt() {
+        imp_1();
+        imp_2();
+        imp_3();
+        imp_4();
+        imp_5();
+        imp_6();
+        imp_7();
+        imp_8();
+        passe_1();
+        passe_2();
+        passe_3();
+        passe_4();
+        passe_5();
+        passe_6();
+       }
+       function imp_1() {
+        var imp_1 = document.getElementById("imp_1");
+        imp_1.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_2() {
+        var imp_2 = document.getElementById("imp_2");
+        imp_2.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_3() {
+        var imp_3 = document.getElementById("imp_3");
+        imp_3.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_4() {
+        var imp_4 = document.getElementById("imp_4");
+        imp_4.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_5() {
+        var imp_5 = document.getElementById("imp_5");
+        imp_5.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_6() {
+        var imp_6 = document.getElementById("imp_6");
+        imp_6.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_7() {
+        var imp_7 = document.getElementById("imp_7");
+        imp_7.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function imp_8() {
+        var imp_8 = document.getElementById("imp_8");
+        imp_8.style.backgroundColor = '		rgb(255, 156, 230)';
+       }
+       function passe_1() {
+        var passe_1 = document.getElementById("passe_1");
+        passe_1.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
+       function passe_2() {
+        var passe_2 = document.getElementById("passe_2");
+        passe_2.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
+       function passe_3() {
+        var passe_3 = document.getElementById("passe_3");
+        passe_3.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
+       function passe_4() {
+        var passe_4 = document.getElementById("passe_4");
+        passe_4.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
+       function passe_5() {
+        var passe_5 = document.getElementById("passe_5");
+        passe_5.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
+       function passe_6() {
+        var passe_6 = document.getElementById("passe_6");
+        passe_6.style.backgroundColor = '		rgb(0, 238, 118)';
+       }
        // Datum und Uhrzeit anzeigen
     myInterval = setInterval(dateZeit, 1000);
     function dateZeit() {
@@ -552,11 +668,265 @@
            klapp_2.innerText = '𑁋';
         }
       }
+// Satz 1; Wischgeste von links nach rechts, und rechts nach links      
+const minSwipeDistance = 50;    // Mindestdistanz für Swipe
+const maxVerticalOffset = 40;   // maximale vertikale Abweichung
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_1") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_1") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft();
+            }
+        }
+    }
+});
+function onSwipeRight() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_1();
+    passe_1();
+}
+function onSwipeLeft() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_1 = document.getElementById("imp_1");
+    imp_1.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_1 = document.getElementById("passe_1");
+    passe_1.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 2; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_2") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_2") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_2();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_2();
+            }
+        }
+    }
+});
+function onSwipeRight_2() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_2();
+    passe_2();
+}
+function onSwipeLeft_2() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_2 = document.getElementById("imp_2");
+    imp_2.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_2 = document.getElementById("passe_2");
+    passe_2.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 3; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_3") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_3") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_3();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_3();
+            }
+        }
+    }
+});
+function onSwipeRight_3() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_3();
+    passe_3();
+}
+function onSwipeLeft_3() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_3 = document.getElementById("imp_3");
+    imp_3.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_3 = document.getElementById("passe_3");
+    passe_3.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 4; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_4") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_4") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_4();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_4();
+            }
+        }
+    }
+});
+function onSwipeRight_4() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_4();
+    passe_4();
+}
+function onSwipeLeft_4() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_4 = document.getElementById("imp_4");
+    imp_4.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_4 = document.getElementById("passe_4");
+    passe_4.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 5; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_5") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_5") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_5();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_5();
+            }
+        }
+    }
+});
+function onSwipeRight_5() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_5();
+    passe_5();
+}
+function onSwipeLeft_5() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_5 = document.getElementById("imp_5");
+    imp_5.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_5 = document.getElementById("passe_5");
+    passe_5.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 6; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_6") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_6") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_6();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_6();
+            }
+        }
+    }
+});
+function onSwipeRight_6() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_6();
+    imp_7();
+}
+function onSwipeLeft_6() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_6 = document.getElementById("imp_6");
+    imp_6.style.backgroundColor = '		rgb(236, 239, 102)';
+    var imp_7 = document.getElementById("imp_7");
+    imp_7.style.backgroundColor = '		rgb(236, 239, 102)';
+}
+// Satz 7; Wischgeste von links nach rechts, und rechts nach links      
+document.body.addEventListener("touchstart", (e) => {
+    if (e.target.id === "ueb3b_satz_7") {
+        e.target.startX = e.touches[0].clientX;
+        e.target.startY = e.touches[0].clientY;
+    }
+});
+document.body.addEventListener("touchend", (e) => {
+    if (e.target.id === "ueb3b_satz_7") {
+        const startX = e.target.startX;
+        const startY = e.target.startY;
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        if (Math.abs(deltaY) < maxVerticalOffset) { // horizontale Swipe prüfen
+            if (deltaX > minSwipeDistance) {
+                onSwipeRight_7();
+            } else if (deltaX < -minSwipeDistance) {
+                onSwipeLeft_7();
+            }
+        }
+    }
+});
+function onSwipeRight_7() {
+    console.log("Swipe von links nach rechts erkannt!");
+    imp_8();
+    passe_6();
+}
+function onSwipeLeft_7() {
+    console.log("Swipe von rechts nach links erkannt!");
+    var imp_8 = document.getElementById("imp_8");
+    imp_8.style.backgroundColor = '		rgb(236, 239, 102)';
+    var passe_6 = document.getElementById("passe_6");
+    passe_6.style.backgroundColor = '		rgb(236, 239, 102)';
+}
   </script>
 	</head>
   <div class="kopf-container">
   <div id="hilfe" onclick="hilfeFenster()">i</div>
-  <div id="datum" onclick="loesungen()">date</div>
+  <div id="datum" onclick="imp_gesamt()">date</div>
   </div>
 	<br>
 		<div class="container-1">
@@ -741,27 +1111,30 @@
         <div style="color: blue;margin-top: -5px;">Eine Kindheitserinnerung vom kleinen Nicolas.</div>
         <div class="abstand_kl">&nbsp;</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div >1. Nicolas était dans le jardin quand son ami Alceste est venu.</div>
+        <div id="ueb3b_satz_1">1. Nicolas <span id="imp_1">était</span> dans le jardin quand son ami Alceste <span id="passe_1">est venu.</span></div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas war im Garten, als sein Freund Alceste gekommen ist.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>2. Nicolas a suivi Alceste qui avait un cigare dans la poche.</div>
+        <div id="ueb3b_satz_2">2. Nicolas <span id="passe_2">a suivi</span> Alceste qui <span id="imp_2">avait</span> un cigare dans la poche.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas folgte Alceste, der eine Zigarre in seiner Tasche hatte.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>3. Les deux garçons fumaient le cigare quand ils sont tombés malades.</div>
+        <div id="ueb3b_satz_3">3. Les deux garçons <span id="imp_3">fumaient</span> le cigare quand ils <span id="passe_3">sont tombés</span> malades.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Die zwei Jungen rauchten die Zigarre, als sie krank wurden.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>4. Ils sont rentrés à la maison parce qu’ils ne se sentaient pas bien.</div>
+        <div id="ueb3b_satz_4">4. Ils <span id="passe_4">sont rentrés</span> à la maison parce qu’ils ne <span id="imp_4">se sentaient</span> pas bien.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Sie sind nach Hause gegangen, weil sie sich nicht gut fühlten.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>5. Quand Nicolas est arrivé, son père fumait la pipe.</div>
+        <div id="ueb3b_satz_5">5. Quand Nicolas <span id="passe_5">est arrivé,</span> son père <span id="imp_5">fumait</span> la pipe.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Als Nicolas ankam, rauchte sein Vater Pfeife.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>6. Sa mère était très inquiète car Nicolas était tout vert.</div>
+        <div id="ueb3b_satz_6">6. Sa mère <span id="imp_6">était</span> très inquiète car Nicolas <span id="imp_7">était</span> tout vert.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Seine Mutter war sehr beunruhigt, denn Nicolas war ganz grün.</div>
         <div class="abstand_kl_fr">&nbsp;</div>
-        <div>7. Nicolas lui a expliqué que c’était la fumée.</div>
+        <div id="ueb3b_satz_7">7. Nicolas lui <span id="passe_6">a expliqué</span> que <span id="imp_8">c’était</span> la fumée.</div>
         <div style="color: blue;margin-top: -12px; margin-left: 25px;">Nicolas erklärte ihr, dass es wegen des Rauchs war.</div>
         <div class="abstand_kl">&nbsp;</div>
+        <div><span style="font-weight: bold;">3b &nbsp;Passé composé ou imparfait ?</span></div>
+        <div style="font-size: 1.5rem;">Unterstreichen Sie in den Sätzen von 3a alle Imperfektformen in einer Farbe und alle Passé-composé-Formen in einer anderen. In welcher Zeit ist der Hintergrund geschildert (Was war schon?) und in welcher die Ereignisse (Was geschah neu?)?</div>
+        <div style="font-size: 1.5rem;"><span style="font-weight: bold;">Hinweis:</span> In den Sätzen in der gelben Box von links nach rechts wischen, dann wird das <span style="background-color: rgb(255, 156, 230);">Imparfait</span> und das <span style="background-color: rgb(0, 238, 118);">Passé composé</span> satzweise angezeigt. Wenn man auf dem Satz von rechts nach links wischt, werden die Lösungen wieder gelöscht.</br>Oder auf das Datum oben rechts auf der Seite klicken, dann kommen alle Lösungen.</div>
     </div>
     </div>  
      <div class="erkl-container_2">
