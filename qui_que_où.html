@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>qui, que, où</title>
+	</head>
+	<!-- <style>
+		body {
+			font-size: 1.75rem;
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		#feedback {
+			text-align: center;
+		}
+		#checkBtn {
+			text-align: center;
+			margin-left: 150px;
+		}
+		#anzeige {
+			font-size: 1.75rem;
+		}
+		#eingabe {
+			font-size: 1.75rem;
+		}
+	</style> -->
+
+	<style>
+		body {
+			display: flex;
+			justify-content: center; /* horizontal zentrieren */
+			align-items: center; /* vertikal zentrieren */
+			height: 100vh; /* ganze Höhe */
+			font-family: Arial, sans-serif;
+			flex-direction: column; /* alles untereinander */
+			text-align: center;
+			font-size: 1.5rem;
+		}
+
+		#anzeige input {
+			width: 60px;
+			text-align: center;
+			font-size: 1.5rem;
+			padding: 5px;
+		}
+
+		#eingabe {
+			border-radius: 6px;
+		}
+
+		#checkBtn {
+			font-size: 20px;
+			color: white;
+			padding: 10px 20px;
+			margin-top: 10px;
+			cursor: pointer;
+			background-color: rgb(183, 181, 181);
+			border-radius: 10px;
+		}
+
+		button:hover {
+			background-color: rgb(146, 145, 145);
+			color: yellow;
+		}
+
+		#info {
+			color: gray;
+			margin-top: 15px;
+		}
+
+		#feedback {
+			font-weight: bold;
+			margin-top: 30px;
+		}
+
+		.erkl-container {
+			display: flex;
+			justify-content: center;
+			margin-top: 0px;
+			margin-bottom: 25px;
+			font-size: 1.25rem;
+			font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+			letter-spacing: 1.2px;
+		}
+		.erkl-container div {
+			width: 90%;
+			border-radius: 10px;
+			padding: 3px;
+			margin: 8px;
+			color: white;
+		}
+		#erkl_1 {
+			background-color: #a92db2;
+			line-height: 1;
+			display: none;
+		}
+		.container-video {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+		}
+		.container-video div {
+			width: 80%;
+			border-radius: 10px;
+			padding: 5px;
+			margin: 8px;
+			line-height: 2rem;
+		}
+		#box-video {
+			line-height: 1;
+			font-size: 1.2rem;
+			background-color: #00f5ff;
+			/* padding-left: 15px; */
+			display: none;
+		}
+		#ueberschrift {
+			margin-top: 80px;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			font-size: 1.5rem;
+			background-color: antiquewhite;
+			padding: 8px;
+			border-radius: 10px;
+		}
+		#hinweisBox {
+			padding: 10px;
+			margin-top: 20px; /* Platz, damit der fixe Button nichts überdeckt */
+			font-size: 1.2rem;
+			text-align: justify; /* Texte im Blocksatz */
+			background: #f3f3f3;
+			border-left: 4px solid #0077cc;
+			display: none;
+		}
+
+		#toggleHinweisBtn {
+			position: fixed;
+			top: 10px;
+			left: 10px;
+
+			padding: 8px 12px;
+			border-radius: 6px;
+			border: none;
+			background: #0077cc;
+			color: white;
+			cursor: pointer;
+			z-index: 1000;
+		}
+
+		#toggleHinweisBtn:hover {
+			background: #005fa3;
+		}
+	</style>
+
+	<body>
+		<div id="ueberschrift">Die Reflexivpronomen qui, que, où</div>
+
+		<button id="toggleHinweisBtn">Hinweis ein</button>
+
+		<div id="hinweisBox">
+			Nachdem der Button
+			<span
+				style="
+					background-color: rgb(146, 145, 145);
+					color: white;
+					padding: 3px;
+					border-radius: 6px;
+				"
+				;
+				>Prüfen</span
+			>
+			gedrückt wurde, wird deine Eingabe überprüft. Ist sie falsch wird unten
+			die richtige Lösung angezeigt. Unter dem französischen Satz kommt auch die
+			deutsche Übersetzung.<br />
+			Nach 5 sec kommt automatisch die nächste Aufgabe. <br />Insgesamt sind es
+			33 Sätze.
+		</div>
+
+		<div class="container-video">
+			<div id="box-video">
+				Hier ist ein gutes Erklärvideo auf YouTube, zu
+				<span style="font-weight: bold">qui, que und où</span> auf deutsch.
+				<a
+					href="https://www.youtube.com/watch?v=3AyAqA8k28k"
+					target="_blank"
+					style="vertical-align: -12px"
+				>
+					<svg width="48" height="48" viewBox="0 0 24 24">
+						<path
+							fill="#FF0000"
+							d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.9-1.7-.9-2.1-1C16.8 2.5 12 2.5 12 2.5h-.1s-4.8 0-8.6.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v1.9c0 1.9.5 3.8.5 3.8s.2 1.6.8 2.3c.8.9 1.9.9 2.4 1 1.8.2 7.6.4 7.6.4s4.8 0 8.6-.4c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.3.8-2.3s.5-1.9.5-3.8V10c0-1.9-.5-3.8-.5-3.8z"
+						/>
+						<path fill="#FFF" d="M9.75 8.5L15.5 12l-5.75 3.5z" />
+					</svg>
+				</a>
+			</div>
+		</div>
+		<div class="erkl-container">
+			<div id="erkl_1">
+				<div>
+					<span style="font-weight: bold">qui</span> → ersetzt das
+					Subjekt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<div>
+					<span style="font-weight: bold">que</span> → ersetzt das direkte
+					Objekt
+				</div>
+				<div>
+					<span style="font-weight: bold">où</span> → ersetzt einen Ort oder
+					eine Zeit
+				</div>
+			</div>
+		</div>
+		<p id="anzeige"></p>
+		<p id="info" style="color: gray"></p>
+
+		<button id="checkBtn" style="font-size: 1.5rem; padding: 10px 20px">
+			Prüfen
+		</button>
+
+		<p id="feedback" style="font-weight: bold"></p>
+
+		<!-- <script>
+			const saetze = [
+				{
+					frz_1: "1. C’est le chat",
+					frz_2: "dort sur le canapé.",
+					dt: "Das ist die Katze, die auf dem Sofa schläft.",
+					frage: "qui",
+				},
+				{
+					frz_1: "2. Les fleurs",
+					frz_2: "sont dans le jardin sont belles.",
+					dt: "Die Blumen, die im Garten sind, sind schön.",
+					frage: "qui",
+				},
+				{
+					frz_1: "3. J’aime la musique",
+					frz_2: "tu écoutes.",
+					dt: "Ich mag die Musik, die du hörst.",
+					frage: "que",
+				},
+				{
+					frz_1: "4. Voici la lettre",
+					frz_2: "j’ai écrite.",
+					dt: "Hier ist der Brief, den ich geschrieben habe.",
+					frage: "que",
+				},
+				{
+					frz_1: "5. C’est la voiture",
+					frz_2: "nous achetons.",
+					dt: "Das ist das Auto, das wir kaufen.",
+					frage: "que",
+				},
+				{
+					frz_1: "6. Je vois l’homme",
+					frz_2: "travaille ici.",
+					dt: "Ich sehe den Mann, der hier arbeitet.",
+					frage: "qui",
+				},
+				{
+					frz_1: "7. Où est le gâteau",
+					frz_2: "tu as préparé ?",
+					dt: "Wo ist der Kuchen, den du gebacken hast?",
+					frage: "que",
+				},
+				{
+					frz_1: "8. C’est la maison",
+					frz_2: "j’habite.",
+					dt: "Das ist das Haus, in dem ich wohne.",
+					frage: "où",
+				},
+				{
+					frz_1: "9. Nous allons à Paris",
+					frz_2: "il y a la tour Eiffel.",
+					dt: "Wir fahren nach Paris, wo es den Eifelturm gibt.",
+					frage: "où",
+				},
+				{
+					frz_1: "10. Tu as le livre",
+					frz_2: "est intéressant ?",
+					dt: "Hast du das Buch, das interessant ist?",
+					frage: "qui",
+				},
+				{
+					frz_1: "11. Je connais le restaurant",
+					frz_2: "on mange bien.",
+					dt: "Ich kenne das Restaurant, in dem man gut isst.",
+					frage: "où",
+				},
+				{
+					frz_1: "12. L’été est la saison",
+					frz_2: "il fait chaud.",
+					dt: "Der Sommer ist die Jahreszeit, in der es warm ist.",
+					frage: "où",
+				},
+				{
+					frz_1: "13. C’est l’ecole",
+					frz_2: "j’apprends le français.",
+					dt: "Das ist die Schule, in der ich Französisch lerne.",
+					frage: "où",
+				},
+				{
+					frz_1: "14. Le film",
+					frz_2: "tu regardes est drôle.",
+					dt: "Der Film, den du dir ansiehst, ist lustig.",
+					frage: "que",
+				},
+				{
+					frz_1: "15. Nous avons un professeur",
+					frz_2: "est très gentil.",
+					dt: "Wir haben einen Lehrer, der sehr nett ist.",
+					frage: "qui",
+				},
+				{
+					frz_1: "16. J’aime les chaussures",
+					frz_2: "j’ai acheté à Paris.",
+					dt: "Ich mag die Schuhe, die ich in Paris gekauft habe.",
+					frage: "que",
+				},
+				{
+					frz_1: "17. Je vois les enfants",
+					frz_2: "jouent dans le parc.",
+					dt: "Ich sehe die Kinder, die im Park spielen.",
+					frage: "qui",
+				},
+				{
+					frz_1: "18. J’ai passé les vacances en Bretagne",
+					frz_2: "les gens sont gentils.",
+					dt: "Ich habe die Ferien in der Bretagne verbracht, wo die Leute nett sind.",
+					frage: "où",
+				},
+				{
+					frz_1: "19. J’écoute ce",
+					frz_2: "tu dis.",
+					dt: "Ich höre auf das, was du sagst.",
+					frage: "que",
+				},
+				{
+					frz_1: "20. Je connais une personne",
+					frz_2: "peut t’aider.",
+					dt: "Ich kenne jemanden, der dir helfen kann.",
+					frage: "qui",
+				},
+				{
+					frz_1: "21. La plage",
+					frz_2: "je vais est très belle.",
+					dt: "Der Strand, an den ich fahre, ist sehr schön.",
+					frage: "où",
+				},
+				{
+					frz_1: "22. C’est le magasin",
+					frz_2: "je vais mes courses.",
+					dt: "Das ist der Laden, wo ich meine Einkäufe mache.",
+					frage: "où",
+				},
+				{
+					frz_1: "23. Je cherche un hôtel",
+					frz_2: "je peux dormir.",
+					dt: "Ich suche ein Hotel, in dem ich schlafen kann.",
+					frage: "où",
+				},
+				{
+					frz_1: "24. C’est un prof",
+					frz_2: "est très sympa.",
+					dt: "Das ist ein Lehrer, der sehr nett ist.",
+					frage: "qui",
+				},
+				{
+					frz_1: "25. C’est un prof",
+					frz_2: "j’aime beaucoup.",
+					dt: "Das ist ein Lehrer, den ich sehr mag.",
+					frage: "que",
+				},
+				{
+					frz_1: "26. Il n’aime pas les gens",
+					frz_2: "arrivent toujours en retard.",
+					dt: "Er mag keine Leute, die immer zu spät kommen.",
+					frage: "qui",
+				},
+				{
+					frz_1: "27. Je n’ai pas commandé les livres",
+					frz_2: "vous m’avez envoyés.",
+					dt: "Die Bücher, die Sie mir geschickt haben, habe ich nicht bestellt.",
+					frage: "que",
+				},
+				{
+					frz_1: "28. Il y a quelque chose",
+					frz_2: "nous ne comprenons pas.",
+					dt: "Es gibt etwas, das wir nicht verstehen.",
+					frage: "que",
+				},
+				{
+					frz_1: "29. La première",
+					frz_2: "je suis allé à Paris … .",
+					dt: "Das erste Mal, als ich nach Paris gegangen bin, … .",
+					frage: "que",
+				},
+				{
+					frz_1: "30. L’endroit",
+					frz_2: "ils habitent est très joli.",
+					dt: "Die Gegend, in der sie wohnen, ist sehr hübsch.",
+					frage: "où",
+				},
+				{
+					frz_1: "31. C’est ton frère",
+					frz_2: "joue de la guitare ?",
+					dt: "Ist das dein Bruder, der Gitarre spielt?",
+					frage: "qui",
+				},
+				{
+					frz_1: "32. La guitare, c’est un instrument",
+					frz_2: "j’adore.",
+					dt: "Die Gitarre ist ein Instrument, das ich liebe.",
+					frage: "que",
+				},
+				{
+					frz_1: "33. Ici il y a une école de musique",
+					frz_2: "je prends des cours.",
+					dt: "Hier gibt es eine Musikschule, in der ich Unterricht nehme.",
+					frage: "où",
+				},
+			];
+
+      -->
+
+		<script>
+			const saetze = [
+				{
+					frz_1: "C’est le chat",
+					frz_2: "dort sur le canapé.",
+					dt: "Das ist die Katze, die auf dem Sofa schläft.",
+					frage: "qui",
+				},
+				{
+					frz_1: "Les fleurs",
+					frz_2: "sont dans le jardin sont belles.",
+					dt: "Die Blumen, die im Garten sind, sind schön.",
+					frage: "qui",
+				},
+				{
+					frz_1: "J’aime la musique",
+					frz_2: "tu écoutes.",
+					dt: "Ich mag die Musik, die du hörst.",
+					frage: "que",
+				},
+				{
+					frz_1: "Voici la lettre",
+					frz_2: "j’ai écrite.",
+					dt: "Hier ist der Brief, den ich geschrieben habe.",
+					frage: "que",
+				},
+				{
+					frz_1: "C’est la voiture",
+					frz_2: "nous achetons.",
+					dt: "Das ist das Auto, das wir kaufen.",
+					frage: "que",
+				},
+				{
+					frz_1: "Je vois l’homme",
+					frz_2: "travaille ici.",
+					dt: "Ich sehe den Mann, der hier arbeitet.",
+					frage: "qui",
+				},
+				{
+					frz_1: "Où est le gâteau",
+					frz_2: "tu as préparé ?",
+					dt: "Wo ist der Kuchen, den du gebacken hast?",
+					frage: "que",
+				},
+				{
+					frz_1: "C’est la maison",
+					frz_2: "j’habite.",
+					dt: "Das ist das Haus, in dem ich wohne.",
+					frage: "où",
+				},
+				{
+					frz_1: "Nous allons à Paris",
+					frz_2: "il y a la tour Eiffel.",
+					dt: "Wir fahren nach Paris, wo es den Eifelturm gibt.",
+					frage: "où",
+				},
+				{
+					frz_1: "Tu as le livre",
+					frz_2: "est intéressant ?",
+					dt: "Hast du das Buch, das interessant ist?",
+					frage: "qui",
+				},
+				{
+					frz_1: "Je connais le restaurant",
+					frz_2: "on mange bien.",
+					dt: "Ich kenne das Restaurant, in dem man gut isst.",
+					frage: "où",
+				},
+				{
+					frz_1: "L’été est la saison",
+					frz_2: "il fait chaud.",
+					dt: "Der Sommer ist die Jahreszeit, in der es warm ist.",
+					frage: "où",
+				},
+				{
+					frz_1: "C’est l’ecole",
+					frz_2: "j’apprends le français.",
+					dt: "Das ist die Schule, in der ich Französisch lerne.",
+					frage: "où",
+				},
+				{
+					frz_1: "Le film",
+					frz_2: "tu regardes est drôle.",
+					dt: "Der Film, den du dir ansiehst, ist lustig.",
+					frage: "que",
+				},
+				{
+					frz_1: "Nous avons un professeur",
+					frz_2: "est très gentil.",
+					dt: "Wir haben einen Lehrer, der sehr nett ist.",
+					frage: "qui",
+				},
+				{
+					frz_1: "J’aime les chaussures",
+					frz_2: "j’ai acheté à Paris.",
+					dt: "Ich mag die Schuhe, die ich in Paris gekauft habe.",
+					frage: "que",
+				},
+				{
+					frz_1: "Je vois les enfants",
+					frz_2: "jouent dans le parc.",
+					dt: "Ich sehe die Kinder, die im Park spielen.",
+					frage: "qui",
+				},
+				{
+					frz_1: "J’ai passé les vacances en Bretagne",
+					frz_2: "les gens sont gentils.",
+					dt: "Ich habe die Ferien in der Bretagne verbracht, wo die Leute nett sind.",
+					frage: "où",
+				},
+				{
+					frz_1: "J’écoute ce",
+					frz_2: "tu dis.",
+					dt: "Ich höre auf das, was du sagst.",
+					frage: "que",
+				},
+				{
+					frz_1: "Je connais une personne",
+					frz_2: "peut t’aider.",
+					dt: "Ich kenne jemanden, der dir helfen kann.",
+					frage: "qui",
+				},
+				{
+					frz_1: "La plage",
+					frz_2: "je vais est très belle.",
+					dt: "Der Strand, an den ich fahre, ist sehr schön.",
+					frage: "où",
+				},
+				{
+					frz_1: "C’est le magasin",
+					frz_2: "je vais mes courses.",
+					dt: "Das ist der Laden, wo ich meine Einkäufe mache.",
+					frage: "où",
+				},
+				{
+					frz_1: "Je cherche un hôtel",
+					frz_2: "je peux dormir.",
+					dt: "Ich suche ein Hotel, in dem ich schlafen kann.",
+					frage: "où",
+				},
+				{
+					frz_1: "C’est un prof",
+					frz_2: "est très sympa.",
+					dt: "Das ist ein Lehrer, der sehr nett ist.",
+					frage: "qui",
+				},
+				{
+					frz_1: "C’est un prof",
+					frz_2: "j’aime beaucoup.",
+					dt: "Das ist ein Lehrer, den ich sehr mag.",
+					frage: "que",
+				},
+				{
+					frz_1: "Il n’aime pas les gens",
+					frz_2: "arrivent toujours en retard.",
+					dt: "Er mag keine Leute, die immer zu spät kommen.",
+					frage: "qui",
+				},
+				{
+					frz_1: "Je n’ai pas commandé les livres",
+					frz_2: "vous m’avez envoyés.",
+					dt: "Die Bücher, die Sie mir geschickt haben, habe ich nicht bestellt.",
+					frage: "que",
+				},
+				{
+					frz_1: "Il y a quelque chose",
+					frz_2: "nous ne comprenons pas.",
+					dt: "Es gibt etwas, das wir nicht verstehen.",
+					frage: "que",
+				},
+				{
+					frz_1: "La première",
+					frz_2: "je suis allé à Paris … .",
+					dt: "Das erste Mal, als ich nach Paris gegangen bin, … .",
+					frage: "que",
+				},
+				{
+					frz_1: "L’endroit",
+					frz_2: "ils habitent est très joli.",
+					dt: "Die Gegend, in der sie wohnen, ist sehr hübsch.",
+					frage: "où",
+				},
+				{
+					frz_1: "C’est ton frère",
+					frz_2: "joue de la guitare ?",
+					dt: "Ist das dein Bruder, der Gitarre spielt?",
+					frage: "qui",
+				},
+				{
+					frz_1: "La guitare, c’est un instrument",
+					frz_2: "j’adore.",
+					dt: "Die Gitarre ist ein Instrument, das ich liebe.",
+					frage: "que",
+				},
+				{
+					frz_1: "Ici il y a une école de musique",
+					frz_2: "je prends des cours.",
+					dt: "Hier gibt es eine Musikschule, in der ich Unterricht nehme.",
+					frage: "où",
+				},
+			];
+
+			let rotation = [];
+			let aktuellerSatz = null;
+
+			function mischen() {
+				rotation = [...saetze].sort(() => Math.random() - 0.5);
+			}
+
+			function naechsterSatz() {
+				if (rotation.length === 0) mischen();
+
+				aktuellerSatz = rotation.pop();
+
+				document.getElementById("anzeige").innerHTML = `${aktuellerSatz.frz_1} 
+         <input id="eingabe" type="text"> 
+         ${aktuellerSatz.frz_2}`;
+
+				document.getElementById("info").textContent = "";
+				document.getElementById("feedback").textContent = "";
+
+				// Input fokussieren
+				setTimeout(() => document.getElementById("eingabe").focus(), 50);
+			}
+
+			function pruefen() {
+				const eingabeEl = document.getElementById("eingabe");
+				const eingabe = eingabeEl.value.trim().toLowerCase();
+
+				// Leere Eingabe → nicht prüfen
+				if (eingabe === "") {
+					document.getElementById("feedback").textContent =
+						"Bitte etwas eingeben!";
+					document.getElementById("feedback").style.color = "orange";
+					return;
+				}
+
+				if (eingabe === aktuellerSatz.frage) {
+					document.getElementById("feedback").textContent = "✅ Richtig!";
+					document.getElementById("feedback").style.color = "green";
+
+					eingabeEl.style.backgroundColor = "";
+					eingabeEl.style.color = "";
+				} else {
+					document.getElementById("feedback").textContent =
+						"❌ Falsch! Richtig wäre: " + aktuellerSatz.frage;
+					document.getElementById("feedback").style.color = "red";
+
+					eingabeEl.style.backgroundColor = "red";
+					eingabeEl.style.color = "white";
+				}
+
+				document.getElementById("info").textContent = aktuellerSatz.dt;
+
+				setTimeout(naechsterSatz, 5000);
+			}
+
+			mischen();
+			naechsterSatz();
+
+			document.getElementById("checkBtn").addEventListener("click", pruefen);
+
+			const btn = document.getElementById("toggleHinweisBtn");
+			const box = document.getElementById("hinweisBox");
+			const box_video = document.getElementById("box-video");
+			const erkl_11 = document.getElementById("erkl_1");
+
+			btn.addEventListener("click", () => {
+				const sichtbar = box.style.display === "block";
+				const sichtbar_video = box_video.style.display === "block";
+				const sichtbar_erkl_1 = erkl_11.style.display === "block";
+
+				box.style.display = sichtbar ? "none" : "block";
+				box_video.style.display = sichtbar_video ? "none" : "block";
+				erkl_11.style.display = sichtbar_erkl_1 ? "none" : "block";
+				btn.textContent = sichtbar ? "Hinweis ein" : "Hinweis aus";
+			});
+		</script>
+	</body>
+</html>
