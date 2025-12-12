@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>imparfait, passe composé</title>
+	</head>
+
+<style>
+    body {
+      font-size: 1.5rem;
+        margin: 0;
+        padding: 0;
+        /* font-family: Arial, sans-serif; */
+        font-family: "PT Sans",sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    #container {
+        max-width: 800px;
+        width: 90%;
+        text-align: center;
+    }
+
+    .word {
+        padding: 3px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        display: inline-block;
+        margin: 0 2px;
+    }
+
+    .selected {
+        background-color: #cce5ff;
+        border-radius: 3px;
+    }
+
+    /* Flexbox für Buttons nebeneinander */
+    #buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap; /* bei sehr kleinen Bildschirmen untereinander */
+        margin-top: 10px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    /* Größerer Absatz für Ergebnis */
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+        font-size: 1.75rem;
+        min-height: 1.5em;
+        line-height: 1.5em;
+        /* border: 2px solid #ccc;
+        border-radius: 5px; */
+        padding: 0px;
+    }
+
+    #nextBtn {
+        margin-top: 20px;
+    }
+    .klappen {
+    border-top:1px dotted #757575
+    }
+    .klappen .klappen {
+    padding-left:4%
+}
+
+.klappe {
+    border-bottom:1px dotted #757575
+}
+
+.klappe .klappe:last-child {
+    border-bottom:none
+}
+
+.klappbox, html.kl .klappe .ki {
+    display: none;
+    left: 0;
+    position: relative;
+    top:0
+}
+
+.klappbox.open, html.kl .klappe .ki.open {
+    display:block
+}
+
+.klappbox.sliding, html.kl .klappe .ki.sliding {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition-duration: .5s;
+    transition-property: height;
+    transition-timing-function:ease
+}
+
+.ki .klapptext {
+    background-color: #ececec;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding:0 2%
+}
+</style>
+</head>
+<body>
+<div class="klappen"></div>
+<div class="klappe open">
+    <div>Erklärung: imparfait und passé composé</div>
+</div>
+<div id="container">
+    <h4>Markiere imparfait oder passe composé</h4>
+
+    <p id="text"></p>
+
+    <!-- Buttons nebeneinander -->
+    <div id="buttons">
+        <button onclick="check('imparfait')">imparfait</button>
+        <button onclick="check('passe')">passé composé</button>
+    </div>
+
+    <div id="result"></div>
+
+    <button id="nextBtn" onclick="nextSentence()">Nächster Satz</button>
+    <br><br>
+    <iframe src="imparfaitetpassecomposé.pdf" title="imparfaitetpassecomposé" width="100%" height="300"></iframe></iframe>
+</div>
+
+<script>
+    const sentences = [
+        {
+            words: [
+                { id: "je", text: "Je" },
+                { id: "mangeais", text: "mangeais" },
+                { id: "quand", text: "quand" },
+                { id: "il", text: "il" },
+                { id: "est_entre", text: "est entré." }
+            ],
+            correctImparfait: "mangeais",
+            correctPasse: "est_entre"
+        },
+        {
+            words: [
+                { id: "nous", text: "Nous" },
+                { id: "jouions", text: "jouions" },
+                { id: "lorsque", text: "lorsque" },
+                { id: "elle", text: "elle" },
+                { id: "est_arrivée", text: "est arrivée." }
+            ],
+            correctImparfait: "jouions",
+            correctPasse: "est_arrivée"
+        },
+        {
+            words: [
+                { id: "quand", text: "Quand" },
+                { id: "mon", text: "mon" },
+                { id: "fils", text: "fils" },
+                { id: "est_arrivé", text: "est arrivé" },
+                { id: "à", text: "à" },
+                { id: "la", text: "la" },
+                { id: "maison", text: "maison," },
+                { id: "il", text: "il" },
+                { id: "était", text: "était" },
+                { id: "tout", text: "tout" },
+                { id: "vert", text: "vert." },
+            ],
+            correctImparfait: "était",
+            correctPasse: "est_arrivé",
+        },
+    ];
+
+    let currentSentenceIndex = 0;
+    let currentSelection = null;
+    let words = {};
+
+    function loadSentence(index) {
+        const textContainer = document.getElementById("text");
+        textContainer.innerHTML = "";
+        words = {};
+        currentSelection = null;
+
+        const sentence = sentences[index];
+        sentence.words.forEach(w => {
+            const span = document.createElement("span");
+            span.textContent = w.text;
+            span.id = w.id;
+            span.className = "word";
+            span.addEventListener("click", () => {
+                if (currentSelection && currentSelection !== span) {
+                    currentSelection.classList.remove("selected");
+                }
+                span.classList.add("selected");
+                currentSelection = span;
+            });
+            textContainer.appendChild(span);
+        });
+    }
+
+    function check(mode) {
+        const r = document.getElementById("result");
+        if (!currentSelection) {
+            r.textContent = "Falsch!";
+            r.style.color = "red";
+            return;
+        }
+        const selectedId = currentSelection.id;
+        const sentence = sentences[currentSentenceIndex];
+        let correct = false;
+
+        if (mode === "imparfait") correct = selectedId === sentence.correctImparfait;
+        if (mode === "passe") correct = selectedId === sentence.correctPasse;
+
+        r.textContent = correct ? "Richtig!" : "Falsch!";
+        r.style.color = correct ? "green" : "red";
+    }
+
+    function nextSentence() {
+        currentSentenceIndex++;
+        if (currentSentenceIndex >= sentences.length) {
+            currentSentenceIndex = 0;
+        }
+        loadSentence(currentSentenceIndex);
+        document.getElementById("result").textContent = "";
+    }
+
+    loadSentence(currentSentenceIndex);
+</script>
+
+</body>
+</html>
