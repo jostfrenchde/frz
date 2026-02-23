@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Josef St" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Verben konjugieren</title>
+		<style>
+			body {
+				font-size: 1.5rem;
+				margin: 0;
+				font-family: Arial, sans-serif;
+				background-color: #f9f9f9;
+			}
+
+			.scroll-menu {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: #222;
+				overflow-x: auto;
+				white-space: nowrap;
+				display: flex;
+				scroll-behavior: smooth;
+				-webkit-overflow-scrolling: touch;
+				z-index: 1000;
+			}
+			.scroll-menu::-webkit-scrollbar {
+				display: none;
+			}
+
+			.menu-item {
+				flex: 0 0 auto;
+				padding: 15px 20px;
+				border-right: 1px solid #444;
+				transition: background 0.3s;
+			}
+			.menu-item:hover {
+				background: #444;
+			}
+			.menu-item a {
+				color: white;
+				text-decoration: none;
+				display: block;
+				font-size: 1.2rem;
+			}
+			.menu-item:has(a.active) {
+				background: #444;
+			}
+			.menu-item a.active {
+				color: orange;
+				font-weight: bold;
+				pointer-events: none;
+			}
+
+			#main-container {
+				margin-top: 55px;
+				padding: 5px 20px;
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			/* Modus-Auswahl Styling */
+			.mode-selector {
+				flex-grow: 1; /* Nimmt den restlichen Platz ein */
+				text-align: center; /* Zentriert die Radio-Buttons im verbleibenden Raum */
+				font-size: 1.1rem;
+				background: #eee;
+				padding: 10px;
+				border-radius: 8px;
+				margin: 0; /* Margin entfernt, da der Container das regelt */
+			}
+
+			.verb-title {
+				font-size: 2rem;
+				font-weight: bold;
+				color: #1b8f3a;
+				margin-top: 5px;
+				margin-bottom: 15px;
+				cursor: pointer;
+				text-align: center;
+				padding: 5px;
+				border: 2px solid #44ab60e1;
+				border-radius: 8px;
+				background: #f0fff4;
+				transition: all 0.3s;
+			}
+
+			.verb-translation {
+				font-weight: normal;
+				font-size: 0.9em;
+			}
+
+			.conjugation-box {
+				background: #e0e0e0;
+				padding: 15px;
+				margin-bottom: 10px;
+				border-radius: 6px;
+				font-size: 1.4rem;
+				color: #333;
+				display: flex;
+				align-items: center;
+			}
+
+			/* Eingabefeld Styling */
+			.verb-input {
+				font-size: 1.2rem;
+				padding: 5px;
+				width: 150px;
+				margin-left: 10px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+			.correct {
+				color: #1b8f3a;
+				font-weight: bold;
+				border-color: #1b8f3a;
+			}
+			.wrong {
+				color: #d32f2f;
+				font-weight: bold;
+				border-color: #d32f2f;
+			}
+
+			.highlight-verb {
+				color: #007bff;
+				font-weight: bold;
+			}
+			.gap {
+				display: inline-block;
+				width: 10px;
+			}
+
+			#check-btn {
+				display: none;
+				width: 100%;
+				padding: 15px;
+				font-size: 1.2rem;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				margin-top: 10px;
+			}
+			#check-btn:hover {
+				background-color: #0056b3;
+			}
+			/* Container, der beides nebeneinander hält */
+			.top-controls {
+				display: flex;
+				justify-content: space-between; /* Schiebt Button nach links und Selector nach rechts */
+				align-items: center; /* Bringt beide auf die gleiche vertikale Höhe */
+				margin-bottom: 15px;
+				gap: 10px;
+			}
+			/* Hilfe Button unter dem Menü */
+			#help-btn {
+				background: #555;
+				color: white;
+				border: none;
+				padding: 8px 15px;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 1rem;
+				flex-shrink: 0; /* Verhindert, dass der Button gequetscht wird */
+			}
+			#help-btn:hover {
+				background: #777;
+			}
+
+			/* Hilfefenster (Modal) Hintergrund */
+			/* Hilfefenster Styles (Modal) */
+			.modal-overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.7);
+				z-index: 2000;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.modal-content {
+				background: white;
+				padding: 25px;
+				border-radius: 12px;
+				max-width: 80%;
+				text-align: center;
+				font-size: 1.2rem;
+			}
+
+			.modal-content h2 {
+				color: #1b8f3a;
+				margin-top: 0;
+			}
+			.modal-content p {
+				font-size: 1.1rem;
+				line-height: 1.5;
+				color: #333;
+			}
+
+			#close-help {
+				background: #007bff;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 1rem;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="helpModal" class="modal-overlay">
+			<div class="modal-content">
+				<h2>Anleitung</h2>
+				<p>
+					Die Verben-Leiste oben kann gescrollt werden. Insgesamt sind es 38
+					Verben.
+				</p>
+				<p>
+					<b>Modus anzeigen:</b> Klicke oben auf den grünen Verb-Namen, um alle
+					Lösungen gleichzeitig zu sehen.<br /><br />
+					<b>Modus schreiben:</b> Gib die Formen in die Felder ein und klicke
+					auf "Prüfen". Richtig wird grün, falsch wird rot.
+				</p>
+				<p>
+					<b>Modus Sätze:</b> Das ist ein Modus, den ich noch integrieren will.
+					Wenn mir jemand Sätze, am besten gleich mit der deutschen Übersetzung,
+					schicken will, wäre das toll.
+				</p>
+				<p>
+					<b>Meine bisherige Idee zur Umsetzung ist folgende:</b><br />
+					Aus der Verben-Liste wird ein Verb ausgewählt. In den hinterlegten
+					Sätzen wird dann gesucht, wo eine Konjunktion des Verbes auftaucht. An
+					dieser Stelle wird eine Lücke ______ gesetzt, und daneben in Klammern
+					die Grundform des Verbes z.B. (être) angezeigt. Wenn die Antwort
+					richtig eingegeben wurde, erscheint ein Button, der dann die deutsche
+					Übersetzung des Satzes anzeigt.
+				</p>
+				<button id="close-help">Schließen</button>
+			</div>
+		</div>
+		<div class="scroll-menu" id="scrollMenu">
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box1">être</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box2">avoir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box3">faire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box4">parler</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box5">aller</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box6">prendre</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box7">acheter</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box8">boire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box9">dire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box10">payer</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box11">devoir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box12">pouvoir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box13">chercher</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box14">choisir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box15">vouloir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box16">dormir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box17">mettre</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box18">partir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box19">sortir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box20">travailler</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box21">venir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box22">vivre</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box23">voir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box24">finir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box25">attendre</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box26">rèflèchir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box27">savoir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box28">croire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box29">connaître</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box30">plaire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box31">recevoir</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box32">suivre</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box33">penser</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box34">passer</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box35">appeler</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box36">écrire</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box37">étudier</a>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box38">manger</a>
+			</div>
+		</div>
+
+		<div id="main-container">
+			<div class="top-controls">
+				<button id="help-btn">Hilfe</button>
+
+				<div class="mode-selector">
+					<label
+						><input type="radio" name="mode" value="show" checked />
+						anzeigen</label
+					>
+					<span style="margin: 0 15px">|</span>
+					<label
+						><input type="radio" name="mode" value="write" /> schreiben</label
+					>
+				</div>
+			</div>
+
+			<div id="verbHeader" class="verb-title"></div>
+			<div id="boxContainer"></div>
+			<button id="check-btn">Prüfen</button>
+		</div>
+
+		<script>
+			// (Deine verbData bleibt EXAKT gleich wie im vorherigen Code)
+			const verbData = {
+				box1: {
+					title: "être (sein)",
+					je: "je",
+					answers: ["suis", "es", "est", "sommes", "êtes", "sont"],
+				},
+				box2: {
+					title: "avoir (haben)",
+					je: "j'",
+					answers: ["ai", "as", "a", "avons", "avez", "ont"],
+				},
+				box3: {
+					title: "faire (machen, tun)",
+					je: "je",
+					answers: ["fais", "fais", "fait", "faisons", "faites", "font"],
+				},
+				box4: {
+					title: "parler (sprechen)",
+					je: "je",
+					answers: ["parle", "parles", "parle", "parlons", "parlez", "parlent"],
+				},
+				box5: {
+					title: "aller (gehen)",
+					je: "je",
+					answers: ["vais", "vas", "va", "allons", "allez", "vont"],
+				},
+				box6: {
+					title: "prendre (nehmen)",
+					je: "je",
+					answers: [
+						"prends",
+						"prends",
+						"prend",
+						"prenons",
+						"prenez",
+						"prennent",
+					],
+				},
+				box7: {
+					title: "acheter (kaufen)",
+					je: "j'",
+					answers: [
+						"achète",
+						"achètes",
+						"achète",
+						"achetons",
+						"achetez",
+						"achètent",
+					],
+				},
+				box8: {
+					title: "boire (trinken)",
+					je: "je",
+					answers: ["bois", "bois", "boit", "buvons", "buvez", "boivent"],
+				},
+				box9: {
+					title: "dire (sagen)",
+					je: "je",
+					answers: ["dis", "dis", "dit", "disons", "dites", "disent"],
+				},
+				box10: {
+					title: "payer (bezahlen)",
+					je: "je",
+					answers: ["paye", "payes", "paye", "payons", "payez", "payent"],
+				},
+				box11: {
+					title: "devoir (müssen)",
+					je: "je",
+					answers: ["dois", "dois", "doit", "devons", "devez", "doivent"],
+				},
+				box12: {
+					title: "pouvoir (können)",
+					je: "je",
+					answers: ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"],
+				},
+				box13: {
+					title: "chercher (suchen)",
+					je: "je",
+					answers: [
+						"cherche",
+						"cherches",
+						"cherche",
+						"cherchons",
+						"cherchez",
+						"cherchent",
+					],
+				},
+				box14: {
+					title: "choisir (wählen)",
+					je: "je",
+					answers: [
+						"choisis",
+						"choisis",
+						"choisit",
+						"choisissons",
+						"choisissez",
+						"choisissent",
+					],
+				},
+				box15: {
+					title: "vouloir (wollen)",
+					je: "je",
+					answers: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
+				},
+				box16: {
+					title: "dormir (schlafen)",
+					je: "je",
+					answers: ["dors", "dors", "dort", "dormons", "dormez", "dorment"],
+				},
+				box17: {
+					title: "mettre (setzen, stellen, legen)",
+					je: "je",
+					answers: ["mets", "mets", "met", "mettons", "mettez", "mettent"],
+				},
+				box18: {
+					title: "partir (weggehen)",
+					je: "je",
+					answers: ["pars", "pars", "part", "partons", "partez", "partent"],
+				},
+				box19: {
+					title: "sortir (hinausgehen)",
+					je: "je",
+					answers: ["sors", "sors", "sort", "sortons", "sortez", "sortent"],
+				},
+				box20: {
+					title: "travailler (arbeiten)",
+					je: "je",
+					answers: [
+						"travaille",
+						"travailles",
+						"travaille",
+						"travaillons",
+						"travaillez",
+						"travaillent",
+					],
+				},
+				box21: {
+					title: "venir (kommen)",
+					je: "je",
+					answers: ["viens", "viens", "vient", "venons", "venez", "viennent"],
+				},
+				box22: {
+					title: "vivre (leben)",
+					je: "je",
+					answers: ["vis", "vis", "vit", "vivons", "vivez", "vivent"],
+				},
+				box23: {
+					title: "voir (sehen)",
+					je: "je",
+					answers: ["vois", "vois", "voit", "voyons", "voyez", "voient"],
+				},
+				box24: {
+					title: "finir (beenden)",
+					je: "je",
+					answers: [
+						"finis",
+						"finis",
+						"finit",
+						"finissons",
+						"finissez",
+						"finissent",
+					],
+				},
+				box25: {
+					title: "attendre (warten)",
+					je: "j'",
+					answers: [
+						"attends",
+						"attends",
+						"attend",
+						"attendons",
+						"attendez",
+						"attendent",
+					],
+				},
+				box26: {
+					title: "réfléchir (nachdenken, überlegen)",
+					je: "je",
+					answers: [
+						"réfléchis",
+						"réfléchis",
+						"réfléchit",
+						"réfléchissons",
+						"réfléchissez",
+						"réfléchissent",
+					],
+				},
+				box27: {
+					title: "savoir (wissen)",
+					je: "je",
+					answers: ["sais", "sais", "sait", "savons", "savez", "savent"],
+				},
+				box28: {
+					title: "croire (glauben)",
+					je: "je",
+					answers: ["crois", "crois", "croit", "croyons", "croyez", "croient"],
+				},
+				box29: {
+					title: "connaître (kennen)",
+					je: "je",
+					answers: [
+						"connais",
+						"connais",
+						"connaît",
+						"connaissons",
+						"connaissez",
+						"connaissent",
+					],
+				},
+				box30: {
+					title: "plaire (gefallen)",
+					je: "je",
+					answers: [
+						"plais",
+						"plais",
+						"plaît",
+						"plaisons",
+						"plaisez",
+						"plaisent",
+					],
+				},
+				box31: {
+					title: "recevoir (empfangen, erhalten)",
+					je: "je",
+					answers: [
+						"reçois",
+						"reçois",
+						"reçoit",
+						"recevons",
+						"recevez",
+						"reçoivent",
+					],
+				},
+				box32: {
+					title: "suivre (folgen, nachfolgen)",
+					je: "je",
+					answers: ["suis", "suis", "suit", "suivons", "suivez", "suivent"],
+				},
+				box33: {
+					title: "penser (denken, glauben)",
+					je: "je",
+					answers: ["pense", "penses", "pense", "pensons", "pensez", "pensent"],
+				},
+				box34: {
+					title: "passer (verbringen, vorbeigehen)",
+					je: "je",
+					answers: ["passe", "passes", "passe", "passons", "passez", "passent"],
+				},
+				box35: {
+					title: "appeler (anrufen, nennen, rufen)",
+					je: "j'",
+					answers: [
+						"appelle",
+						"appelles",
+						"appelle",
+						"appelons",
+						"appelez",
+						"appellent",
+					],
+				},
+				box36: {
+					title: "écrire (schreiben)",
+					je: "j'",
+					answers: [
+						"écris",
+						"écris",
+						"écrit",
+						"écrivons",
+						"écrivez",
+						"écrivent",
+					],
+				},
+				box37: {
+					title: "étudier (studieren, lernen)",
+					je: "j'",
+					answers: [
+						"étudie",
+						"étudies",
+						"étudie",
+						"étudions",
+						"étudiez",
+						"étudient",
+					],
+				},
+				box38: {
+					title: "manger (essen)",
+					je: "je",
+					answers: [
+						"mange",
+						"manges",
+						"mange",
+						"mangeons",
+						"mangez",
+						"mangent",
+					],
+				},
+			};
+
+			const verbHeader = document.getElementById("verbHeader");
+			const boxContainer = document.getElementById("boxContainer");
+			const checkBtn = document.getElementById("check-btn");
+			const modeRadios = document.querySelectorAll('input[name="mode"]');
+			let currentVerbData = null;
+
+			function renderInitialState() {
+				verbHeader.innerHTML = "Wähle ein Verb aus dem Menü";
+				verbHeader.style.color = "#888";
+				checkBtn.style.display = "none";
+				const layout = [
+					`je <span class="gap"></span> <b>ich</b><span class="gap"></span> 1. Person Singular`,
+					`tu <span class="gap"></span> <b>du</b><span class="gap"></span> 2. Person Singular`,
+					`il, elle, on <span class="gap"></span> <b>er, sie, man, wir</b><span class="gap"></span> 3. Pers. Sing.`,
+					`nous <span class="gap"></span> <b>wir</b><span class="gap"></span> 1. Person Plural`,
+					`vous <span class="gap"></span> <b>ihr</b><span class="gap"></span> 2. Person Plural`,
+					`ils, elles <span class="gap"></span> <b>sie</b> (m), <b>sie</b> (w) 3. Person Plural`,
+				];
+				boxContainer.innerHTML = "";
+				layout.forEach((text) => {
+					const div = document.createElement("div");
+					div.classList.add("conjugation-box");
+					div.innerHTML = text;
+					boxContainer.appendChild(div);
+				});
+			}
+
+			function renderVerbQuiz(data) {
+				currentVerbData = data;
+				boxContainer.innerHTML = "";
+				verbHeader.style.color = "#1b8f3a";
+				const mode = document.querySelector('input[name="mode"]:checked').value;
+
+				// Titel formatieren (Klammer normal)
+				const [mainVerb, translation] = data.title.split(" (");
+				verbHeader.innerHTML = `${mainVerb} <span class="verb-translation">(${translation}</span>`;
+
+				const pronouns = [
+					data.je,
+					"tu",
+					"il, elle, on",
+					"nous",
+					"vous",
+					"ils, elles",
+				];
+
+				pronouns.forEach((pronoun, i) => {
+					const div = document.createElement("div");
+					div.classList.add("conjugation-box");
+
+					// Logik: Kein Leerzeichen, wenn das Pronomen auf ' endet
+					const hasApostrophe = pronoun.endsWith("'");
+					const space = hasApostrophe ? "" : "&nbsp;";
+
+					if (mode === "show") {
+						div.innerHTML = `${pronoun}${space}[...]`;
+						checkBtn.style.display = "none";
+					} else {
+						div.innerHTML = `${pronoun}${space}<input type="text" class="verb-input" data-answer="${data.answers[i]}">`;
+						checkBtn.style.display = "block";
+					}
+					boxContainer.appendChild(div);
+				});
+
+				// Klick-Logik zum Aufdecken
+				verbHeader.onclick = () => {
+					const currentMode = document.querySelector(
+						'input[name="mode"]:checked',
+					).value;
+					if (currentMode === "show") {
+						const boxes = boxContainer.querySelectorAll(".conjugation-box");
+						boxes.forEach((box, i) => {
+							if (box.innerHTML.includes("[...]")) {
+								// Wir prüfen direkt im HTML-Inhalt der Box nach dem Apostroph
+								const needsSpace = !box.innerHTML.startsWith("j'");
+								const replacement = needsSpace
+									? `&nbsp;<span class="highlight-verb">${data.answers[i]}</span>`
+									: `<span class="highlight-verb">${data.answers[i]}</span>`;
+
+								// Ersetzt entweder "&nbsp;[...]" oder einfach nur "[...]"
+								if (box.innerHTML.includes("&nbsp;[...]")) {
+									box.innerHTML = box.innerHTML.replace(
+										"&nbsp;[...]",
+										replacement,
+									);
+								} else {
+									box.innerHTML = box.innerHTML.replace("[...]", replacement);
+								}
+							}
+						});
+					}
+				};
+			}
+
+			// Prüfen Funktion
+			checkBtn.onclick = () => {
+				const inputs = document.querySelectorAll(".verb-input");
+				inputs.forEach((input) => {
+					const userVal = input.value.trim().toLowerCase();
+					const correctVal = input.dataset.answer.toLowerCase();
+
+					if (userVal !== "") {
+						input.classList.remove("correct", "wrong");
+						if (userVal === correctVal) {
+							input.classList.add("correct");
+						} else {
+							input.classList.add("wrong");
+							// Zeigt jetzt nur rot an, kein Text-Anhängsel mehr
+						}
+					}
+				});
+			};
+
+			// Modus-Wechsel live reagieren
+			modeRadios.forEach((radio) => {
+				radio.addEventListener("change", () => {
+					if (currentVerbData) renderVerbQuiz(currentVerbData);
+					else renderInitialState();
+				});
+			});
+
+			// Menü Links
+			document.querySelectorAll(".openBoxLink").forEach((link) => {
+				link.addEventListener("click", (e) => {
+					e.preventDefault();
+					const data = verbData[link.dataset.target];
+					document
+						.querySelectorAll(".openBoxLink")
+						.forEach((l) => l.classList.remove("active"));
+					link.classList.add("active");
+					renderVerbQuiz(data);
+				});
+			});
+
+			window.onload = renderInitialState;
+
+			// Drag-to-scroll Logik bleibt...
+			let isDown = false,
+				startX,
+				scrollLeft;
+			const slider = document.getElementById("scrollMenu");
+			slider.addEventListener("mousedown", (e) => {
+				isDown = true;
+				slider.style.cursor = "grabbing";
+				startX = e.pageX - slider.offsetLeft;
+				scrollLeft = slider.scrollLeft;
+			});
+			slider.addEventListener("mouseleave", () => {
+				isDown = false;
+				slider.style.cursor = "pointer";
+			});
+			slider.addEventListener("mouseup", () => {
+				isDown = false;
+				slider.style.cursor = "pointer";
+			});
+			slider.addEventListener("mousemove", (e) => {
+				if (!isDown) return;
+				e.preventDefault();
+				const x = e.pageX - slider.offsetLeft;
+				const walk = (x - startX) * 2;
+				slider.scrollLeft = scrollLeft - walk;
+			});
+			const helpBtn = document.getElementById("help-btn");
+			const helpModal = document.getElementById("helpModal");
+			const closeHelp = document.getElementById("close-help");
+
+			// Fenster öffnen
+			helpBtn.onclick = () => {
+				helpModal.style.display = "flex";
+			};
+
+			// Fenster schließen
+			closeHelp.onclick = () => {
+				helpModal.style.display = "none";
+			};
+
+			// Schließen, wenn man außerhalb des Fensters klickt
+			window.onclick = (event) => {
+				if (event.target == helpModal) {
+					helpModal.style.display = "none";
+				}
+			};
+		</script>
+	</body>
+</html>
