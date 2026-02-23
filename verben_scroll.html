@@ -172,7 +172,6 @@
 			}
 
 			/* Hilfefenster (Modal) Hintergrund */
-			/* Hilfefenster Styles (Modal) */
 			.modal-overlay {
 				display: none;
 				position: fixed;
@@ -183,16 +182,22 @@
 				background: rgba(0, 0, 0, 0.7);
 				z-index: 2000;
 				justify-content: center;
-				align-items: center;
+				align-items: flex-start; /* Geändert von center auf flex-start */
+				overflow-y: auto; /* Ermöglicht das Scrollen des Overlays */
+				padding: 20px 0; /* Platz oben und unten beim Scrollen */
 			}
 
 			.modal-content {
 				background: white;
 				padding: 25px;
 				border-radius: 12px;
-				max-width: 80%;
+				max-width: 85%;
+				width: 100%; /* Verhindert zu schmale Boxen */
+				margin: auto; /* Zentriert die Box horizontal und vertikal im flex-container */
 				text-align: center;
 				font-size: 1.2rem;
+				position: relative; /* Sicherheit für Positionierung */
+				box-sizing: border-box;
 			}
 
 			.modal-content h2 {
