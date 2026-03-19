@@ -1,0 +1,2224 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Josef St" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Verben & Sätze Trainer</title>
+		<style>
+			body {
+				font-size: 1.5rem;
+				margin: 0;
+				font-family: Arial, sans-serif;
+				background-color: #f9f9f9;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			/* Scroll-Menü oben */
+			.scroll-menu {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				background: #222;
+				overflow-x: auto;
+				white-space: nowrap;
+				display: flex;
+				scroll-behavior: smooth;
+				z-index: 1000;
+			}
+			.scroll-menu::-webkit-scrollbar {
+				display: none;
+			}
+
+			.menu-item {
+				flex: 0 0 auto;
+				padding: 15px 20px;
+				border-right: 1px solid #444;
+			}
+			.menu-item a {
+				color: white;
+				text-decoration: none;
+				font-size: 1.2rem;
+				display: block;
+			}
+			.menu-item a.active {
+				color: orange;
+				font-weight: bold;
+			}
+
+			#main-container {
+				margin-top: 70px;
+				padding: 10px 20px;
+				width: 100%;
+				max-width: 800px;
+				box-sizing: border-box;
+			}
+
+			/* Steuerung oben */
+			.top-controls {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15px;
+				gap: 10px;
+			}
+
+			.mode-selector {
+				display: flex;
+				gap: 10px;
+				background: #eee;
+				padding: 8px 12px;
+				border-radius: 8px;
+				font-size: 0.9rem;
+			}
+			.mode-selector label {
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				gap: 4px;
+			}
+
+			#help-btn {
+				background: #555;
+				color: white;
+				border: none;
+				padding: 8px 15px;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+
+			/* Titel & Boxen */
+			.verb-title {
+				font-size: 2rem;
+				font-weight: bold;
+				color: #1b8f3a;
+				margin-bottom: 15px;
+				text-align: center;
+				padding: 10px;
+				border: 2px solid #44ab60e1;
+				border-radius: 8px;
+				background: #f0fff4;
+			}
+
+			.conjugation-box {
+				background: #e3f2fd;
+				border: 1px solid #bbdefb; /* Ein leicht dunklerer Blauton als Rand */
+				padding: 15px;
+				margin-bottom: 10px;
+				border-radius: 8px;
+				display: flex;
+				align-items: center;
+				font-size: 1.4rem;
+				cursor: pointer; /* NEU: Mauszeiger wird zur Hand */
+			}
+
+			/* Satz-Modus Styling */
+			.sentence-card {
+				font-size: 1.2rem;
+				background-color: #e3f2fd;
+				border: 1px solid #bbdefb; /* Ein leicht dunklerer Blauton als Rand */
+				padding: 15px 20px;
+				margin-bottom: 10px;
+				border-radius: 12px;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+				/* border: 1px solid #eee; */
+			}
+
+			.verb-input,
+			.verb-input-sentence {
+				font-size: 1.2rem;
+				padding: 5px;
+				border: 2px solid #ccc;
+				border-radius: 6px;
+				text-align: left;
+				background-color: #ffffff;
+				outline: none;
+				/* Hier die Breite anpassen - !important bricht andere Regeln */
+				width: 12ch !important;
+				min-width: 0 !important; /* Wichtig, falls irgendwo ein Minimum gesetzt wurde */
+
+				display: inline-block;
+				box-sizing: border-box;
+				margin: 0 4px;
+			}
+			.verb-input {
+				width: 150px;
+				margin-left: 10px;
+			}
+			.verb-input-sentence {
+				width: 180px;
+				margin: 0 5px;
+			}
+
+			.verb-input:focus,
+			.verb-input-sentence:focus {
+				background-color: #fff;
+				border-color: #007bff;
+			}
+
+			/* Korrekturfarben */
+			.correct {
+				border-color: #28a745 !important;
+				background-color: #e8f5e9 !important;
+				color: #1b5e20;
+				font-weight: bold;
+			}
+			.wrong {
+				border-color: #dc3545 !important;
+				background-color: #ffebee !important;
+				color: #b71c1c;
+				font-weight: bold;
+			}
+			/* Hilfe Button unter dem Menü */
+			#help-btn {
+				background: #555;
+				color: white;
+				border: none;
+				padding: 8px 15px;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 0.9rem;
+				flex-shrink: 0; /* Verhindert, dass der Button gequetscht wird */
+			}
+			#help-btn:hover {
+				background: #777;
+			}
+
+			/* Hilfefenster (Modal) Hintergrund */
+			.modal-overlay {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.7);
+				z-index: 2000;
+				justify-content: center;
+				align-items: flex-start; /* Geändert von center auf flex-start */
+				overflow-y: auto; /* Ermöglicht das Scrollen des Overlays */
+				padding: 20px 0; /* Platz oben und unten beim Scrollen */
+			}
+
+			.modal-content {
+				background: white;
+				padding: 25px;
+				border-radius: 12px;
+				max-width: 85%;
+				width: 100%; /* Verhindert zu schmale Boxen */
+				margin: auto; /* Zentriert die Box horizontal und vertikal im flex-container */
+				text-align: center;
+				font-size: 1.2rem;
+				position: relative; /* Sicherheit für Positionierung */
+				box-sizing: border-box;
+			}
+
+			.modal-content h2 {
+				color: #1b8f3a;
+				margin-top: 0;
+			}
+			.modal-content p {
+				font-size: 1.1rem;
+				line-height: 1.5;
+				color: #333;
+			}
+
+			#close-help {
+				background: #007bff;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 1rem;
+				margin-top: 20px;
+			}
+			.translation-box {
+				display: none;
+				margin-top: 10px;
+				color: #555;
+				font-style: italic;
+				font-size: 1.1rem;
+				border-top: 1px solid #eee;
+				padding-top: 8px;
+			}
+
+			.flag-btn {
+				cursor: pointer;
+				/* Padding: oben/unten 2px, rechts/links 5px für einen harmonischen Rahmen */
+				padding: 2px 5px;
+				font-size: 1.1rem;
+				border-radius: 4px;
+				border: 1px solid #ddd;
+				background: #fdfdfd;
+				margin-left: 10px;
+				vertical-align: middle;
+
+				/* WICHTIG: Verhindert ungleiche Ränder */
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				line-height: 1;
+			}
+
+			#check-btn {
+				display: none;
+				width: 100%;
+				padding: 15px;
+				font-size: 1.4rem;
+				/* background-color: #007bff; */
+				background-color: #1a73e8;
+				color: white;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				margin-top: 10px;
+			}
+
+			/* Das blaue Verb im Anzeige-Modus */
+			.highlight-verb {
+				color: #007bff;
+				font-weight: bold;
+				font-size: 1.4rem;
+			}
+
+			/* Solange diese Klasse aktiv ist, wird der Text versteckt und [...] gezeigt */
+			.hidden-verb {
+				font-size: 0 !important; /* Versteckt den echten Text */
+			}
+
+			.hidden-verb::before {
+				content: "[...]";
+				font-size: 1.4rem; /* Die Punkte sind normal groß */
+				color: #007bff;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="helpModal" class="modal-overlay">
+			<div class="modal-content">
+				<h2>Anleitung</h2>
+				<p>
+					Die Verben-Leiste oben, kann nach links und rechts gescrollt werden.
+				</p>
+				<p>
+					<b>Modus anzeigen:</b> Klicke oben auf den grünen Text des Verb-Namen
+					oder in die Konjugationsfelder, dann werden alle Lösungen gleichzeitig
+					angezeigt.<br />Das alle Konjugations-Formen gleichzeitig angezeigt
+					werden, ist beabsichtigt.<br /><br />
+					<b>Modus schreiben:</b> Gib die Konjugations-Formen in die Felder ein
+					und klicke auf "Prüfen". Richtig wird grün, falsch wird rot.<br />
+					Leere Eingabefelder werden nicht geprüft.
+				</p>
+				<p>
+					<b>Modus Sätze:</b> Die richtige Konjugation in die Eingabefelder
+					eingeben.
+				</p>
+				<button id="close-help">Schließen</button>
+			</div>
+		</div>
+		<div class="scroll-menu" id="scrollMenu">
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box1" data-verb="être"
+					>être</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box2" data-verb="avoir"
+					>avoir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box3" data-verb="faire"
+					>faire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box4" data-verb="parler"
+					>parler</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box5" data-verb="aller"
+					>aller</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box6" data-verb="prendre"
+					>prendre</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box7" data-verb="acheter"
+					>acheter</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box8" data-verb="boire"
+					>boire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box9" data-verb="dire"
+					>dire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box10" data-verb="payer"
+					>payer</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box11" data-verb="devoir"
+					>devoir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box12" data-verb="pouvoir"
+					>pouvoir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box13" data-verb="chercher"
+					>chercher</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box14" data-verb="choisir"
+					>choisir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box15" data-verb="vouloir"
+					>vouloir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box16" data-verb="dormir"
+					>dormir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box17" data-verb="mettre"
+					>mettre</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box18" data-verb="partir"
+					>partir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box19" data-verb="sortir"
+					>sortir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a
+					href="#"
+					class="openBoxLink"
+					data-target="box20"
+					data-verb="travailler"
+					>travailler</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box21" data-verb="venir"
+					>venir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box22" data-verb="vivre"
+					>vivre</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box23" data-verb="voir"
+					>voir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box24" data-verb="finir"
+					>finir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box25" data-verb="attendre"
+					>attendre</a
+				>
+			</div>
+			<div class="menu-item">
+				<a
+					href="#"
+					class="openBoxLink"
+					data-target="box26"
+					data-verb="réfléchir"
+					>réfléchir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box27" data-verb="savoir"
+					>savoir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box28" data-verb="croire"
+					>croire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a
+					href="#"
+					class="openBoxLink"
+					data-target="box29"
+					data-verb="connaître"
+					>connaître</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box30" data-verb="plaire"
+					>plaire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box31" data-verb="recevoir"
+					>recevoir</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box32" data-verb="suivre"
+					>suivre</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box33" data-verb="penser"
+					>penser</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box34" data-verb="passer"
+					>passer</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box35" data-verb="appeler"
+					>appeler</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box36" data-verb="écrire"
+					>écrire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box37" data-verb="étudier"
+					>étudier</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box38" data-verb="manger"
+					>manger</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box39" data-verb="regarder"
+					>regarder</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box40" data-verb="aimer"
+					>aimer</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box41" data-verb="lire"
+					>lire</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box42" data-verb="trouver"
+					>trouver</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box43" data-verb="donner"
+					>donner</a
+				>
+			</div>
+			<div class="menu-item">
+				<a href="#" class="openBoxLink" data-target="box44" data-verb="arriver"
+					>arriver</a
+				>
+			</div>
+			<div class="menu-item">
+				<a
+					href="#"
+					class="openBoxLink"
+					data-target="box45"
+					data-verb="descendre"
+					>descendre</a
+				>
+			</div>
+		</div>
+
+		<div id="main-container">
+			<div class="top-controls">
+				<button id="help-btn">Hilfe</button>
+				<div class="mode-selector">
+					<label
+						><input type="radio" name="mode" value="show" checked />
+						anzeigen</label
+					>
+					<label
+						><input type="radio" name="mode" value="write" /> schreiben</label
+					>
+					<label
+						><input type="radio" name="mode" value="sentences" /> Sätze</label
+					>
+				</div>
+			</div>
+
+			<div id="verbHeader" class="verb-title">Wähle ein Verb</div>
+			<div id="boxContainer"></div>
+			<button id="check-btn">Prüfen</button>
+		</div>
+
+		<script>
+			// 1. DATENBANK FÜR SÄTZE
+			const grammarData = [
+				{
+					verb: "être",
+					pp: "j1",
+					fr: "1 Je #suis# d'Aix-la-Chapelle.",
+					de: "Ich komme aus Aachen.",
+				},
+				{
+					verb: "être",
+					pp: "j2",
+					fr: "2 Je ne #suis# pas d'accord.",
+					de: "Ich bin nicht einverstanden.",
+				},
+				{
+					verb: "être",
+					pp: "j3",
+					fr: "3 Je #suis# en retard.",
+					de: "Ich bin bin spät dran.",
+				},
+				{
+					verb: "être",
+					pp: "t1",
+					fr: "1 Tu #es# libre cet après-midi ?",
+					de: "Hast du heute Nachmittag Zeit?",
+				},
+				{
+					verb: "être",
+					pp: "t2",
+					fr: "2 Tu #es# dans ta chambre.",
+					de: "Du bist in deinem Zimmer.",
+				},
+				{
+					verb: "être",
+					pp: "i1",
+					fr: "1 Elle #est# allemande.",
+					de: "Sie ist Deutsche.",
+				},
+				{
+					verb: "être",
+					pp: "i2",
+					fr: "2 Le train à destination de Paris #est# au quai numéro trois.",
+					de: "Der Zug nach Paris steht auf Gleis drei.",
+				},
+				{
+					verb: "être",
+					pp: "n1",
+					fr: "1 Nous #sommes# de Strasbourg.",
+					de: "Wir kommen aus Straßburg.",
+				},
+				{
+					verb: "être",
+					pp: "n2",
+					fr: "2 Nous #sommes# ouverts du lundi au vendredi.",
+					de: "Wir haben von Montag bis Freitag geöffnet.",
+				},
+				{
+					verb: "être",
+					pp: "v1",
+					fr: "1 Vous #êtes# prêts ?",
+					de: "Seid ihr bereit?",
+				},
+				{
+					verb: "être",
+					pp: "v2",
+					fr: "2 Vous #êtes# monsieur Legrand ?",
+					de: "Sind Sie Herr Legrand?",
+				},
+				{
+					verb: "être",
+					pp: "s1",
+					fr: "1 Où #sont# mes clés ?",
+					de: "Wo sind meine Schlüssel?",
+				},
+				{
+					verb: "être",
+					pp: "s2",
+					fr: "2 Les maisons a colombage #sont# typiques de la Normandie.",
+					de: "Fachwerkhäuser sind typisch für die Normandie.",
+				},
+				{
+					verb: "avoir",
+					pp: "j1",
+					fr: "1 J'#ai# trouvé quelque chose.",
+					de: "Ich habe etwas gefunden.",
+				},
+				{
+					verb: "avoir",
+					pp: "j2",
+					fr: "2 Je n'#ai# pas le temps.",
+					de: "Ich habe keine Zeit.",
+				},
+				{
+					verb: "avoir",
+					pp: "j3",
+					fr: "3 J'#ai# mal à la tête.",
+					de: "Ich habe Kopfschmerzen.",
+				},
+				{
+					verb: "avoir",
+					pp: "t1",
+					fr: "1 Est-ce que tu #as# soif ?",
+					de: "Hast du Durst?",
+				},
+				{
+					verb: "avoir",
+					pp: "t2",
+					fr: "2 Dis-moi si tu #as# besoin de quelque chose.",
+					de: "Sag mir, wenn du etwas brauchst.",
+				},
+				{
+					verb: "avoir",
+					pp: "t3",
+					fr: "3 Tu #as# envie de jouer avec moi ?",
+					de: "Hast du Lust mit mir zu spielen?",
+				},
+				{
+					verb: "avoir",
+					pp: "t4",
+					fr: "4 Tu #as# l'air content.",
+					de: "Du siehst glücklich aus.",
+				},
+				{
+					verb: "avoir",
+					pp: "i1",
+					fr: "1 Il y #a# un beau petit restaurant là-bas.",
+					de: "Es gibt da ein hübsches kleines Restaurant.",
+				},
+				{
+					verb: "avoir",
+					pp: "i2",
+					fr: "2 Il #a# 30 ans.",
+					de: "Er ist 30 Jahre alt.",
+				},
+				{
+					verb: "avoir",
+					pp: "n1",
+					fr: "1 Nous #avons# un chien et un chat.",
+					de: "Wir haben einen Hund und eine Katze.",
+				},
+				{
+					verb: "avoir",
+					pp: "n2",
+					fr: "2 Nous #avons# une voiture rouge.",
+					de: "Wir haben ein rotes Auto.",
+				},
+				{
+					verb: "avoir",
+					pp: "v1",
+					fr: "1 Vous #avez# choisi, messieurs dames ?",
+					de: "Haben Sie gewählt, meine Damen und Herren?",
+				},
+				{
+					verb: "avoir",
+					pp: "v2",
+					fr: "2 Bonjour Monsieur. Vous #avez# rende-vous ?",
+					de: "Guten Tag Herr, haben Sie einen Termin?",
+				},
+				{
+					verb: "avoir",
+					pp: "s1",
+					fr: "1 Ils #ont# une grande maison.",
+					de: "Sie haben ein großes Haus.",
+				},
+				{
+					verb: "avoir",
+					pp: "s2",
+					fr: "2 Alex et Nathalie #ont# beaucoup d'amis.",
+					de: "Alex und Nathalie haben viele Freunde.",
+				},
+				{
+					verb: "avoir",
+					pp: "s3",
+					fr: "3 Les élèves #ont# de bonnes notes.",
+					de: "Die Schüler haben gute Noten.",
+				},
+				{
+					verb: "faire",
+					pp: "j1",
+					fr: "Je #fais# mes devoirs.",
+					de: "Ich mache meine Hausaufgaben.",
+				},
+				{
+					verb: "faire",
+					pp: "t1",
+					fr: "Tu #fais# quoi aujourd'hui ?",
+					de: "Was machst du heute?.",
+				},
+				{
+					verb: "faire",
+					pp: "i1",
+					fr: "Il #fait# froid aujourd'hui.",
+					de: "Es ist kalt heute.",
+				},
+				{
+					verb: "faire",
+					pp: "n1",
+					fr: "Nous #faisons# une promenade dans le parc.",
+					de: "Wir machen einen Spaziergang im Park.",
+				},
+				{
+					verb: "faire",
+					pp: "v1",
+					fr: "Vous #faites# du sport ?",
+					de: "Treiben Sie Sport?",
+				},
+				{
+					verb: "faire",
+					pp: "s1",
+					fr: "Ils #font# partie de la premiere génération.",
+					de: "Sie gehören zur ersten Generation.",
+				},
+				{
+					verb: "parler",
+					pp: "j1",
+					fr: "Je #parle# seulement un peu français.",
+					de: "Ich spreche nur ein bischen Französisch.",
+				},
+				{
+					verb: "parler",
+					pp: "t1",
+					fr: "Tu #parles# français ?",
+					de: "Sprichst du Französisch?",
+				},
+				{
+					verb: "parler",
+					pp: "i1",
+					fr: "Elle #parle# de ses rêves.",
+					de: "Sie spricht über ihre Träume.",
+				},
+				{
+					verb: "parler",
+					pp: "n1",
+					fr: "Nous #parlons# de nos vacances.",
+					de: "Wir sprechen über unseren Urlaub.",
+				},
+				{
+					verb: "parler",
+					pp: "v1",
+					fr: "#Parlez#-vous anglais ?",
+					de: "Sprechen Sie Englisch?",
+				},
+				{
+					verb: "parler",
+					pp: "s1",
+					fr: "Elles #parlent# de Paul.",
+					de: "Sie sprechen über Paul.",
+				},
+				{
+					verb: "aller",
+					pp: "j1",
+					fr: "Je #vais# à Colmar en passant par Strasbourg.",
+					de: "Ich fahre über Straßburg nach Colmar.",
+				},
+				{
+					verb: "aller",
+					pp: "t1",
+					fr: "Tu #vas# passer le week-end chez tes parents ?",
+					de: "Wirst du das Wochenende bei deinen Eltern verbringen?",
+				},
+				{
+					verb: "aller",
+					pp: "i1",
+					fr: "On #va# au restaurant.",
+					de: "Wir gehen ins Restaurant.",
+				},
+				{
+					verb: "aller",
+					pp: "n1",
+					fr: "Nous #allons# à Paris en décembre.",
+					de: "Wir fahren im Dezember nach Paris.",
+				},
+				{
+					verb: "aller",
+					pp: "v1",
+					fr: "Vous #allez# à la cantine à midi",
+					de: "Sie gehen mittags in die Kantine?",
+				},
+				{
+					verb: "aller",
+					pp: "s1",
+					fr: "Elles vous #vont# en 44 ?",
+					de: "Passen sie Ihnen in 44?",
+				},
+				{
+					verb: "prendre",
+					pp: "j1",
+					fr: "Je #prends# encore une bière, s'il vous plaît.",
+					de: "Ich nehme noch ein Bier, bitte.",
+				},
+				{
+					verb: "prendre",
+					pp: "t1",
+					fr: "Tu #prends# aussi un melon.",
+					de: "Du nimmst auch eine Melone.",
+				},
+				{
+					verb: "prendre",
+					pp: "i1",
+					fr: "Paul #prend# quelques jours de vacances.",
+					de: "Paul nimmt ein paar Tage Urlaub.",
+				},
+				{
+					verb: "prendre",
+					pp: "n1",
+					fr: "Nous #prenons# le train pour Paris.",
+					de: "Wir nehmen den Zug nach Paris.",
+				},
+				{
+					verb: "prendre",
+					pp: "v1",
+					fr: "Qu'est-ce que vous #prenez# comme boissons ?",
+					de: "Was trinken Sie?",
+				},
+				{
+					verb: "prendre",
+					pp: "s1",
+					fr: "Ils #prennent# le train pour voyager.",
+					de: "Sie fahren mit dem Zug, um zu verreisen.",
+				},
+				{
+					verb: "acheter",
+					pp: "j1",
+					fr: "Je m'#achète# une boîte de chocolats.",
+					de: "Ich kaufe mir eine Pralinenschachtel.",
+				},
+				{
+					verb: "acheter",
+					pp: "t1",
+					fr: "Tu t'#achètes# une nouvelle voiture.",
+					de: "Du kaufst dir ein neues Auto.",
+				},
+				{
+					verb: "acheter",
+					pp: "i1",
+					fr: "On #achète# du fromage au marché.",
+					de: "Wir kaufen Käse auf dem Markt.",
+				},
+				{
+					verb: "acheter",
+					pp: "n1",
+					fr: "Nous #achetons# toujours des legumes au marché.",
+					de: "Wir kaufen Gemüse immer auf dem Markt.",
+				},
+				{
+					verb: "acheter",
+					pp: "v1",
+					fr: "#Achetez# une bouteille de vin rouge.",
+					de: "Kaufen Sie eine Flasche Rotwein.",
+				},
+				{
+					verb: "acheter",
+					pp: "s1",
+					fr: "Les élèves s'#achètent# une glace.",
+					de: "Die Schüler kaufen sich ein Eis.",
+				},
+				{
+					verb: "boire",
+					pp: "j1",
+					fr: "Je #bois# un jus de fruit.",
+					de: "Ich trinke einen Fruchtsaft.",
+				},
+				{
+					verb: "boire",
+					pp: "j2",
+					fr: "Le matin je #bois# du café.",
+					de: "Morgens trinke ich Kaffee.",
+				},
+				{
+					verb: "boire",
+					pp: "t1",
+					fr: "Tu #bois# de l'eau tous les jours.",
+					de: "Du trinkst jeden Tag Wasser.",
+				},
+				{
+					verb: "boire",
+					pp: "i1",
+					fr: "En Angleterre, on #boit# beaucoup de thé.",
+					de: "In England trinkt man viel Tee.",
+				},
+				{
+					verb: "boire",
+					pp: "n1",
+					fr: "Nous #buvons# de l'eau.",
+					de: "Wir trinken Wasser.",
+				},
+				{
+					verb: "boire",
+					pp: "v1",
+					fr: "Vous #buvez# du thé ou du café ?",
+					de: "Trinken Sie Tee oder Kaffee?",
+				},
+				{
+					verb: "boire",
+					pp: "s1",
+					fr: "Ils #boivent# du vin au restaurant.",
+					de: "Sie trinken Wein im Restaurant.",
+				},
+				{
+					verb: "dire",
+					pp: "j1",
+					fr: "Je #dis# la vérité.",
+					de: "Ich sage die Wahrheit.",
+				},
+				{
+					verb: "dire",
+					pp: "t1",
+					fr: "Tu #dis# des choses intéressantes.",
+					de: "Du sagst interessante Dinge.",
+				},
+				{
+					verb: "dire",
+					pp: "i1",
+					fr: "Elle #dit# qu'elle vient demain matin.",
+					de: "Sie sagt, dass sie morgen früh kommt.",
+				},
+				{
+					verb: "dire",
+					pp: "i2",
+					fr: "Le professeur #dit# que nous avons un examen demain.",
+					de: "Der Lehrer sagt, dass wir morgen eine Prüfung haben.",
+				},
+				{
+					verb: "dire",
+					pp: "n1",
+					fr: "Nous #disons# bonjour à tout le monde.",
+					de: "Wir grüßen alle.",
+				},
+				{
+					verb: "dire",
+					pp: "v1",
+					fr: "Vous #dites# que vous ne pouvez pas venir ce soir.",
+					de: "Sie sagen, dass Sie heute Abend nicht kommen können.",
+				},
+				{
+					verb: "dire",
+					pp: "s1",
+					fr: "Ils #disent# qu'ils vont partir demain.",
+					de: "Sie sagen, dass sie morgen abreisen werden.",
+				},
+				{
+					verb: "devoir",
+					pp: "j1",
+					fr: "Je #dois# faire la vaiselle.",
+					de: "Ich muss den Abwasch machen.",
+				},
+				{
+					verb: "devoir",
+					pp: "t1",
+					fr: "Tu #dois# faire tes devoirs.",
+					de: "Du musst deine Hausaufgaben machen.",
+				},
+				{
+					verb: "devoir",
+					pp: "t2",
+					fr: "Est-ce que tu #dois# toujours prendre ce médicament ?",
+					de: "Musst du dieses Medikament immer nehmen?",
+				},
+				{
+					verb: "devoir",
+					pp: "i1",
+					fr: "On #doit# être là dans une heure.",
+					de: "Wir müssen in 1 Std. da sein.",
+				},
+				{
+					verb: "devoir",
+					pp: "n1",
+					fr: "Nous #devons# partir tôt demain matin.",
+					de: "Wir müssen morgen früh abreisen.",
+				},
+				{
+					verb: "devoir",
+					pp: "v1",
+					fr: "Vous #devez# prendre rendez-vous chez le dentiste.",
+					de: "Sie müssen einen Termin beim Zahnarzt vereinbaren.",
+				},
+				{
+					verb: "devoir",
+					pp: "s1",
+					fr: "Elles #doivent# téléphoner à leurs parents aussitôt que possible.",
+					de: "Sie müssen ihre Eltern so schnell wie möglich anrufen.",
+				},
+				{
+					verb: "pouvoir",
+					pp: "j1",
+					fr: "Je #peux# venir ce soir.",
+					de: "Ich kann heute Abend kommen.",
+				},
+				{
+					verb: "pouvoir",
+					pp: "j2",
+					fr: "Je #peux# t'aider ?",
+					de: "Kann ich dir helfen?",
+				},
+				{
+					verb: "pouvoir",
+					pp: "t1",
+					fr: "Tu #peux# venir chez moi samedi.",
+					de: "Du kannst am Samstag zu mir kommen.",
+				},
+				{
+					verb: "pouvoir",
+					pp: "t2",
+					fr: "Tu #peux# m'aider ?",
+					de: "Kannst du mir helfen?",
+				},
+				{
+					verb: "pouvoir",
+					pp: "i1",
+					fr: "Elle ne #peut# pas venir.",
+					de: "Sie kann nicht kommen.",
+				},
+				{
+					verb: "pouvoir",
+					pp: "n1",
+					fr: "Nous #pouvons# partir maintenant.",
+					de: "Wir können jetzt gehen.",
+				},
+				{
+					verb: "pouvoir",
+					pp: "v1",
+					fr: "Est-ce que vous #pouvez# ouvrir la fenêtre, s'il vous plaît ?",
+					de: "Können Sie bitte das Fenster öffnen?",
+				},
+				{
+					verb: "pouvoir",
+					pp: "s1",
+					fr: "Elles #peuvent# prendre le bus pour aller en ville.",
+					de: "Sie können den Bus nehmen, um in die Stadt zu fahren.",
+				},
+				{
+					verb: "vouloir",
+					pp: "j1",
+					fr: "Je #veux# un verre d'eau.",
+					de: "Ich möchte ein Glas Wasser.",
+				},
+				{
+					verb: "vouloir",
+					pp: "j2",
+					fr: "Je #veux# apprendre le français.",
+					de: "Ich möchte Französisch lernen.",
+				},
+				{
+					verb: "vouloir",
+					pp: "t1",
+					fr: "Tu #veux# un café ?",
+					de: "Willst du einen Kaffee?",
+				},
+				{
+					verb: "vouloir",
+					pp: "t2",
+					fr: "Tu #veux# aller manger un morceau ?",
+					de: "Hast du Lust, eine Kleinigkeit essen zu gehen?",
+				},
+				{
+					verb: "vouloir",
+					pp: "i1",
+					fr: "Elle #veut# faire une fête la semaine prochaine.",
+					de: "Sie will nächste Woche eine Party machen.",
+				},
+				{
+					verb: "vouloir",
+					pp: "n1",
+					fr: "Nous #voulons# voyager.",
+					de: "Wir wollen reisen.",
+				},
+				{
+					verb: "vouloir",
+					pp: "v1",
+					fr: "Vous #voulez# manger quelque chose ?",
+					de: "Wollen Sie etwas essen?",
+				},
+				{
+					verb: "vouloir",
+					pp: "s1",
+					fr: "Ils #veulent# venir dîner ce soir.",
+					de: "Sie wollen heute Abend zum Essen kommen.",
+				},
+				{
+					verb: "mettre",
+					pp: "j1",
+					fr: "Je #mets# mon pantalon.",
+					de: "Ich ziehe meine Hose an.",
+				},
+				{
+					verb: "mettre",
+					pp: "j2",
+					fr: "Je #mets# le livre sur la table.",
+					de: "Ich lege das Buch auf den Tisch.",
+				},
+				{
+					verb: "mettre",
+					pp: "t1",
+					fr: "Tu #mets# la table ?",
+					de: "Deckst du den Tisch?",
+				},
+				{
+					verb: "mettre",
+					pp: "i1",
+					fr: "Elle #met# ses nouvelles chaussures.",
+					de: "Sie zieht ihre neuen Schuhe an.",
+				},
+				{
+					verb: "mettre",
+					pp: "n1",
+					fr: "Nous #mettons# nos chaussures.",
+					de: "Wir ziehen unsere Schuhe an.",
+				},
+				{
+					verb: "mettre",
+					pp: "v1",
+					fr: "Vous #mettez# une robe bleue.",
+					de: "Sie ziehen ein blaues Kleid an.",
+				},
+				{
+					verb: "mettre",
+					pp: "s1",
+					fr: "Ils #mettent# la table.",
+					de: "Sie decken den Tisch.",
+				},
+				{
+					verb: "partir",
+					pp: "j1",
+					fr: "Je #pars# en vacances demain.",
+					de: "Ich fahre morgen in den Urlaub.",
+				},
+				{
+					verb: "partir",
+					pp: "t1",
+					fr: "À quelle heure tu #pars# ?",
+					de: "Um wie viel Uhr gehst du?",
+				},
+				{
+					verb: "partir",
+					pp: "i1",
+					fr: "Il #part# en France.",
+					de: "Er fährt/geht nach Frankreich.",
+				},
+				{
+					verb: "partir",
+					pp: "n1",
+					fr: "En août, nous #partons# en vacances en France.",
+					de: "Im August fahren wir in den Urlaub nach Frankreich.",
+				},
+				{
+					verb: "partir",
+					pp: "v1",
+					fr: "Vous #partez# en train.",
+					de: "Sie fahren mit dem Zug.",
+				},
+				{
+					verb: "partir",
+					pp: "s1",
+					fr: "Ils #partent# demain matin.",
+					de: "Sie fahren morgen früh ab.",
+				},
+				{
+					verb: "venir",
+					pp: "j1",
+					fr: "Je #viens# chez toi demain.",
+					de: "Ich komme morgen zu dir.",
+				},
+				{
+					verb: "venir",
+					pp: "j2",
+					fr: "Je #viens# de Paris.",
+					de: "Ich komme aus Paris.",
+				},
+				{
+					verb: "venir",
+					pp: "t1",
+					fr: "Tu #viens# d'où ?",
+					de: "Woher kommst du?",
+				},
+				{
+					verb: "venir",
+					pp: "i1",
+					fr: "Elle #vient# d'arriver.",
+					de: "Sie ist gerade angekommen.",
+				},
+				{
+					verb: "venir",
+					pp: "i2",
+					fr: "Il #vient# demain à huit heures.",
+					de: "Er kommt morgen um acht.",
+				},
+				{
+					verb: "venir",
+					pp: "n1",
+					fr: "Nous #venons# chez toi demain soir pour dîner.",
+					de: "Wir kommen morgen Abend zum Abendessen zu dir nach Hause.",
+				},
+				{
+					verb: "venir",
+					pp: "v1",
+					fr: "Vous #venez# avec nous au restaurant ?",
+					de: "Kommen Sie mit uns ins Restaurant?",
+				},
+				{
+					verb: "venir",
+					pp: "s1",
+					fr: "Ils #viennent# avec nous.",
+					de: "Sie kommen mit uns.",
+				},
+				{
+					verb: "vivre",
+					pp: "j1",
+					fr: "Je #vis# ma meilleure vie.",
+					de: "Ich lebe mein bestes Leben.",
+				},
+				{
+					verb: "vivre",
+					pp: "t1",
+					fr: "Tu #vis# en France.",
+					de: "Du lebst in Frankreich.",
+				},
+				{
+					verb: "vivre",
+					pp: "i1",
+					fr: "Il #vit# seul.",
+					de: "Er lebt allein.",
+				},
+				{
+					verb: "vivre",
+					pp: "n1",
+					fr: "Nous #vivons# une expérience incroyable.",
+					de: "Wir haben eine unglaubliche Erfahrung.",
+				},
+				{
+					verb: "vivre",
+					pp: "s1",
+					fr: "Ils #vivent# heureux.",
+					de: "Sie leben glücklich.",
+				},
+				{
+					verb: "voir",
+					pp: "j1",
+					fr: "Je #vois# un arc-en-ciel.",
+					de: "Ich sehe einen Regenbogen.",
+				},
+				{
+					verb: "voir",
+					pp: "t1",
+					fr: "Tu #vois# ce que je veux dire ?",
+					de: "Du verstehst, was ich meine?",
+				},
+				{
+					verb: "voir",
+					pp: "i1",
+					fr: "Elle #voit# bien sans lunettes.",
+					de: "Sie sieht gut ohne Brille.",
+				},
+				{
+					verb: "voir",
+					pp: "i2",
+					fr: "On se #voit# la semaine prochaine ?",
+					de: "Sehen wir uns nächste Woche?",
+				},
+				{
+					verb: "voir",
+					pp: "n1",
+					fr: "Nous #voyons# nos amis ce week-end.",
+					de: "Wir sehen unsere Freunde dieses Wochenende.",
+				},
+				{
+					verb: "voir",
+					pp: "v1",
+					fr: "Vous #voyez# ce que je veux dire ?",
+					de: "Verstehen Sie, was ich meine?",
+				},
+				{
+					verb: "finir",
+					pp: "j1",
+					fr: "Je #finis# le travail à 17 heures.",
+					de: "Ich beende die Arbeit um 17 Uhr. / Ich habe um 17 Uhr Feierabend.",
+				},
+				{
+					verb: "attendre",
+					pp: "j1",
+					fr: "Je #attends# ma mère.",
+					de: "Ich warte auf meine Mutter.",
+				},
+				{
+					verb: "attendre",
+					pp: "t1",
+					fr: "Tu m'#attends# ?",
+					de: "Wartest du auf mich?",
+				},
+				{
+					verb: "attendre",
+					pp: "t2",
+					fr: "Tu #attends# l'avion.",
+					de: "Du wartest auf das Flugzeug.",
+				},
+				{
+					verb: "attendre",
+					pp: "i1",
+					fr: "Elle #attend# une réponse.",
+					de: "Sie wartet auf eine Antwort.",
+				},
+				{
+					verb: "attendre",
+					pp: "n1",
+					fr: "Nous #attendons# déjà un quart d'heure.",
+					de: "Wir warten schon seit einer Viertelstunde.",
+				},
+				{
+					verb: "attendre",
+					pp: "v1",
+					fr: "#Attendez# un moment.",
+					de: "Warten Sie einen Moment.",
+				},
+				{
+					verb: "savoir",
+					pp: "j1",
+					fr: "Je ne #sais# pas.",
+					de: "Ich weiß nicht.",
+				},
+				{
+					verb: "savoir",
+					pp: "j2",
+					fr: "Je #sais# ce que je veux.",
+					de: "Ich weiß, was ich will.",
+				},
+				{
+					verb: "savoir",
+					pp: "t1",
+					fr: "Tu #sais# où il habite ?",
+					de: "Weißt du, wo er wohnt?",
+				},
+				{
+					verb: "savoir",
+					pp: "t2",
+					fr: "Tu #sais# tout !",
+					de: "Du weißt alles! ",
+				},
+				{
+					verb: "savoir",
+					pp: "i1",
+					fr: "Elle #sait# la réponse.",
+					de: "Sie weiß/kennt die Antwort.",
+				},
+				{
+					verb: "savoir",
+					pp: "n1",
+					fr: "Nous #savons# que c'est très difficile.",
+					de: "Wir wissen, dass es sehr schwierig ist.",
+				},
+				{
+					verb: "savoir",
+					pp: "v1",
+					fr: "#Savez#-vous que demain il y a un marché en ville ?",
+					de: "Wissen Sie, das morgen ein Markt in der Stadt ist?",
+				},
+				{
+					verb: "savoir",
+					pp: "s1",
+					fr: "Elles #savent# conduire.",
+					de: "Sie können Auto fahren.",
+				},
+				{
+					verb: "croire",
+					pp: "j1",
+					fr: "Je #crois# en toi !",
+					de: "Ich glaube an dich!",
+				},
+				{
+					verb: "connaître",
+					pp: "t1",
+					fr: "Tu #connais# ce restaurant ?",
+					de: "Kennst du dieses Restaurant?",
+				},
+				{
+					verb: "connaître",
+					pp: "i1",
+					fr: "Elle #connaît# bien Paris.",
+					de: "Sie kennt Paris gut.",
+				},
+				{
+					verb: "connaître",
+					pp: "n1",
+					fr: "Nous #connaissons# la situation.",
+					de: "Wir kennen die Situation.",
+				},
+				{
+					verb: "connaître",
+					pp: "v1",
+					fr: "Vous #connaissez# ma sœur ?",
+					de: "Kennen Sie meine Schwester?",
+				},
+				{
+					verb: "penser",
+					pp: "j1",
+					fr: "Je #pense# à toi.",
+					de: "Ich denke an dich.",
+				},
+				{
+					verb: "penser",
+					pp: "j2",
+					fr: "Je #pense# que oui.",
+					de: "Ich denke, ja.",
+				},
+				{
+					verb: "penser",
+					pp: "j3",
+					fr: "Je #pense# que le tennis, c'est mauvais pour les genoux.",
+					de: "Ich denke, Tennis ist schlecht für die Knie.",
+				},
+				{
+					verb: "appeler",
+					pp: "j1",
+					fr: "Je m'#appelle# Josef.",
+					de: "Ich heiße Josef.",
+				},
+				{
+					verb: "appeler",
+					pp: "t1",
+					fr: "Comment tu t'#appelles# ?",
+					de: "Wie heißt du?",
+				},
+				{
+					verb: "appeler",
+					pp: "v1",
+					fr: "Comment vous vous #appelez# ?",
+					de: "Wie heißen Sie?",
+				},
+				{
+					verb: "écrire",
+					pp: "t1",
+					fr: "Tu #écris# un mail à Marie.",
+					de: "Du schreibst eine E-mail an Marie.",
+				},
+				{
+					verb: "manger",
+					pp: "j1",
+					fr: "Je #mange# des fraises.",
+					de: "Ich esse Erdbeeren.",
+				},
+				{
+					verb: "manger",
+					pp: "j2",
+					fr: "Normalement, le matin je ne #mange# rien.",
+					de: "Normalerweise esse ich morgens nicht.",
+				},
+				{
+					verb: "manger",
+					pp: "t1",
+					fr: "Tu #manges# de la viande ?",
+					de: "Isst du Fleisch?",
+				},
+				{
+					verb: "manger",
+					pp: "i1",
+					fr: "On #mange# souvent à la cantine.",
+					de: "Wir essen oft in der Kantine.",
+				},
+				{
+					verb: "manger",
+					pp: "i2",
+					fr: "Qu'est-ce qu'on #mange# ce midi ?",
+					de: "Was essen wir heute Mittag?",
+				},
+				{
+					verb: "manger",
+					pp: "n1",
+					fr: "Nous #mangeons# beaucoup de fruits.",
+					de: "Wir essen viel Obst.",
+				},
+				{
+					verb: "regarder",
+					pp: "j1",
+					fr: "Je #regarde# les nouvelles.",
+					de: "Ich schaue mir die Nachrichten an.",
+				},
+				{
+					verb: "regarder",
+					pp: "t1",
+					fr: "Qu'est-ce que tu #regardes# ?",
+					de: "Was schaust du gerade?",
+				},
+				{
+					verb: "regarder",
+					pp: "v1",
+					fr: "Vous #regardez# un film.",
+					de: "Sie sehen sich einen Film an.",
+				},
+				{
+					verb: "aimer",
+					pp: "j1",
+					fr: "J'#aime# le chocolat.",
+					de: "Ich mag Schokolade.",
+				},
+				{
+					verb: "aimer",
+					pp: "j2",
+					fr: "Je t'#aime#.",
+					de: "Ich liebe dich.",
+				},
+				{
+					verb: "aimer",
+					pp: "t1",
+					fr: "Tu #aimes# les animaux.",
+					de: "Du liebst Tiere.",
+				},
+				{
+					verb: "aimer",
+					pp: "n1",
+					fr: "Nous #aimons# le café.",
+					de: "Wir mögen Kaffee.",
+				},
+				{
+					verb: "aimer",
+					pp: "s1",
+					fr: "Ils n'#aiment# pas ça.",
+					de: "Sie mögen das nicht.",
+				},
+				{
+					verb: "lire",
+					pp: "t1",
+					fr: "Tu #lis# quoi en ce moment ?",
+					de: "Was liest du gerade?",
+				},
+				{
+					verb: "trouver",
+					pp: "j1",
+					fr: "Je ne #trouve# pas mes clés.",
+					de: "Ich finde meine Schlüssel nicht.",
+				},
+				{
+					verb: "donner",
+					pp: "j1",
+					fr: "Je lui #donne# un cadeau.",
+					de: "Ich gebe ihm/ihr ein Geschenk.",
+				},
+				{
+					verb: "donner",
+					pp: "j2",
+					fr: "Je vous #donne# mon numéro.",
+					de: "Ich gebe Ihnen meine Nummer.",
+				},
+				{
+					verb: "arriver",
+					pp: "j1",
+					fr: "Quand j'#arrive# à la gare je te téléphone.",
+					de: "Wenn ich am Bahnhof ankomme, rufe ich dich an.",
+				},
+				{
+					verb: "arriver",
+					pp: "i1",
+					fr: "Le train #arrive# à quelle heure ?",
+					de: "Wann kommt der Zug an?",
+				},
+			];
+
+			// 2. DATENBANK FÜR KONJUGATIONEN
+			const verbData = {
+				box1: {
+					title: "être (sein)",
+					je: "je",
+					answers: ["suis", "es", "est", "sommes", "êtes", "sont"],
+				},
+				box2: {
+					title: "avoir (haben)",
+					je: "j'",
+					answers: ["ai", "as", "a", "avons", "avez", "ont"],
+				},
+				box3: {
+					title: "faire (machen, tun)",
+					je: "je",
+					answers: ["fais", "fais", "fait", "faisons", "faites", "font"],
+				},
+				box4: {
+					title: "parler (sprechen)",
+					je: "je",
+					answers: ["parle", "parles", "parle", "parlons", "parlez", "parlent"],
+				},
+				box5: {
+					title: "aller (gehen)",
+					je: "je",
+					answers: ["vais", "vas", "va", "allons", "allez", "vont"],
+				},
+				box6: {
+					title: "prendre (nehmen)",
+					je: "je",
+					answers: [
+						"prends",
+						"prends",
+						"prend",
+						"prenons",
+						"prenez",
+						"prennent",
+					],
+				},
+				box7: {
+					title: "acheter (kaufen)",
+					je: "j'",
+					answers: [
+						"achète",
+						"achètes",
+						"achète",
+						"achetons",
+						"achetez",
+						"achètent",
+					],
+				},
+				box8: {
+					title: "boire (trinken)",
+					je: "je",
+					answers: ["bois", "bois", "boit", "buvons", "buvez", "boivent"],
+				},
+				box9: {
+					title: "dire (sagen)",
+					je: "je",
+					answers: ["dis", "dis", "dit", "disons", "dites", "disent"],
+				},
+				box10: {
+					title: "payer (bezahlen)",
+					je: "je",
+					answers: ["paye", "payes", "paye", "payons", "payez", "payent"],
+				},
+				box11: {
+					title: "devoir (müssen)",
+					je: "je",
+					answers: ["dois", "dois", "doit", "devons", "devez", "doivent"],
+				},
+				box12: {
+					title: "pouvoir (können)",
+					je: "je",
+					answers: ["peux", "peux", "peut", "pouvons", "pouvez", "peuvent"],
+				},
+				box13: {
+					title: "chercher (suchen)",
+					je: "je",
+					answers: [
+						"cherche",
+						"cherches",
+						"cherche",
+						"cherchons",
+						"cherchez",
+						"cherchent",
+					],
+				},
+				box14: {
+					title: "choisir (wählen)",
+					je: "je",
+					answers: [
+						"choisis",
+						"choisis",
+						"choisit",
+						"choisissons",
+						"choisissez",
+						"choisissent",
+					],
+				},
+				box15: {
+					title: "vouloir (wollen)",
+					je: "je",
+					answers: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
+				},
+				box16: {
+					title: "dormir (schlafen)",
+					je: "je",
+					answers: ["dors", "dors", "dort", "dormons", "dormez", "dorment"],
+				},
+				box17: {
+					title: "mettre (setzen, stellen, legen)",
+					je: "je",
+					answers: ["mets", "mets", "met", "mettons", "mettez", "mettent"],
+				},
+				box18: {
+					title: "partir (weggehen)",
+					je: "je",
+					answers: ["pars", "pars", "part", "partons", "partez", "partent"],
+				},
+				box19: {
+					title: "sortir (hinausgehen)",
+					je: "je",
+					answers: ["sors", "sors", "sort", "sortons", "sortez", "sortent"],
+				},
+				box20: {
+					title: "travailler (arbeiten)",
+					je: "je",
+					answers: [
+						"travaille",
+						"travailles",
+						"travaille",
+						"travaillons",
+						"travaillez",
+						"travaillent",
+					],
+				},
+				box21: {
+					title: "venir (kommen)",
+					je: "je",
+					answers: ["viens", "viens", "vient", "venons", "venez", "viennent"],
+				},
+				box22: {
+					title: "vivre (leben)",
+					je: "je",
+					answers: ["vis", "vis", "vit", "vivons", "vivez", "vivent"],
+				},
+				box23: {
+					title: "voir (sehen)",
+					je: "je",
+					answers: ["vois", "vois", "voit", "voyons", "voyez", "voient"],
+				},
+				box24: {
+					title: "finir (beenden)",
+					je: "je",
+					answers: [
+						"finis",
+						"finis",
+						"finit",
+						"finissons",
+						"finissez",
+						"finissent",
+					],
+				},
+				box25: {
+					title: "attendre (warten)",
+					je: "j'",
+					answers: [
+						"attends",
+						"attends",
+						"attend",
+						"attendons",
+						"attendez",
+						"attendent",
+					],
+				},
+				box26: {
+					title: "réfléchir (nachdenken, überlegen)",
+					je: "je",
+					answers: [
+						"réfléchis",
+						"réfléchis",
+						"réfléchit",
+						"réfléchissons",
+						"réfléchissez",
+						"réfléchissent",
+					],
+				},
+				box27: {
+					title: "savoir (wissen)",
+					je: "je",
+					answers: ["sais", "sais", "sait", "savons", "savez", "savent"],
+				},
+				box28: {
+					title: "croire (glauben)",
+					je: "je",
+					answers: ["crois", "crois", "croit", "croyons", "croyez", "croient"],
+				},
+				box29: {
+					title: "connaître (kennen)",
+					je: "je",
+					answers: [
+						"connais",
+						"connais",
+						"connaît",
+						"connaissons",
+						"connaissez",
+						"connaissent",
+					],
+				},
+				box30: {
+					title: "plaire (gefallen)",
+					je: "je",
+					answers: [
+						"plais",
+						"plais",
+						"plaît",
+						"plaisons",
+						"plaisez",
+						"plaisent",
+					],
+				},
+				box31: {
+					title: "recevoir (empfangen, erhalten)",
+					je: "je",
+					answers: [
+						"reçois",
+						"reçois",
+						"reçoit",
+						"recevons",
+						"recevez",
+						"reçoivent",
+					],
+				},
+				box32: {
+					title: "suivre (folgen, nachfolgen)",
+					je: "je",
+					answers: ["suis", "suis", "suit", "suivons", "suivez", "suivent"],
+				},
+				box33: {
+					title: "penser (denken, glauben)",
+					je: "je",
+					answers: ["pense", "penses", "pense", "pensons", "pensez", "pensent"],
+				},
+				box34: {
+					title: "passer (verbringen, vorbeigehen)",
+					je: "je",
+					answers: ["passe", "passes", "passe", "passons", "passez", "passent"],
+				},
+				box35: {
+					title: "appeler (anrufen, nennen, rufen)",
+					je: "j'",
+					answers: [
+						"appelle",
+						"appelles",
+						"appelle",
+						"appelons",
+						"appelez",
+						"appellent",
+					],
+				},
+				box36: {
+					title: "écrire (schreiben)",
+					je: "j'",
+					answers: [
+						"écris",
+						"écris",
+						"écrit",
+						"écrivons",
+						"écrivez",
+						"écrivent",
+					],
+				},
+				box37: {
+					title: "étudier (studieren, lernen)",
+					je: "j'",
+					answers: [
+						"étudie",
+						"étudies",
+						"étudie",
+						"étudions",
+						"étudiez",
+						"étudient",
+					],
+				},
+				box38: {
+					title: "manger (essen)",
+					je: "je",
+					answers: [
+						"mange",
+						"manges",
+						"mange",
+						"mangeons",
+						"mangez",
+						"mangent",
+					],
+				},
+				box39: {
+					title: "regarder (anschauen, ansehen)",
+					je: "je",
+					answers: [
+						"regarde",
+						"regardes",
+						"regarde",
+						"regardons",
+						"regardez",
+						"regardent",
+					],
+				},
+				box40: {
+					title: "aimer (mögen, lieben)",
+					je: "j'",
+					answers: ["aime", "aimes", "aime", "aimons", "aimez", "aiment"],
+				},
+				box41: {
+					title: "lire (lesen)",
+					je: "je",
+					answers: ["lis", "lis", "lit", "lisons", "lisez", "lisent"],
+				},
+				box42: {
+					title: "trouver (finden)",
+					je: "je",
+					answers: [
+						"trouve",
+						"trouves",
+						"trouve",
+						"trouvons",
+						"trouvez",
+						"trouvent",
+					],
+				},
+				box43: {
+					title: "donner (geben)",
+					je: "je",
+					answers: ["donne", "donnes", "donne", "donnons", "donnez", "donnent"],
+				},
+				box44: {
+					title: "arriver (ankommen, kommen)",
+					je: "j'",
+					answers: [
+						"arrive",
+						"arrives",
+						"arrive",
+						"arrivons",
+						"arrivez",
+						"arrivent",
+					],
+				},
+				box45: {
+					title: "descendre (aussteigen, hinabsteigen)",
+					je: "je",
+					answers: [
+						"descends",
+						"descends",
+						"descend",
+						"descendons",
+						"descendez",
+						"descendent",
+					],
+				},
+			};
+
+			let currentVerbKey = null;
+			let currentVerbName = "";
+
+			const boxContainer = document.getElementById("boxContainer");
+			const checkBtn = document.getElementById("check-btn");
+			const verbHeader = document.getElementById("verbHeader");
+
+			function renderContent() {
+				if (!currentVerbKey) return;
+				const mode = document.querySelector('input[name="mode"]:checked').value;
+				const data = verbData[currentVerbKey];
+				boxContainer.innerHTML = "";
+
+				// Titel setzen
+				const [name, trans] = data.title.split(" (");
+				verbHeader.innerHTML = `${name} <span style="font-weight:normal; font-size:0.8em;">(${trans}</span>`;
+
+				// Header-Klick Logik: Alles aufdecken im "show" Modus
+				if (mode === "show") {
+					verbHeader.style.cursor = "pointer";
+					verbHeader.onclick = () => {
+						document
+							.querySelectorAll(".hidden-verb")
+							.forEach((el) => el.classList.remove("hidden-verb"));
+					};
+				} else {
+					verbHeader.style.cursor = "default";
+					verbHeader.onclick = null;
+				}
+
+				if (mode === "sentences") {
+					renderSentences(currentVerbName);
+				} else {
+					renderQuiz(data, mode);
+				}
+			}
+
+			function renderQuiz(data, mode) {
+				checkBtn.style.display = mode === "write" ? "block" : "none";
+				const pronouns = [
+					data.je,
+					"tu",
+					"il, elle, on",
+					"nous",
+					"vous",
+					"ils, elles",
+				];
+
+				pronouns.forEach((pronoun, i) => {
+					const div = document.createElement("div");
+					div.className = "conjugation-box";
+					const space = pronoun.endsWith("'") ? "" : "&nbsp;";
+
+					if (mode === "show") {
+						div.style.cursor = "pointer";
+						// Klick auf die Zeile deckt ALLE Verben auf
+						div.onclick = () => {
+							document
+								.querySelectorAll(".hidden-verb")
+								.forEach((el) => el.classList.remove("hidden-verb"));
+						};
+						div.innerHTML = `${pronoun}${space}<span class="highlight-verb hidden-verb">${data.answers[i]}</span>`;
+					} else {
+						div.style.cursor = "default";
+						div.onclick = null;
+						div.innerHTML = `${pronoun}${space}<input type="text" class="verb-input" data-answer="${data.answers[i]}">`;
+					}
+					boxContainer.appendChild(div);
+				});
+			}
+
+			function renderSentences(verbName) {
+				checkBtn.style.display = "block";
+				let filtered = grammarData.filter((s) => s.verb === verbName);
+
+				if (filtered.length === 0) {
+					boxContainer.innerHTML = `<div class="sentence-card">Noch keine Sätze für <b>${verbName}</b> hinterlegt.</div>`;
+					checkBtn.style.display = "none";
+					return;
+				}
+
+				let finalSelection = [];
+				const categories = ["j", "t", "i", "n", "v", "s"];
+
+				// Wir gehen jede Kategorie (Personalpronomen) einzeln durch
+				categories.forEach((cat) => {
+					// Filtere alle Sätze, deren pp mit dem aktuellen Buchstaben beginnt
+					let group = filtered.filter((s) => s.pp && s.pp.startsWith(cat));
+
+					if (group.length > 0) {
+						// Wähle GENAU EINEN zufälligen Satz aus dieser Gruppe (z.B. j1 oder j2)
+						const randomSentence =
+							group[Math.floor(Math.random() * group.length)];
+						finalSelection.push(randomSentence);
+					}
+				});
+
+				// Falls ein Verb gar keine "pp"-Tags hat (Fallback), nehmen wir die alte Methode
+				if (finalSelection.length === 0) {
+					finalSelection = filtered.sort(() => Math.random() - 0.5).slice(0, 6);
+				}
+
+				// Die 6 ausgewählten Sätze mischen, damit die Reihenfolge variiert
+				finalSelection.sort(() => Math.random() - 0.5);
+
+				boxContainer.innerHTML = "";
+
+				finalSelection.forEach((s, index) => {
+					const solution = s.fr.match(/#(.*?)#/)[1];
+					const textWithGap = s.fr.replace(
+						/#(.*?)#/,
+						`<input type="text" class="verb-input-sentence" data-solution="${solution}">`,
+					);
+					const div = document.createElement("div");
+					div.className = "sentence-card";
+					div.innerHTML = `
+            <div>${textWithGap} <button class="flag-btn" onclick="document.getElementById('trans-${index}').style.display='block'">🇩🇪</button></div>
+            <div class="translation-box" id="trans-${index}">${s.de}</div>
+        `;
+					boxContainer.appendChild(div);
+				});
+			}
+
+			// PRÜFEN LOGIK mit Leerfeld-Check
+			checkBtn.onclick = () => {
+				const mode = document.querySelector('input[name="mode"]:checked').value;
+
+				if (mode === "write") {
+					document.querySelectorAll(".verb-input").forEach((input) => {
+						const val = input.value.trim();
+
+						// Wenn das Feld leer ist: Zurücksetzen auf Standard-Design
+						if (val === "") {
+							input.className = "verb-input";
+							return;
+						}
+
+						const isCorrect =
+							val.toLowerCase() === input.dataset.answer.toLowerCase();
+						input.className = isCorrect
+							? "verb-input correct"
+							: "verb-input wrong";
+					});
+				} else if (mode === "sentences") {
+					document.querySelectorAll(".verb-input-sentence").forEach((input) => {
+						const val = input.value.trim();
+
+						if (val === "") {
+							input.className = "verb-input-sentence";
+							return;
+						}
+
+						const isCorrect =
+							val.toLowerCase() === input.dataset.solution.toLowerCase();
+						input.className = isCorrect
+							? "verb-input-sentence correct"
+							: "verb-input-sentence wrong";
+					});
+				}
+			};
+
+			document.querySelectorAll(".openBoxLink").forEach((link) => {
+				link.onclick = (e) => {
+					e.preventDefault();
+					document
+						.querySelectorAll(".openBoxLink")
+						.forEach((l) => l.classList.remove("active"));
+					link.classList.add("active");
+					currentVerbKey = link.dataset.target;
+					currentVerbName = link.dataset.verb;
+					renderContent();
+				};
+			});
+
+			document.querySelectorAll('input[name="mode"]').forEach((r) => {
+				r.onchange = renderContent;
+			});
+
+			const slider = document.getElementById("scrollMenu");
+			let isDown = false,
+				startX,
+				scrollLeft;
+			slider.onmousedown = (e) => {
+				isDown = true;
+				startX = e.pageX - slider.offsetLeft;
+				scrollLeft = slider.scrollLeft;
+			};
+			slider.onmouseup = () => (isDown = false);
+			slider.onmouseleave = () => (isDown = false);
+			slider.onmousemove = (e) => {
+				if (!isDown) return;
+				e.preventDefault();
+				const x = e.pageX - slider.offsetLeft;
+				slider.scrollLeft = scrollLeft - (x - startX) * 2;
+			};
+			const helpBtn = document.getElementById("help-btn");
+			const helpModal = document.getElementById("helpModal");
+			const closeHelp = document.getElementById("close-help");
+
+			// Fenster öffnen
+			helpBtn.onclick = () => {
+				helpModal.style.display = "flex";
+			};
+
+			// Fenster schließen
+			closeHelp.onclick = () => {
+				helpModal.style.display = "none";
+			};
+
+			// Schließen, wenn man außerhalb des Fensters klickt
+			window.onclick = (event) => {
+				if (event.target == helpModal) {
+					helpModal.style.display = "none";
+				}
+			};
+		</script>
+	</body>
+</html>
