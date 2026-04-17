@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reiseplan: Fahrrad & Zug Tour</title>
+		<style>
+			:root {
+				--bg-color: #f4f7f6;
+				--text-color: #333;
+				--accent-color: #2c3e50;
+			}
+
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				background-color: var(--bg-color);
+				color: var(--text-color);
+				margin: 0;
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			h1 {
+				color: var(--accent-color);
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.container {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 20px;
+				max-width: 1200px;
+				width: 100%;
+			}
+
+			.card {
+				border-radius: 15px;
+				padding: 20px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				transition: transform 0.2s;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+
+			.card:hover {
+				transform: translateY(-5px);
+			}
+
+			.day-label {
+				font-size: 0.9rem;
+				font-weight: bold;
+				text-transform: uppercase;
+				margin-bottom: 10px;
+				opacity: 0.8;
+			}
+
+			.route {
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-bottom: 15px;
+			}
+
+			.details {
+				background: rgba(255, 255, 255, 0.5);
+				padding: 10px;
+				border-radius: 8px;
+				font-size: 0.95rem;
+			}
+
+			.highlight {
+				font-weight: bold;
+				color: #000;
+			}
+
+			.info-row {
+				margin: 5px 0;
+				display: flex;
+				align-items: center;
+			}
+
+			.icon {
+				margin-right: 10px;
+			}
+
+			/* Farben für die Kacheln */
+			.tag-1 {
+				background-color: #ffadad;
+			}
+			.tag-2 {
+				background-color: #ffd6a5;
+			}
+			.tag-3 {
+				background-color: #fdffb6;
+			}
+			.tag-4 {
+				background-color: #caffbf;
+			}
+			.tag-5 {
+				background-color: #9bf6ff;
+			}
+			.tag-6 {
+				background-color: #a0c4ff;
+			}
+			.tag-7 {
+				background-color: #bdb2ff;
+			}
+			.tag-8 {
+				background-color: #ffc6ff;
+			}
+			.tag-9 {
+				background-color: #e2e2e2;
+			}
+
+			@media (max-width: 600px) {
+				.container {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>🚲 Touren-Etappenplan</h1>
+
+		<div class="container">
+			<div class="card tag-1">
+				<div class="day-label">1. Tag</div>
+				<div class="route">Dt. ➔ Cernay</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Dt. – Alpirsbach:
+						<span class="highlight">28,4 km</span>
+					</div>
+					<div class="info-row">
+						<span class="icon">🚆</span> Alpirsbach – Offenburg – Freiburg
+					</div>
+					<div class="info-row">
+						<span class="icon">🕒</span> Ankunft FR:
+						<span class="highlight">9:40 Uhr</span>
+					</div>
+					<div class="info-row">
+						<span class="icon">🚲</span> Freiburg – Cernay:
+						<span class="highlight">74 km</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="card tag-2">
+				<div class="day-label">2. Tag</div>
+				<div class="route">Cernay ➔ Epinal</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Distanz:
+						<span class="highlight">99 km</span>
+					</div>
+					<div class="info-row"><span class="icon">📍</span> Ziel: Epinal</div>
+				</div>
+			</div>
+
+			<div class="card tag-3">
+				<div class="day-label">3. Tag</div>
+				<div class="route">Epinal ➔ Nancy</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Distanz:
+						<span class="highlight">77 km</span>
+					</div>
+					<div class="info-row"><span class="icon">📍</span> Ziel: Nancy</div>
+				</div>
+			</div>
+
+			<div class="card tag-4">
+				<div class="day-label">4. Tag</div>
+				<div class="route">Nancy</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🏙️</span> Aufenthalt & Besichtigung
+					</div>
+					<div class="info-row">
+						<span class="icon">☕</span> Ruhetag in Nancy
+					</div>
+				</div>
+			</div>
+
+			<div class="card tag-5">
+				<div class="day-label">5. Tag</div>
+				<div class="route">Nancy ➔ Metz</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Distanz:
+						<span class="highlight">72 km</span>
+					</div>
+					<div class="info-row"><span class="icon">📍</span> Ziel: Metz</div>
+				</div>
+			</div>
+
+			<div class="card tag-6">
+				<div class="day-label">6. Tag</div>
+				<div class="route">Metz</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🏙️</span> Aufenthalt & Besichtigung
+					</div>
+					<div class="info-row">
+						<span class="icon">📸</span> Gravelotte; Museum 1870/71 Krieg
+					</div>
+				</div>
+			</div>
+
+			<div class="card tag-7">
+				<div class="day-label">7. Tag</div>
+				<div class="route">Metz ➔ Nancy</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Distanz:
+						<span class="highlight">72 km</span>
+					</div>
+					<div class="info-row">
+						<span class="icon">🚆</span> Optional:
+						<span class="highlight">Zugverbindung</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="card tag-8">
+				<div class="day-label">8. Tag</div>
+				<div class="route">Nancy ➔ Straßburg</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Distanz:
+						<span class="highlight">147 km</span>
+					</div>
+					<div class="info-row"><span class="icon">🏁</span> Lange Etappe</div>
+				</div>
+			</div>
+
+			<div class="card tag-9">
+				<div class="day-label">9. Tag</div>
+				<div class="route">Straßburg ➔ Dt.</div>
+				<div class="details">
+					<div class="info-row">
+						<span class="icon">🚲</span> Fahrrad (teilweise)
+					</div>
+					<div class="info-row">
+						<span class="icon">🚆</span> Rückreise mit dem Zug
+					</div>
+					<div class="info-row"><span class="icon">🏠</span> Heimreise</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
