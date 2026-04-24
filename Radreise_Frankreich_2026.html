@@ -9,6 +9,7 @@
 				--bg-color: #f4f7f6;
 				--text-color: #333;
 				--accent-color: #2c3e50;
+				--active-color: #e74c3c; /* Ein schönes Rot */
 			}
 
 			body {
@@ -80,10 +81,36 @@
 				margin: 5px 0;
 				display: flex;
 				align-items: center;
+				flex-wrap: wrap;
 			}
 
 			.icon {
 				margin-right: 10px;
+			}
+
+			/* Tourverlauf-Stil */
+			.route-list {
+				display: none;
+				font-size: 0.75rem;
+				margin-top: 8px;
+				padding: 8px;
+				border-top: 1px dashed rgba(0, 0, 0, 0.1);
+				line-height: 1.4;
+				color: #555;
+			}
+
+			.toggle-btn {
+				cursor: pointer;
+				margin-left: 10px;
+				user-select: none;
+				font-size: 1.1rem;
+				color: #777;
+				transition: color 0.3s ease;
+			}
+
+			.toggle-btn.active {
+				color: var(--active-color);
+				font-weight: bold;
 			}
 
 			/* Farben für die Kacheln */
@@ -167,6 +194,19 @@
 					<div class="info-row">
 						<span class="icon">🚲</span> Distanz:
 						<span class="highlight">77 km</span>
+						<span class="toggle-btn" onclick="toggleRoute(this, 'route-3')"
+							>▽</span
+						>
+					</div>
+					<div id="route-3" class="route-list">
+						<strong>Epinal</strong> - Pré Droue – Chavelot –
+						<strong>Thaon-les-Vosges</strong> – Igney – Nomexy – Vincey -
+						<strong>Charmes</strong> – Gripport – Bainville-aux-Miroirs –
+						Mangonville - Roville-devant-Bayon – Neuviller-sur-Moselle –
+						Crévéchamps – Richardménil – Ludres - Fléville-devant-Nancy –
+						Laneuveville devant-Nancy - <strong>Nancy</strong> <br /><br />
+						<strong>Epinal</strong> – <strong>Charmes</strong> 27,1 km;
+						<strong>Charmes</strong> – <strong>Nancy</strong> 48,1 km.
 					</div>
 					<div class="info-row"><span class="icon">📍</span> Ziel: Nancy</div>
 				</div>
@@ -192,6 +232,22 @@
 					<div class="info-row">
 						<span class="icon">🚲</span> Distanz:
 						<span class="highlight">72 km</span>
+						<span class="toggle-btn" onclick="toggleRoute(this, 'route-5')"
+							>▽</span
+						>
+					</div>
+					<div id="route-5" class="route-list">
+						<strong>Nancy</strong> – Malzeville – Champigneulles – Frouard –
+						Custines – Millery – Autreville-sur-Moselle –
+						Blénod-lès-Pont-à-Mousson – <strong>Pont-à-Mousson</strong> –
+						Vandiéres – Pagny-sur-Moselle – Novant-sur-Moselle –
+						Corny-sur-Moselle – Ancy-sur-Moselle - Jouy-aux-Arches –
+						Longeville-lès-Metz – <strong>Metz</strong>
+						<br />
+						<i>(Ausflug: <strong>Pont-à-Mousson</strong> – Mousson 5 km)</i>
+						<br /><br />
+						<strong>Nancy</strong> – <strong>Pont-à-Mousson</strong> 35,2 km;
+						<strong>Pont-à-Mousson</strong> – <strong>Metz</strong> 32,6 km.
 					</div>
 					<div class="info-row"><span class="icon">📍</span> Ziel: Metz</div>
 				</div>
@@ -232,6 +288,26 @@
 					<div class="info-row">
 						<span class="icon">🚲</span> Distanz:
 						<span class="highlight">147 km</span>
+						<span class="toggle-btn" onclick="toggleRoute(this, 'route-8')"
+							>▽</span
+						>
+					</div>
+					<div id="route-8" class="route-list">
+						Canal de la Marne au Rhin<br />
+						<strong>Nancy</strong> – Jarville-la-Malgrange -
+						Laneuveville-devant-Nancy – Varangéville – Crévic – Maixe –
+						Einville-au-Jard – Bauzemont – <strong>Parroy</strong> – Xures –
+						Lagarde – Port-Sainte-Marie – Bataville – Gondrexange – Hertzing –
+						Héming – Xouaxange – Moulin-de la-Forge – Imling -
+						<strong>Sarrebourg</strong> – Schneckenbusch – Niderviller –
+						Arzviller – Hofmuhl – Lutzelbourg – Stambach –
+						<strong>Saverne</strong> – Steinbourg – Lupstein – Pappelmuehl –
+						Waltenheim-sur-Zorn – Vendenheim – Reichstett – Hoenheim – Wacken –
+						Parc de l’Orangerie - <strong>Strasbourg</strong> <br /><br />
+						<strong>Nancy</strong> – <strong>Parroy</strong> 31 km;
+						<strong>Parroy</strong> – <strong>Sarrebourg</strong> 40 km;
+						<strong>Sarrebourg</strong> – <strong>Saverne</strong> 31,8 km;
+						<strong>Saverne</strong> – <strong>Strasbourg</strong> 44,5 km
 					</div>
 					<div class="info-row"><span class="icon">🏁</span> Lange Etappe</div>
 				</div>
@@ -251,5 +327,20 @@
 				</div>
 			</div>
 		</div>
+
+		<script>
+			function toggleRoute(btn, routeId) {
+				var routeDiv = document.getElementById(routeId);
+				if (routeDiv.style.display === "block") {
+					routeDiv.style.display = "none";
+					btn.innerHTML = "▽";
+					btn.classList.remove("active");
+				} else {
+					routeDiv.style.display = "block";
+					btn.innerHTML = "△";
+					btn.classList.add("active");
+				}
+			}
+		</script>
 	</body>
 </html>
