@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Französisch – Unbestimmte Artikel</title>
+
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				font-size: 20px;
+				margin: 20px;
+				background: #f5f5f5;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				max-width: 700px;
+				min-height: 520px;
+				box-sizing: border-box;
+				margin: 0 auto;
+				background: white;
+				padding: 25px;
+				border-radius: 10px;
+			}
+
+			.quiz-box {
+				background: #dceeff;
+				border: 1px solid #b8d5f2;
+				border-radius: 18px;
+				padding: 35px 20px;
+				margin-top: 25px;
+				box-shadow: 0 5px 15px rgba(50, 100, 150, 0.15);
+			}
+
+			.quiz-box::before {
+				content: "";
+				display: block;
+				height: 5px;
+				background: linear-gradient(90deg, #64b5f6, #90caf9, #bbdefb);
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
+
+			h1 {
+				font-size: 24px;
+				text-align: center;
+			}
+
+			#counter {
+				text-align: center;
+				margin-bottom: 30px;
+				color: #666;
+			}
+
+			#sentence {
+				font-size: 24px;
+				line-height: 1.8;
+				text-align: center;
+				margin: 25px 0 35px;
+			}
+
+			#wrongSentences {
+				margin-top: 15px;
+				font-size: 20px;
+			}
+
+			#wrongSentences h3 {
+				font-size: 19px;
+			}
+
+			.blank {
+				display: inline-block;
+				min-width: 65px;
+				border-bottom: 2px solid #333;
+				text-align: center;
+				line-height: 1.3;
+			}
+
+			.correct {
+				color: green;
+			}
+
+			.wrong {
+				color: red;
+			}
+
+			.buttons {
+				display: flex;
+				justify-content: center;
+				gap: 18px;
+				margin-top: 20px;
+			}
+
+			.buttons button {
+				min-width: 85px;
+				background: #ffffff;
+				border: 1px solid #b8d5f2;
+				border-radius: 10px;
+				box-shadow: 0 2px 5px rgba(50, 100, 150, 0.1);
+			}
+
+			button {
+				font-size: 22px;
+				padding: 12px 28px;
+				border: none;
+				border-radius: 6px;
+				background: #e0e0e0;
+				cursor: pointer;
+			}
+
+			button:disabled {
+				cursor: default;
+				opacity: 1;
+			}
+
+			button.correct {
+				background: #4caf50;
+				color: white;
+			}
+
+			button.wrong {
+				background: #e53935;
+				color: white;
+			}
+
+			#nextButton {
+				display: none;
+				margin-top: auto;
+				margin-bottom: auto;
+				margin-left: auto;
+				margin-right: auto;
+				align-self: center;
+				background: #4385d1;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Unbestimmte Artikel – un, une, des</h1>
+
+			<div id="counter"></div>
+
+			<div class="quiz-box">
+				<div id="sentence"></div>
+
+				<div class="buttons">
+					<button onclick="checkAnswer('un', this)">un</button>
+					<button onclick="checkAnswer('une', this)">une</button>
+					<button onclick="checkAnswer('des', this)">des</button>
+				</div>
+			</div>
+			<div id="wrongSentences" style="display: none"></div>
+
+			<button id="nextButton" onclick="nextQuestion()">Weiter</button>
+		</div>
+
+		<script>
+			const sentences = [
+				"#Un# litre de lait, s'il vous plaît.",
+				"Paris est #une# ville magnifique.",
+				"J'ai #un# frère et #une# sœur.",
+				"Elle achète #des# pommes au marché.",
+				"C'est #une# bonne idée.",
+				"Nous avons #un# jardin.",
+				"Il y a #des# fleurs dans le vase.",
+				"Marie cherche #une# nouvelle maison.",
+				"J'ai acheté #un# livre intéressant.",
+				"Ce sont #des# étudiants français.",
+				"Il porte #un# pantalon noir.",
+				"Elle a #une# voiture rouge.",
+				"Nous préparons #des# crêpes.",
+				"C'est #un# petit village.",
+				"J'ai besoin d'#une# adresse.",
+				"Il y a #des# enfants dans le parc.",
+				"Elle mange #une# orange.",
+				"Paul a #un# chien.",
+				"Nous visitons #des# musées.",
+				"C'est #une# belle journée.",
+				"Il y a #une# pharmacie par ici.",
+				"Lyon est #une# ville culturelle.",
+				"Il y a #un# très bon restaurant en ville.",
+				"On mange #des# spécialitiés d'ici avec #un# vin de la region.",
+				"Elle travaille dans #une# école.",
+				"Elle est infirmière dans #un# hôpital.",
+				"Il est cuisinièr dans #un# hôtel.",
+				"Au fait,demain, je visite le Louvre avec #des# amis.",
+				"On va regarder #un# film ensemble ce soir ?",
+				"Vous pouvez nous apporter encore #une# carafe d'eau, s'il vous plait ?",
+				"Nous allons au restaurant #une# fois par semaine.",
+				"N'oublie pas d'acheter #une# bouteille de vin rouge.",
+				"Je voudrais #un# croissant, s'il vous plaît.",
+				"Tu as #un# vélo ?",
+				"Il y a #des# bananes.",
+				"Il s'est acheté #un# ordinateur pour l'université.",
+				"J'ai acheté #un# nouveau téléphone hier.",
+				"J'ai #une# information pour vous.",
+				"Il y a #des# oiseaux dans le jardin.",
+			];
+
+			let questions = [];
+			let current = 0;
+			let answered = false;
+			let wrongSentences = [];
+			let correctArticles = [];
+			let currentBlankIndex = 0;
+			let sentenceWrong = false;
+
+			function shuffle(array) {
+				return array.sort(() => Math.random() - 0.5);
+			}
+
+			function startQuiz() {
+				wrongSentences = [];
+				document.getElementById("wrongSentences").style.display = "none";
+
+				questions = shuffle([...sentences]).slice(0, 10);
+				current = 0;
+				showQuestion();
+			}
+
+			function showQuestion() {
+				answered = false;
+				currentBlankIndex = 0;
+				sentenceWrong = false;
+
+				document.getElementById("counter").textContent =
+					"Frage " + (current + 1) + " von 10";
+
+				const sentence = questions[current];
+
+				correctArticles = [...sentence.matchAll(/#(.*?)#/g)].map(
+					(match) => match[1],
+				);
+
+				let blankNumber = 0;
+
+				document.getElementById("sentence").innerHTML = sentence.replace(
+					/#(.*?)#/g,
+					() => {
+						return (
+							'<span class="blank" id="blank-' +
+							blankNumber++ +
+							'">&nbsp;</span>'
+						);
+					},
+				);
+
+				document.querySelectorAll(".buttons button").forEach((button) => {
+					button.disabled = false;
+					button.classList.remove("correct", "wrong");
+				});
+
+				document.getElementById("nextButton").style.display = "none";
+			}
+
+			function checkAnswer(answer, button) {
+				if (answered) return;
+
+				const correctAnswer = correctArticles[currentBlankIndex];
+				const blank = document.getElementById("blank-" + currentBlankIndex);
+
+				document.querySelectorAll(".buttons button").forEach((b) => {
+					b.classList.remove("correct", "wrong");
+				});
+
+				if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
+					button.classList.add("correct");
+					blank.textContent = correctAnswer;
+					blank.classList.add("correct");
+				} else {
+					button.classList.add("wrong");
+					blank.textContent = answer;
+					blank.classList.add("wrong");
+
+					sentenceWrong = true;
+				}
+
+				currentBlankIndex++;
+
+				// Es gibt noch eine weitere Lücke im Satz
+				if (currentBlankIndex < correctArticles.length) {
+					return;
+				}
+
+				// Alle Lücken des Satzes wurden beantwortet
+				answered = true;
+
+				if (sentenceWrong) {
+					const wrongSentence = questions[current].replace(/#/g, "");
+
+					if (!wrongSentences.includes(wrongSentence)) {
+						wrongSentences.push(wrongSentence);
+					}
+				}
+
+				document.querySelectorAll(".buttons button").forEach((b) => {
+					b.disabled = true;
+				});
+
+				if (current === 9) {
+					document.getElementById("nextButton").textContent =
+						"Noch eine Runde?";
+				} else {
+					document.getElementById("nextButton").textContent = "Weiter";
+				}
+
+				document.getElementById("nextButton").style.display = "block";
+
+				if (current === 9) {
+					const result = document.getElementById("wrongSentences");
+					result.innerHTML = "";
+
+					if (wrongSentences.length === 0) {
+						result.textContent = "Alle Sätze richtig beantwortet!";
+					} else {
+						const heading = document.createElement("h3");
+						heading.textContent =
+							wrongSentences.length === 1
+								? "Dieser Satz war noch schwierig:"
+								: "Diese Sätze waren noch schwierig:";
+
+						result.appendChild(heading);
+
+						const list = document.createElement("ul");
+
+						wrongSentences.forEach((sentence) => {
+							const item = document.createElement("li");
+							item.textContent = sentence;
+							list.appendChild(item);
+						});
+
+						result.appendChild(list);
+					}
+
+					result.style.display = "block";
+				}
+			}
+
+			function nextQuestion() {
+				if (current < 9) {
+					current++;
+					showQuestion();
+				} else {
+					startQuiz();
+				}
+			}
+
+			startQuiz();
+		</script>
+	</body>
+</html>

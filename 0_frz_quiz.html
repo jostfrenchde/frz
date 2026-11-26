@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Französisch-Quiz</title>
+
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				padding: 30px 20px;
+				font-family: Arial, sans-serif;
+				background: #f2f4f7;
+			}
+
+			h1 {
+				text-align: center;
+				margin-bottom: 10px;
+				color: #333;
+			}
+
+			.tile-container {
+				max-width: 950px;
+				margin: auto;
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 20px;
+			}
+
+			.help-button {
+				display: block;
+				margin: 0 auto 20px auto;
+				font-size: 22px;
+				padding: 12px 28px;
+				border: none;
+				border-radius: 6px;
+				background: #c96b6b;
+				color: white;
+				cursor: pointer;
+			}
+
+			.help-popup[hidden] {
+				display: none;
+			}
+
+			.help-popup {
+				position: fixed;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: rgba(0, 0, 0, 0.45);
+				z-index: 1000;
+				padding: 20px;
+				box-sizing: border-box;
+			}
+
+			.help-content {
+				background: white;
+				padding: 24px;
+				border-radius: 12px;
+				max-width: 480px;
+				width: 100%;
+				box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+			}
+
+			#closeHelp {
+				display: block;
+				margin: 20px auto 0 auto;
+				font-size: 22px;
+				padding: 12px 28px;
+				border: none;
+				border-radius: 6px;
+				background: #4385d1;
+				color: white;
+				cursor: pointer;
+			}
+
+			.tile {
+				min-height: 180px;
+				border-radius: 14px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				padding: 25px 15px;
+				text-align: center;
+				box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+				transition: box-shadow 0.2s;
+			}
+
+			.tile a {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				padding: 25px 45px 25px 15px;
+				text-decoration: none;
+				color: inherit;
+				z-index: 1;
+			}
+
+			.tile h2 {
+				font-size: 19px;
+				margin: 0 0 18px 0;
+			}
+
+			.tile p {
+				font-size: 25px;
+				font-weight: bold;
+				margin: 0;
+			}
+
+			.tile-1 {
+				background: #dceafa;
+				color: #245a91;
+			}
+
+			.tile-2 {
+				background: #fbe5d5;
+				color: #94502a;
+			}
+
+			.tile-3 {
+				background: #ddeedd;
+				color: #326b3b;
+			}
+
+			.drag-handle {
+				position: absolute;
+				top: 8px;
+				right: 10px;
+				border: none;
+				background: transparent;
+				color: inherit;
+				font-size: 25px;
+				cursor: grab;
+				padding: 5px 9px;
+				touch-action: none;
+				z-index: 2;
+			}
+
+			.dragging {
+				opacity: 0.55;
+				box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+			}
+
+			@media (max-width: 700px) {
+				.tile-container {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+
+			@media (max-width: 480px) {
+				body {
+					padding: 20px 15px;
+				}
+
+				.tile-container {
+					grid-template-columns: 1fr;
+					gap: 15px;
+				}
+
+				.tile {
+					min-height: 145px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Französisch-Quiz</h1>
+		<button id="helpButton" class="help-button" type="button">Hilfe</button>
+
+		<div id="helpPopup" class="help-popup" hidden>
+			<div class="help-content">
+				<h2>Kacheln verschieben</h2>
+
+				<p>
+					Zum Verschieben einer Kachel das kleine Verschiebesymbol (⠿) anklicken
+					und gedrückt halten.
+				</p>
+				<p>
+					Die Kachel an die gewünschte Position ziehen und dort loslassen. Das
+					Ablegen ist auf der gesamten Kachel möglich.
+				</p>
+				<p>
+					Die neue Reihenfolge wird automatisch gespeichert und bleibt auch beim
+					nächsten Aufruf der Seite erhalten.
+				</p>
+
+				<button id="closeHelp" type="button">Schließen</button>
+			</div>
+		</div>
+		<div class="tile-container" id="tileContainer">
+			<div class="tile tile-1" data-id="1">
+				<button
+					class="drag-handle"
+					type="button"
+					aria-label="Kachel verschieben"
+				>
+					⠿
+				</button>
+				<a href="1_bestimmte_Artikel.html">
+					<h2>Bestimmter Artikel</h2>
+					<p>le, la, l'</p>
+				</a>
+			</div>
+
+			<div class="tile tile-2" data-id="2">
+				<button
+					class="drag-handle"
+					type="button"
+					aria-label="Kachel verschieben"
+				>
+					⠿
+				</button>
+				<a href="2_unbestimmte_Artikel.html">
+					<h2>Unbestimmter Artikel</h2>
+					<p>un, une, des</p>
+				</a>
+			</div>
+
+			<div class="tile tile-3" data-id="3">
+				<button
+					class="drag-handle"
+					type="button"
+					aria-label="Kachel verschieben"
+				>
+					⠿
+				</button>
+				<a href="3_Teilungsartikel.html">
+					<h2>Teilungsartikel</h2>
+					<p>du, de la, de l', des</p>
+				</a>
+			</div>
+		</div>
+
+		<script>
+			const container = document.getElementById("tileContainer");
+
+			// Gespeicherte Reihenfolge wiederherstellen
+			const savedOrder = JSON.parse(
+				localStorage.getItem("quizTileOrder") || "null",
+			);
+
+			if (Array.isArray(savedOrder)) {
+				savedOrder.forEach((id) => {
+					const tile = container.querySelector(`.tile[data-id="${id}"]`);
+
+					if (tile) {
+						container.appendChild(tile);
+					}
+				});
+			}
+
+			let activeTile = null;
+			let startX = 0;
+			let startY = 0;
+			let dragging = false;
+
+			// Start ausschließlich über das Verschiebesymbol
+			container.querySelectorAll(".drag-handle").forEach((handle) => {
+				handle.addEventListener("pointerdown", (event) => {
+					activeTile = handle.closest(".tile");
+					startX = event.clientX;
+					startY = event.clientY;
+					dragging = false;
+				});
+			});
+
+			// Bewegung auf dem gesamten Dokument überwachen
+			document.addEventListener("pointermove", (event) => {
+				if (!activeTile) return;
+
+				const distance = Math.hypot(
+					event.clientX - startX,
+					event.clientY - startY,
+				);
+
+				if (distance > 6) {
+					dragging = true;
+					activeTile.classList.add("dragging");
+				}
+
+				if (!dragging) return;
+
+				const target = document
+					.elementFromPoint(event.clientX, event.clientY)
+					?.closest(".tile");
+
+				if (!target || target === activeTile) return;
+
+				const tiles = Array.from(container.querySelectorAll(".tile"));
+				const activeIndex = tiles.indexOf(activeTile);
+				const targetIndex = tiles.indexOf(target);
+
+				if (activeIndex < targetIndex) {
+					container.insertBefore(activeTile, target.nextSibling);
+				} else {
+					container.insertBefore(activeTile, target);
+				}
+			});
+
+			// Ziehen beenden
+			function finishDragging() {
+				if (!activeTile) return;
+
+				activeTile.classList.remove("dragging");
+
+				if (dragging) {
+					const order = Array.from(container.querySelectorAll(".tile")).map(
+						(tile) => tile.dataset.id,
+					);
+
+					localStorage.setItem("quizTileOrder", JSON.stringify(order));
+				}
+
+				activeTile = null;
+				dragging = false;
+			}
+
+			document.addEventListener("pointerup", finishDragging);
+			document.addEventListener("pointercancel", finishDragging);
+			// Hilfefenster öffnen und schließen
+			const helpButton = document.getElementById("helpButton");
+			const helpPopup = document.getElementById("helpPopup");
+			const closeHelp = document.getElementById("closeHelp");
+
+			helpButton.addEventListener("click", () => {
+				helpPopup.hidden = false;
+			});
+
+			closeHelp.addEventListener("click", () => {
+				helpPopup.hidden = true;
+			});
+		</script>
+	</body>
+</html>
