@@ -50,7 +50,7 @@
 				font-size: 24px;
 				line-height: 1.8;
 				text-align: center;
-				margin: 25px 0 20px;
+				margin: 5px 0 20px;
 			}
 
 			.translation-container {
@@ -287,7 +287,18 @@
 			@media (max-width: 600px) {
 				#helpButton {
 					position: static;
-					margin: -5px 0 3px 0;
+					margin: -3px 0 0 0;
+				}
+				.container {
+					background: transparent;
+					box-shadow: none;
+					padding-top: 1px;
+				}
+				.container::after {
+					display: none;
+				}
+				h1 {
+					margin-top: 8px;
 				}
 			}
 		</style>
