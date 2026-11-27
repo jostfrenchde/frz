@@ -481,8 +481,6 @@
 				return [...array].sort(() => Math.random() - 0.5);
 			}
 
-			const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-
 			function showWord() {
 				if (current >= list.length) {
 					finish();
@@ -539,10 +537,6 @@
 							bin.classList.add("correct");
 						}
 					});
-				}
-
-				if (isTouchDevice) {
-					chosenBin.blur();
 				}
 
 				bins.forEach((bin) => bin.classList.remove("over"));
