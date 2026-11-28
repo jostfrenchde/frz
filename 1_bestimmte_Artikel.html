@@ -245,6 +245,14 @@
 					font-size: 23px;
 				}
 			}
+			#focusHelper {
+				position: fixed;
+				left: -1000px;
+				top: 0;
+				width: 1px;
+				height: 1px;
+				opacity: 0;
+			}
 		</style>
 	</head>
 
@@ -640,5 +648,11 @@
 				restart();
 			};
 		</script>
+		<button
+			id="focusHelper"
+			type="button"
+			tabindex="-1"
+			aria-hidden="true"
+		></button>
 	</body>
 </html>
