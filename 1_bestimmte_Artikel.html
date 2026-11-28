@@ -503,12 +503,12 @@
 				locked = false;
 
 				bins.forEach((bin) => {
-					if (bin === document.activeElement) {
-						bin.blur();
-					}
-
 					bin.classList.remove("correct", "wrong");
 				});
+
+				if (window.matchMedia("(pointer: coarse)").matches) {
+					document.getElementById("focusHelper").focus();
+				}
 
 				feedback.textContent = "";
 
